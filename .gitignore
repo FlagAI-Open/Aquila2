@@ -1,9 +1,6 @@
 __pycache__
 .idea/
 logs/
-test_tokenizer.py
-samples_text2image/
-generate_contexts/
 venv/
 *__pycache__
 .DS_Store
