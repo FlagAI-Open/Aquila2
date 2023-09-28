@@ -19,8 +19,8 @@ tokenizer = autoloader.get_tokenizer()
 # 
 
 test_data = [
-    "请教一个数学计算题:1+5=",
-    "写一首中秋主题的五言绝句",
+        "北京的十大景点是什么?请将回答翻译成英文和日语",
+    "写一首中秋主题的五言绝句并翻译成英文和韩语",
 ]
 
 for text in test_data:
