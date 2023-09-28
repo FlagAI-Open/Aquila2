@@ -20,7 +20,10 @@ import logging
 import pathlib
 import typing
 import os
-
+import json
+import math
+from typing import Dict, Optional, Sequence
+import numpy as np
 from deepspeed import zero
 from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
@@ -33,14 +36,8 @@ from fastchat.train.train_aquila import (
     ModelArguments,
 )
 from fastchat.train.llama2_flash_attn_monkey_patch import (
-    replace_llama_attn_with_flash_attn,
-)
+    replace_llama_attn_with_flash_attn, )
 
-import json
-import math
-from typing import Dict, Optional, Sequence
-
-import numpy as np
 from torch.utils.data import Dataset
 from transformers.trainer_pt_utils import LabelSmoother
 
@@ -58,7 +55,8 @@ class TrainingArguments(transformers.TrainingArguments):
     model_max_length: int = field(
         default=512,
         metadata={
-            "help": "Maximum sequence length. Sequences will be right padded (and possibly truncated)."
+            "help":
+            "Maximum sequence length. Sequences will be right padded (and possibly truncated)."
         },
     )
     flash_attn: bool = False
@@ -71,11 +69,11 @@ class LoraArguments:
     lora_alpha: int = 16
     lora_dropout: float = 0.05
     lora_target_modules: typing.List[str] = field(
-        default_factory=lambda: ["q_proj", "v_proj"]
-    )
+        default_factory=lambda: ["q_proj", "v_proj"])
     lora_weight_path: str = ""
     lora_bias: str = "none"
     q_lora: bool = False
+
 
 local_rank = None
 
@@ -85,17 +83,23 @@ def rank0_print(*args):
         print(*args)
 
 
-def safe_save_model_for_hf_trainer(trainer: transformers.Trainer, output_dir: str):
+def safe_save_model_for_hf_trainer(trainer: transformers.Trainer,
+                                   output_dir: str):
     """Collects the state dict and dump to disk."""
     if deepspeed.is_deepspeed_zero3_enabled():
-        state_dict = trainer.model_wrapped._zero3_consolidated_16bit_state_dict()
+        state_dict = trainer.model_wrapped._zero3_consolidated_16bit_state_dict(
+        )
     else:
         state_dict = trainer.model.state_dict()
 
     if trainer.args.should_save:
-        cpu_state_dict = {key: value.cpu() for key, value in state_dict.items()}
+        cpu_state_dict = {
+            key: value.cpu()
+            for key, value in state_dict.items()
+        }
         del state_dict
         trainer._save(output_dir, state_dict=cpu_state_dict)  # noqa
+
 
 def preprocess(
     sources,
@@ -155,7 +159,7 @@ def preprocess(
             instruction_len = len(tokenizer(parts[0]).input_ids)
 
             # Ignore the user instructions
-            target[cur_len : cur_len + instruction_len] = IGNORE_TOKEN_ID
+            target[cur_len:cur_len + instruction_len] = IGNORE_TOKEN_ID
             cur_len += instruction_len
             cur_len += len(tokenizer(parts[1]).input_ids)
             cur_len += 1
@@ -173,8 +177,7 @@ def preprocess(
                 target[:] = IGNORE_TOKEN_ID
                 rank0_print(
                     f"WARNING: tokenization mismatch: {cur_len} vs. {total_len}."
-                    f" (ignored)"
-                )
+                    f" (ignored)")
 
         # Aquila cpt: remove specific token
         if convo_template == 'aquila-cpt-v1':
@@ -214,7 +217,8 @@ def preprocess(
 class SupervisedDataset(Dataset):
     """Dataset for supervised fine-tuning."""
 
-    def __init__(self, raw_data, tokenizer: transformers.PreTrainedTokenizer, convo_template):
+    def __init__(self, raw_data, tokenizer: transformers.PreTrainedTokenizer,
+                 convo_template):
         super(SupervisedDataset, self).__init__()
 
         rank0_print("Formatting inputs...")
@@ -240,7 +244,8 @@ class SupervisedDataset(Dataset):
 class LazySupervisedDataset(Dataset):
     """Dataset for supervised fine-tuning."""
 
-    def __init__(self, raw_data, tokenizer: transformers.PreTrainedTokenizer, convo_template):
+    def __init__(self, raw_data, tokenizer: transformers.PreTrainedTokenizer,
+                 convo_template):
         super(LazySupervisedDataset, self).__init__()
         self.tokenizer = tokenizer
 
@@ -257,7 +262,8 @@ class LazySupervisedDataset(Dataset):
         if i in self.cached_data_dict:
             return self.cached_data_dict[i]
 
-        ret = preprocess([self.raw_data[i]["conversations"]], self.tokenizer, self.convo_template)
+        ret = preprocess([self.raw_data[i]["conversations"]], self.tokenizer,
+                         self.convo_template)
         ret = dict(
             input_ids=ret["input_ids"][0],
             labels=ret["labels"][0],
@@ -268,13 +274,11 @@ class LazySupervisedDataset(Dataset):
         return ret
 
 
-def make_supervised_data_module(
-    tokenizer: transformers.PreTrainedTokenizer, data_args
-) -> Dict:
+def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer,
+                                data_args) -> Dict:
     """Make dataset and collator for supervised fine-tuning."""
-    dataset_cls = (
-        LazySupervisedDataset if data_args.lazy_preprocess else SupervisedDataset
-    )
+    dataset_cls = (LazySupervisedDataset
+                   if data_args.lazy_preprocess else SupervisedDataset)
     rank0_print("Loading data...")
 
     if data_args.data_path.endswith('jsonl'):
@@ -287,7 +291,8 @@ def make_supervised_data_module(
                     train_json.append(json_obj)
     else:
         train_json = json.load(open(data_args.data_path, "r"))
-    train_dataset = dataset_cls(train_json, tokenizer=tokenizer,
+    train_dataset = dataset_cls(train_json,
+                                tokenizer=tokenizer,
                                 convo_template=data_args.convo_template)
 
     if data_args.eval_data_path:
@@ -300,7 +305,8 @@ def make_supervised_data_module(
                     eval_json.append(json_obj)
         else:
             eval_json = json.load(open(data_args.eval_data_path, "r"))
-        eval_dataset = dataset_cls(eval_json, tokenizer=tokenizer,
+        eval_dataset = dataset_cls(eval_json,
+                                   tokenizer=tokenizer,
                                    convo_template=data_args.convo_template)
     else:
         eval_dataset = None
@@ -323,7 +329,10 @@ def get_peft_state_maybe_zero_3(named_params, bias):
     if bias == "none":
         to_return = {k: t for k, t in named_params if "lora_" in k}
     elif bias == "all":
-        to_return = {k: t for k, t in named_params if "lora_" in k or "bias" in k}
+        to_return = {
+            k: t
+            for k, t in named_params if "lora_" in k or "bias" in k
+        }
     elif bias == "lora_only":
         to_return = {}
         maybe_lora_bias = {}
@@ -346,8 +355,7 @@ def get_peft_state_maybe_zero_3(named_params, bias):
 
 def train():
     parser = transformers.HfArgumentParser(
-        (ModelArguments, DataArguments, TrainingArguments, LoraArguments)
-    )
+        (ModelArguments, DataArguments, TrainingArguments, LoraArguments))
     (
         model_args,
         data_args,
@@ -355,7 +363,6 @@ def train():
         lora_args,
     ) = parser.parse_args_into_dataclasses()
     local_rank = training_args.local_rank
-    print(lora_args,training_args.use_lora,1111)
     # Set RoPE scaling factor
     config = transformers.AutoConfig.from_pretrained(
         model_args.model_name_or_path,
@@ -363,29 +370,29 @@ def train():
     )
     orig_ctx_len = getattr(config, "max_position_embeddings", None)
     if orig_ctx_len and training_args.model_max_length > orig_ctx_len:
-        scaling_factor = float(math.ceil(training_args.model_max_length / orig_ctx_len))
+        scaling_factor = float(
+            math.ceil(training_args.model_max_length / orig_ctx_len))
         config.rope_scaling = {"type": "linear", "factor": scaling_factor}
     config.use_cache = False
 
     if training_args.flash_attn:
         replace_llama_attn_with_flash_attn()
 
+    device_map = None
     if training_args.use_lora:
-        device_map = None
         world_size = int(os.environ.get("WORLD_SIZE", 1))
         ddp = world_size != 1
         # if lora_args.q_lora:
-        device_map = {"": int(os.environ.get("LOCAL_RANK") or 0)} if ddp else None
-        if len(training_args.fsdp) > 0 or deepspeed.is_deepspeed_zero3_enabled():
+        device_map = {
+            "": int(os.environ.get("LOCAL_RANK") or 0)
+        } if ddp else None
+        if len(training_args.fsdp) > 0 or deepspeed.is_deepspeed_zero3_enabled(
+        ):
             logging.warning(
-                "FSDP and ZeRO3 are both currently incompatible with QLoRA."
-            )
+                "FSDP and ZeRO3 are both currently incompatible with QLoRA.")
 
-    compute_dtype = (
-        torch.float16
-        if training_args.fp16
-        else (torch.bfloat16 if training_args.bf16 else torch.float32)
-    )
+    compute_dtype = (torch.float16 if training_args.fp16 else
+                     (torch.bfloat16 if training_args.bf16 else torch.float32))
 
     model = transformers.AutoModelForCausalLM.from_pretrained(
         model_args.model_name_or_path,
@@ -396,9 +403,7 @@ def train():
             bnb_4bit_use_double_quant=True,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_compute_dtype=compute_dtype,
-        )
-        if lora_args.q_lora
-        else None,
+        ) if lora_args.q_lora else None,
     )
 
     if training_args.use_lora:
@@ -413,7 +418,8 @@ def train():
 
         if lora_args.q_lora:
             model = prepare_model_for_kbit_training(
-                model, use_gradient_checkpointing=training_args.gradient_checkpointing
+                model,
+                use_gradient_checkpointing=training_args.gradient_checkpointing
             )
             if not ddp and torch.cuda.device_count() > 1:
                 # keeps Trainer from trying its own DataParallelism when more than 1 gpu is available
@@ -431,7 +437,6 @@ def train():
                 if hasattr(module, "weight"):
                     module = module.to(compute_dtype)
 
-
     if training_args.gradient_checkpointing:
         model.enable_input_require_grads()
 
@@ -445,22 +450,27 @@ def train():
     tokenizer.pad_token = tokenizer.unk_token
 
     # Load data
-    data_module = make_supervised_data_module(tokenizer=tokenizer, data_args=data_args)
+    data_module = make_supervised_data_module(tokenizer=tokenizer,
+                                              data_args=data_args)
 
     # Start trainner
-    trainer = Trainer(
-        model=model, tokenizer=tokenizer, args=training_args, **data_module
-    )
+    trainer = Trainer(model=model,
+                      tokenizer=tokenizer,
+                      args=training_args,
+                      **data_module)
 
     # model.config.use_cache = False
 
     if training_args.use_sequential_init:
         # Inform next rank
         if local_rank < local_world_size - 2:
-            print(f"Send message from rank {global_rank} to rank {global_rank+1}")
-            torch.distributed.send(tensor, global_rank+2)
+            print(
+                f"Send message from rank {global_rank} to rank {global_rank+1}"
+            )
+            torch.distributed.send(tensor, global_rank + 2)
     model.config.use_cache = False
-    if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")) and not lora_args.q_lora:
+    if list(pathlib.Path(training_args.output_dir).glob(
+            "checkpoint-*")) and not lora_args.q_lora:
         trainer.train(resume_from_checkpoint=True)
     else:
         trainer.train()
@@ -473,18 +483,19 @@ def train():
         # we will not extract lora parameters since peft save_pretrained will do that
         # https://github.com/huggingface/peft/blob/3714aa2fff158fdfa637b2b65952580801d890b2/src/peft/peft_model.py#L125
         # https://github.com/huggingface/peft/blob/3714aa2fff158fdfa637b2b65952580801d890b2/src/peft/utils/save_and_load.py#L19
-        state_dict_zero3 = trainer.model_wrapped._zero3_consolidated_16bit_state_dict()
+        state_dict_zero3 = trainer.model_wrapped._zero3_consolidated_16bit_state_dict(
+        )
         if training_args.local_rank == 0:
             state_dict = state_dict_zero3
     else:
         # in other mode we use original code from fastchat team, to make sure our change is minimum
-        state_dict = get_peft_state_maybe_zero_3(
-            model.named_parameters(), lora_args.lora_bias
-        )
+        state_dict = get_peft_state_maybe_zero_3(model.named_parameters(),
+                                                 lora_args.lora_bias)
 
     model.config.use_cache = True
     trainer.save_state()
-    safe_save_model_for_hf_trainer(trainer=trainer, output_dir=training_args.output_dir)
+    safe_save_model_for_hf_trainer(trainer=trainer,
+                                   output_dir=training_args.output_dir)
 
 
 if __name__ == "__main__":

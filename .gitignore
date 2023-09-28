@@ -13,3 +13,4 @@ dist
 eazybigmodel.egg-info
 flagai.egg-info
 checkpoints
+wandb

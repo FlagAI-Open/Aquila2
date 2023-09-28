@@ -13,10 +13,6 @@ cp $0 $EXPNAME_PATH/
 CKPT_INPUT=$COMMON_PATH/examples/checkpoints
 MODEL_NAME_INPUT=aquila2chat-hf
 
-# # 34B
-CKPT_INPUT=/data2/20230907
-MODEL_NAME_INPUT=/iter_0205000_hf
-
 DATASETS=/data2/20230907
 CKPT_OUTPUT=$COMMON_PATH/output/checkpoints
 LOGFILE=$EXPNAME_PATH/log.txt
@@ -62,7 +58,7 @@ do
              --lora_alpha 16 \
              --lora_dropout 0.05 \
              --convo_template $CONVO_TEMPLATE \
-             --bf16 \
+             --fp16 \
              --model_max_length 2048 \
              --output_dir $CKPT_OUTPUT/$MODEL_NAME_OUTPUT \
              --num_train_epochs $EPOCHS \
