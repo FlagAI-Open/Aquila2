@@ -14,7 +14,6 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
-
 from dataclasses import dataclass, field
 import logging
 import pathlib
@@ -31,10 +30,6 @@ import transformers
 from transformers import Trainer, BitsAndBytesConfig, deepspeed
 import torch
 
-from fastchat.train.train_aquila import (
-    DataArguments,
-    ModelArguments,
-)
 from fastchat.train.llama2_flash_attn_monkey_patch import (
     replace_llama_attn_with_flash_attn, )
 
@@ -61,6 +56,24 @@ class TrainingArguments(transformers.TrainingArguments):
     )
     flash_attn: bool = False
     use_lora: bool = False
+
+@dataclass
+class DataArguments:
+    data_path: str = field(
+        default=None, metadata={"help": "Path to the training data."}
+    )
+    eval_data_path: str = field(
+        default=None, metadata={"help": "Path to the evaluation data."}
+    )
+    lazy_preprocess: bool = False
+    convo_template: str = field(
+        default='aquila', metadata={"help": "Template of datasets."}
+    )
+
+@dataclass
+class ModelArguments:
+    model_dir: Optional[str] = field(default="./checkpoints")
+    model_name: Optional[str] = field(default="aquila2chat-hf")
 
 
 @dataclass
@@ -363,17 +376,7 @@ def train():
         lora_args,
     ) = parser.parse_args_into_dataclasses()
     local_rank = training_args.local_rank
-    # Set RoPE scaling factor
-    config = transformers.AutoConfig.from_pretrained(
-        model_args.model_name_or_path,
-        cache_dir=training_args.cache_dir,
-    )
-    orig_ctx_len = getattr(config, "max_position_embeddings", None)
-    if orig_ctx_len and training_args.model_max_length > orig_ctx_len:
-        scaling_factor = float(
-            math.ceil(training_args.model_max_length / orig_ctx_len))
-        config.rope_scaling = {"type": "linear", "factor": scaling_factor}
-    config.use_cache = False
+
 
     if training_args.flash_attn:
         replace_llama_attn_with_flash_attn()
@@ -394,17 +397,22 @@ def train():
     compute_dtype = (torch.float16 if training_args.fp16 else
                      (torch.bfloat16 if training_args.bf16 else torch.float32))
 
-    model = transformers.AutoModelForCausalLM.from_pretrained(
-        model_args.model_name_or_path,
-        cache_dir=training_args.cache_dir,
-        device_map=device_map,
-        quantization_config=BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_use_double_quant=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=compute_dtype,
-        ) if lora_args.q_lora else None,
-    )
+    from flagai.auto_model.auto_loader import AutoLoader
+    autoloader = AutoLoader("aquila2",
+                        model_dir=model_args.model_dir,
+                        model_name=model_args.model_name,
+                        inference_mode=False,
+                        model_max_length=training_args.model_max_length,
+                        cache_dir=training_args.cache_dir,
+                        device_map=device_map,
+                        quantization_config=BitsAndBytesConfig(
+                            load_in_4bit=True,
+                            bnb_4bit_use_double_quant=True,
+                            bnb_4bit_quant_type="nf4",
+                            bnb_4bit_compute_dtype=compute_dtype,
+                        ) if lora_args.q_lora else None,
+                    )
+    model = autoloader.get_model()
 
     if training_args.use_lora:
         lora_config = LoraConfig(
@@ -441,7 +449,7 @@ def train():
         model.enable_input_require_grads()
 
     tokenizer = transformers.AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path,
+        os.path.join(model_args.model_dir,model_args.model_name),
         cache_dir=training_args.cache_dir,
         model_max_length=training_args.model_max_length,
         padding_side="right",

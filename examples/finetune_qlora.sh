@@ -1,4 +1,3 @@
-
 COMMON_PATH=/data2/yzd/git/Aquila2/
 FASTCHAT_HOME=/data2/yzd/git/Aquila2/
 export PYTHONPATH=$FASTCHAT_HOME:$PYTHONPATH
@@ -10,9 +9,13 @@ EXPNAME_PATH=${COMMON_PATH}/output/logs/$EXPNAME
 mkdir -p $EXPNAME_PATH
 cp $0 $EXPNAME_PATH/
 
+# 7B 
+CKPT_INPUT=$COMMON_PATH/examples/checkpoints
+MODEL_NAME_INPUT=aquila2chat-hf
+
 # # 34B
 CKPT_INPUT=/data2/20230907
-MODEL_NAME_INPUT=/iter_0205000_hf
+MODEL_NAME_INPUT=iter_0205000_hf
 
 DATASETS=/data2/20230907
 CKPT_OUTPUT=$COMMON_PATH/output/checkpoints
@@ -51,15 +54,16 @@ do
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
 	         /data2/yzd/git/Aquila2/examples/finetune.py \
-             --model_name_or_path $CKPT_INPUT/$MODEL_NAME_INPUT \
+             --model_dir $CKPT_INPUT \
+             --model_name $MODEL_NAME_INPUT \
              --data_path $DATASETS/$DATA_FILE \
              --use_lora True \
-             --q_lora True \
+             --q_lora False \
              --lora_r 8 \
              --lora_alpha 16 \
              --lora_dropout 0.05 \
              --convo_template $CONVO_TEMPLATE \
-             --bf16 \
+             --fp16 \
              --model_max_length 2048 \
              --output_dir $CKPT_OUTPUT/$MODEL_NAME_OUTPUT \
              --num_train_epochs $EPOCHS \
