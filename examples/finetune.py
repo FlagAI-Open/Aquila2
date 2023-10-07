@@ -47,7 +47,6 @@ class TrainingArguments(transformers.TrainingArguments):
     use_sequential_init: bool = False
     cache_dir: typing.Optional[str] = field(default=None)
     optim: str = field(default="adamw_torch")
-    output_dir: str = "./"
     model_max_length: int = field(
         default=512,
         metadata={
@@ -377,8 +376,6 @@ def train():
         lora_args,
     ) = parser.parse_args_into_dataclasses()
     local_rank = training_args.local_rank
-
-
     if training_args.flash_attn:
         replace_aquila_attn_with_flash_attn()
 

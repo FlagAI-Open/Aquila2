@@ -61,9 +61,9 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         $AQUILA2_HOME/examples/finetune.py \
-             --model_name $MODEL_NAME_INPUT
-             --model_dir $CKPT_INPUT
+	           finetune.py \
+             --model_name $MODEL_NAME_INPUT \
+             --model_dir $CKPT_INPUT \
              --data_path $DATASETS/$DATA_FILE \
              --convo_template $CONVO_TEMPLATE \
              --fp16 \
