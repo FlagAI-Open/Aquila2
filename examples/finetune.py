@@ -30,14 +30,14 @@ import transformers
 from transformers import Trainer, BitsAndBytesConfig, deepspeed
 import torch
 
-from flagai.model.aquila2.llama2_flash_attn_monkey_patch import (
-    replace_llama_attn_with_flash_attn, )
+from flagai.model.aquila2.aquila2_flash_attn_monkey_patch import (
+    replace_aquila_attn_with_flash_attn, )
 
 from torch.utils.data import Dataset
 from transformers.trainer_pt_utils import LabelSmoother
 
 from flagai.model.aquila2.conversation import SeparatorStyle
-from flagai.model.aquila2.model_adapter import get_conversation_template
+from flagai.model.aquila2.conversation import get_conversation_template
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
@@ -379,7 +379,7 @@ def train():
 
 
     if training_args.flash_attn:
-        replace_llama_attn_with_flash_attn()
+        replace_aquila_attn_with_flash_attn()
 
     device_map = None
     if training_args.use_lora:
