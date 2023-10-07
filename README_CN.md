@@ -4,7 +4,7 @@
 <br><br>
 
 <p align="center">
-    <img src="logo.png" width="500"/>
+    <img src="./assets/logo.png" width="500"/>
 <p>
 <br>
 
@@ -26,7 +26,7 @@
 ---遇到问题的话怎么办，然后再放一波社群的链接---
 <br><br>
 
-## 新闻
+## 更新
 
 * 2023年10月x日，发布Aquila2 xxx版本
 
@@ -73,7 +73,51 @@
 
 ## 快速使用
 
-（快速上手推理的steps）
+我们为您展示了一个简单的示例, 来演示如何快速上手Aquila2.
+
+在您动手操作之前，请确认您已经设置好了运行环境，并成功安装了必要的代码包。首先，请确保满足这些先决条件，然后按照下面的指示安装必要的库和依赖。
+
+```
+pip install -r requirements.txt
+```
+
+如果您的显卡兼容 fp16 或 bf16 精度，我们还建议您安装 flash-attention，以增加运行速度和减少显存使用。请注意，flash-attention 不是必须的，没有它您也能正常执行该项目。
+
+flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
+
+接下来可以使用Aquila2模型来进行推理：
+
+```
+from flagai.auto_model.auto_loader import AutoLoader
+
+# 模型位置
+state_dict = "./checkpoints/"
+
+# 模型名称
+model_name = 'Aquila2Chat-hf'
+
+# 加载模型以及tokenizer
+autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name）
+# 使用torch_dtype参数调整模型精度
+# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，torch_dtype=torch.bfloat16）
+# 如需加载lora模型，需要额外提供lora模块的地址
+# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# 如需加载lora模型，需要额外提供qlora模块的地址
+# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+
+# 对话测试样例
+test_data = [
+    "北京的十大景点是什么?请将回答翻译成英文和日语",
+    "写一首中秋主题的五言绝句并翻译成英文和韩语",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer))
+```
 
 ## 量化
 
@@ -96,7 +140,48 @@
 
 ## 微调
 
----微调上手---
+我们为用户提供了一系列微调脚本，用于在自定义数据上微调模型，以适应不同的下游任务。在脚本的注释部分，用户会找到详细的说明，指明哪些参数需要根据实际需求进行调整。
+
+在进行微调操作之前，您必须先准备好您的训练数据。所有样本需要集中到一个列表中，并存储在一个 json 文件里。每个样本应表现为一个字典，包括 id 和 conversation，其中，conversation 以列表的形式展现。以下提供了一个示例：
+
+```
+{"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
+```
+
+备好数据后，你可以使用我们提供的shell脚本实现微调。注意，你需要在脚本中指定你的数据的路径。
+
+若未提供自定义的模型文件，脚本将会基于指定的模型名称自动从 ModelHub 下载相应的模型，并执行微调操作。
+
+您可以使用不同的微调脚本实现不同功能：
+- 使用`./examples/finetune.sh`实现全参数微调 
+- 使用`./examples/finetune_lora.sh`实现LoRA微调 
+- 使用`./examples/finetune_qlora.sh`实现Q-LoRA微调 
+
+
+
+实现全参数微调只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
+
+```
+bash examples/finetune.sh aquila_experiment
+
+```
+
+LoRA (参见[论文](https://arxiv.org/abs/2106.09685)) 的微调方法与全参数微调有所不同。LoRA 仅更新 adapter 层的参数，而不更新原始语言模型的参数。这样做可以减小显存和计算开销，使模型训练更为高效。
+
+运行LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
+
+```
+bash examples/finetune_lora.sh aquila_lora_experiment
+```
+
+如果显存资源仍然受限，可以考虑使用 Q-LoRA (参见[论文](https://arxiv.org/abs/2305.14314))，这是一种通过使用 4 比特量化模型和 paged attention 技术，进一步降低显存使用的优化方案。
+
+运行Q-LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
+
+```
+bash examples/finetune_qlora.sh aquila_qlora_experiment
+```
+
 <br><br>
 
 ## 预训练
@@ -141,5 +226,5 @@ FlagAI飞智大部分项目基于 [Apache 2.0 license](https://www.apache.org/li
 * 知乎：[FlagAI飞智](https://www.zhihu.com/people/95-22-20-18)
 * 扫码添加小助手加入**微信交流群**：
 
-<img src="./wechat-qrcode.jpg" width = "200" height = "200"  align=center />
+<img src="./assets/wechat-qrcode.jpg" width = "200" height = "200"  align=center />
 

@@ -1,31 +1,45 @@
-COMMON_PATH=/data2/yzd/git/Aquila2/
-FASTCHAT_HOME=/data2/yzd/git/Aquila2/
-export PYTHONPATH=$FASTCHAT_HOME:$PYTHONPATH
+# *** Please Modify the following parameters according to your own case. ***
+# Path to Aquila2 project
+AQUILA2_HOME=/data2/yzd/git/Aquila2
+
+# Location and name of the checkpoint file
+CKPT_INPUT=$AQUILA2_HOME/checkpoints
+MODEL_NAME_INPUT=aquila2chat-hf
+
+# Path and name of dataset file
+DATASETS=/data2/20230907
+DATA_FILE=sft_v0.9.12_train.jsonl
+
+
+
+# *** You can change the following parameters to suit your need. ***
+# Epochs
+EPOCHS=5
+
+# Conversation template, chosen from "aquila-v1","aquila-chat" and "aquila"
+CONVO_TEMPLATE=aquila-v1
+
+export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
 
 set -u
   EXPNAME=$1
 set +u
-EXPNAME_PATH=${COMMON_PATH}/output/logs/$EXPNAME
+EXPNAME_PATH=${AQUILA2_HOME}/output/logs/$EXPNAME
 mkdir -p $EXPNAME_PATH
 cp $0 $EXPNAME_PATH/
 
-CKPT_INPUT=$COMMON_PATH/examples/checkpoints
-DATASETS=/data2/20230907
-CKPT_OUTPUT=$COMMON_PATH/output/checkpoints
-LOGFILE=$EXPNAME_PATH/log.txt
-LOGFILE=$COMMON_PATH/output/logs/log.txt.$EXPNAME
-DEEPSPEED_CONFIG=ds_zero2.config
-HOSTFILE=hostfile
-MODEL_NAME_INPUT=aquila2chat-hf
+CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
+LOGFILE=$AQUILA2_HOME/log.txt
+LOGFILE=$AQUILA2_HOME/output/logs/log.txt.$EXPNAME
+DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
+HOSTFILE=$AQUILA2_HOME/examples/hostfile
+MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
-DATA_VERSION=v0.9.12
 
-DATA_FILE=sft_${DATA_VERSION}_train.jsonl
-MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$DATA_VERSION-$EXPNAME
 
-EPOCHS=5
-CONVO_TEMPLATE=aquila
-CONVO_TEMPLATE=aquila-v1
+
+# *** Training Process **
+mkdir -p $CKPT_INPUT
 
 NNodes=`wc -l ${HOSTFILE} | cut -d " " -f1`
 MASTER_ADDR=`head -n 1 ${HOSTFILE} | cut -d " " -f1`
@@ -47,8 +61,9 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         /data2/yzd/git/Aquila2/examples/finetune.py \
-             --model_name_or_path $CKPT_INPUT/$MODEL_NAME_INPUT \
+	         $AQUILA2_HOME/examples/finetune.py \
+             --model_name $MODEL_NAME_INPUT
+             --model_dir $CKPT_INPUT
              --data_path $DATASETS/$DATA_FILE \
              --convo_template $CONVO_TEMPLATE \
              --fp16 \

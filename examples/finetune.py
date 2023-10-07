@@ -47,6 +47,7 @@ class TrainingArguments(transformers.TrainingArguments):
     use_sequential_init: bool = False
     cache_dir: typing.Optional[str] = field(default=None)
     optim: str = field(default="adamw_torch")
+    output_dir: str = "./"
     model_max_length: int = field(
         default=512,
         metadata={
