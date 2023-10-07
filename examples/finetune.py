@@ -30,14 +30,14 @@ import transformers
 from transformers import Trainer, BitsAndBytesConfig, deepspeed
 import torch
 
-from fastchat.train.llama2_flash_attn_monkey_patch import (
+from flagai.model.aquila2.llama2_flash_attn_monkey_patch import (
     replace_llama_attn_with_flash_attn, )
 
 from torch.utils.data import Dataset
 from transformers.trainer_pt_utils import LabelSmoother
 
-from fastchat.conversation import SeparatorStyle
-from fastchat.model.model_adapter import get_conversation_template
+from flagai.model.aquila2.conversation import SeparatorStyle
+from flagai.model.aquila2.model.model_adapter import get_conversation_template
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
