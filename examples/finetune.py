@@ -14,7 +14,6 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
-import sys;sys.path.append("/data2/yzd/FlagAI")
 from dataclasses import dataclass, field
 import logging
 import pathlib
