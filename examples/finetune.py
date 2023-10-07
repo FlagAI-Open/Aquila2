@@ -14,6 +14,7 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
+import sys;sys.path.append("/data2/yzd/FlagAI")
 from dataclasses import dataclass, field
 import logging
 import pathlib
@@ -47,6 +48,7 @@ class TrainingArguments(transformers.TrainingArguments):
     use_sequential_init: bool = False
     cache_dir: typing.Optional[str] = field(default=None)
     optim: str = field(default="adamw_torch")
+    output_dir: str = "./"
     model_max_length: int = field(
         default=512,
         metadata={
