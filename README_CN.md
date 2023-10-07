@@ -152,17 +152,22 @@ for text in test_data:
 
 若未提供自定义的模型文件，脚本将会基于指定的模型名称自动从 ModelHub 下载相应的模型，并执行微调操作。
 
-您可以使用不同的微调脚本实现不同功能：
-- 使用`./examples/finetune.sh`实现全参数微调 
-- 使用`./examples/finetune_lora.sh`实现LoRA微调 
-- 使用`./examples/finetune_qlora.sh`实现Q-LoRA微调 
+先进入`./examples`目录
+```
+cd examples
+```
+
+然后您可以使用不同的微调脚本实现不同功能：
+- 使用`./finetune.sh`实现全参数微调 
+- 使用`./finetune_lora.sh`实现LoRA微调 
+- 使用`./finetune_qlora.sh`实现Q-LoRA微调 
 
 
 
 实现全参数微调只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
 
 ```
-bash examples/finetune.sh aquila_experiment
+bash finetune.sh aquila_experiment
 
 ```
 
@@ -171,7 +176,7 @@ LoRA (参见[论文](https://arxiv.org/abs/2106.09685)) 的微调方法与全参
 运行LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
 
 ```
-bash examples/finetune_lora.sh aquila_lora_experiment
+bash finetune_lora.sh aquila_lora_experiment
 ```
 
 如果显存资源仍然受限，可以考虑使用 Q-LoRA (参见[论文](https://arxiv.org/abs/2305.14314))，这是一种通过使用 4 比特量化模型和 paged attention 技术，进一步降低显存使用的优化方案。
@@ -179,7 +184,7 @@ bash examples/finetune_lora.sh aquila_lora_experiment
 运行Q-LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
 
 ```
-bash examples/finetune_qlora.sh aquila_qlora_experiment
+bash finetune_qlora.sh aquila_qlora_experiment
 ```
 
 <br><br>
