@@ -37,7 +37,7 @@ from torch.utils.data import Dataset
 from transformers.trainer_pt_utils import LabelSmoother
 
 from flagai.model.aquila2.conversation import SeparatorStyle
-from flagai.model.aquila2.model.model_adapter import get_conversation_template
+from flagai.model.aquila2.model_adapter import get_conversation_template
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
