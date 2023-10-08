@@ -69,6 +69,36 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 
 <br><br>
 
+### Long Context Performance
+| Model                     | Method             | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Other |
+|:--------------------------|:------------------:|:--------:|:-------:|:-------------:|:---------------:|:--------:|:-----:|
+| GPT-3.5-Turbo-16K         | Unknown            |          |         |               |                 |          |       |
+| LongChat-7B-v1.5-32K      | PI+SFT             |          |         |               |                 |          |       |
+| ChatGLM2-6B-32K           | Continual Pretrain |          |         |               |                 |          |       |
+| Baichuan2-13B-Chat-16K    | None               |          |         |               |                 |          |       |
+| Qwen-14B-Chat-dynamic-ntk | Dynamic NTK        |          |         |               |                 |          |       |
+| Internlm-20B-Chat         | None               |          |         |               |                 |          |       |
+| Aquila2-7B-16K            | PI+SFT             |          |         |               |                 |          |       |
+| Aquila2-33B-16K           | PI+SFT             |          |         |               |                 |          |       |
+
+### Reasoning Performance
+| Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
+| --------------------------------------------------------------- | ------------- | ------ | ------------- | -------------- | ------------ | --------------------- | ------------ | -------------- | -------------- | ----------- |
+| ChatGPT                                                         | 0.47          | 0.07   | 0.866666667   | 0.833333333    | 0.633333333  | 0.7                   | 0.8          | 0.5            | 0.466666667    | 0.59        |
+| GPT4                                                            | 0.93          | 0.37   | 1             | 0.9            | 0.833333333  | 0.833333333           | 0.966666667  | 0.6            | 0.833333333    | 0.81        |
+| Baichuan-13B-Chat                                               | 0.73          | 0.03   | 0.17          | 0.57           | 0.6          | 0.6                   | 0.633333333  | 0.6            | 0.466666667    | 0.49        |
+| Baichuan2-7B-Chat                                               | 0.4           | 0.27   | 0.43          | 0.73           | 0.53         | 0.63                  | 0.2          | 0.63           | 0.5            | 0.45        |
+| Baichuan2-13B-Chat                                              | 0.33          | 0.1    | 0.67          | 0.8            | 0.66         | 0.77                  | 0.6          | 0.53           | 0.63           | 0.57        |
+| Qwen-7B-chat                                                    | 0.2           | 0.1    | 0.67          | 0.87           | 0.57         | 0.87                  | 0.37         | 0.63           | 0.57           | 0.54        |
+| Qwen-14B-chat                                                   | 0.27          | 0.1    | 0.63          | 0.87           | 0.63         | 0.87                  | 0.7          | 0.77           | 0.57           | 0.6         |
+| INternLM-20B-chat                                               | 0.47          | 0.13   | 0.43          | 0.8            | 0.7          | 0.93                  | 0.6          | 0.7            | 0.7            | 0.61        |
+| Aquila-33b-knowledge6-135000-megatron-sft-v0.912-ep2            | 0.63          | 0.27   | 0.5           | 0.73           | 0.6          | 0.53                  | 0.46         | 0.5            | 0.7333333      | 0.55        |
+| Aquila-33b-knowledge6-341000-sft-v0.9.16                        | 0.55          | 0.17   | 0.53          | 0.77           | 0.8          | 0.7                   | 0.5          | 0.57           | 0.6            | 0.58        |
+| Aquila-7b-knowledge5-ep2-110973-chat-clean-coig-pc-ep1-sft-v0.911-ep2-hf | 0.73 | 0.03   | 0.4 | 0.56 | 0.57 | 0.43 | 0.4 | 0.5 | 0.43 | 0.45 |
+| Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.488888889 |
+
+
+
 ## Requirements
 
 * python 3.8 and above
