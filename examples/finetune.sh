@@ -12,35 +12,43 @@ DATA_FILE=sft_v0.9.12_train.jsonl
 
 
 
-# *** You can change the following parameters to suit your need. ***
+# *** The following parameters can be modified according to your own needs. ***
 # Epochs
 EPOCHS=5
 
 # Conversation template, chosen from "aquila-v1","aquila-chat" and "aquila"
 CONVO_TEMPLATE=aquila-v1
 
-export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
+# Self-defined experiment name
+EXPNAME=aquila_experiment
 
-set -u
-  EXPNAME=$1
-set +u
+# Path to the experiment logs
 EXPNAME_PATH=${AQUILA2_HOME}/output/logs/$EXPNAME
-mkdir -p $EXPNAME_PATH
-cp $0 $EXPNAME_PATH/
 
+# Path to the output checkpoints 
 CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
-LOGFILE=$AQUILA2_HOME/log.txt
-LOGFILE=$AQUILA2_HOME/output/logs/log.txt.$EXPNAME
-DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
-HOSTFILE=$AQUILA2_HOME/examples/hostfile
+
+# Name of the output checkpoint
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
+# Path to the deepspeed config 
+DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
 
+# Path to the hostfile
+HOSTFILE=$AQUILA2_HOME/examples/hostfile
+
+
+
+
+
+# *** Create directories **
+export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
+mkdir -p $EXPNAME_PATH
+cp $0 $EXPNAME_PATH/
+mkdir -p $CKPT_INPUT
 
 
 # *** Training Process **
-mkdir -p $CKPT_INPUT
-
 NNodes=`wc -l ${HOSTFILE} | cut -d " " -f1`
 MASTER_ADDR=`head -n 1 ${HOSTFILE} | cut -d " " -f1`
 echo "Master node: ${MASTER_ADDR}"

@@ -9,9 +9,7 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI/AquilaChat-7B">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-14B-Chat-Demo/summary">Demo</a>
-<br>
-<a href="assets/wechat.png">微信</a>&nbsp&nbsp ｜ &nbsp&nbsp 钉钉 &nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp
+        🤗 <a href="https://huggingface.co/BAAI/AquilaChat-7B">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-14B-Chat-Demo/summary">Demo</a> | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
 </p>
 <br><br>
 
@@ -30,7 +28,7 @@
 
 * 2023年10月x日，发布Aquila2 xxx版本
 
-## 评测表现
+## 评测表现(袁野)
 
 ---介绍---
 
@@ -119,6 +117,9 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
 ```
 
+---加一个transformers的用法---
+
+
 ## 量化
 
 ### 用法
@@ -164,28 +165,56 @@ cd examples
 
 
 
-实现全参数微调只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
+实现全参数微调只需运行如下脚本
 
 ```
-bash finetune.sh aquila_experiment
+bash finetune.sh
 
 ```
 
 LoRA (参见[论文](https://arxiv.org/abs/2106.09685)) 的微调方法与全参数微调有所不同。LoRA 仅更新 adapter 层的参数，而不更新原始语言模型的参数。这样做可以减小显存和计算开销，使模型训练更为高效。
 
-运行LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
-
+实现LORA只需运行如下脚本
 ```
-bash finetune_lora.sh aquila_lora_experiment
+bash finetune_lora.sh
 ```
 
 如果显存资源仍然受限，可以考虑使用 Q-LoRA (参见[论文](https://arxiv.org/abs/2305.14314))，这是一种通过使用 4 比特量化模型和 paged attention 技术，进一步降低显存使用的优化方案。
 
-运行Q-LORA只需运行如下脚本 (最后一个参数为实验名称，可以自定义)
+实现Q-LORA只需运行如下脚本
 
 ```
-bash finetune_qlora.sh aquila_qlora_experiment
+bash finetune_qlora.sh
 ```
+
+### 优化效果
+
+7B 全参, 2048: 2.67s/it, 43.9G
+lora: 2.04s/it, 29.4G
+qlora: 2.14s/it, 19.9G
+
+
+
+<table>
+    <tr>
+      <th rowspan="2">Model Size</th><th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
+    </tr>
+    <tr>
+        <th align="center">256</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
+    </tr>
+    <tr>
+        <th rowspan="2">7B</th><td>LoRA</td><td align="center">33.5G / 1.6s/it</td><td align="center">34.0G / 1.7s/it</td><td align="center">35.0G / 3.0s/it</td><td align="center">35.0G / 5.7s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">11.5G / 3.0s/it</td><td align="center">12.2G / 3.6s/it</td><td align="center">12.7G / 4.8s/it</td><td align="center">13.9G / 7.3s/it</td>
+    </tr>
+    <tr>
+        <th rowspan="2">14B</th><td>LoRA</td><td align="center">51.0G / 2.1s/it</td><td align="center">51.0G / 2.7s/it</td><td align="center">51.5G / 5.0s/it</td><td align="center">53.9G / 9.2s/it</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td align="center">18.3G / 5.4s/it</td><td align="center">18.4G / 6.4s/it</td><td align="center">18.5G / 8.5s/it</td><td align="center">19.9G / 12.4s/it</td>
+    </tr>
+</table>
 
 <br><br>
 

@@ -3,8 +3,8 @@
 AQUILA2_HOME=/data2/yzd/git/Aquila2
 
 # Location and name of the checkpoint file
-CKPT_INPUT=/data2/20230907
-MODEL_NAME_INPUT=iter_0205000_hf
+CKPT_INPUT=$AQUILA2_HOME/checkpoints
+MODEL_NAME_INPUT=aquila2chat-hf
 
 # Path and name of dataset file
 DATASETS=/data2/20230907
@@ -12,28 +12,30 @@ DATA_FILE=sft_v0.9.12_train.jsonl
 
 
 
-# *** You can change the following parameters to suit your need. ***
+# *** The following parameters can be modified according to your own needs. ***
 # Epochs
 EPOCHS=5
 
 # Conversation template, chosen from "aquila-v1","aquila-chat" and "aquila"
 CONVO_TEMPLATE=aquila-v1
 
-export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
+# Self-defined experiment name
+EXPNAME=aquila_experiment
 
-set -u
-  EXPNAME=$1
-set +u
+# Path to the experiment logs
 EXPNAME_PATH=${AQUILA2_HOME}/output/logs/$EXPNAME
-mkdir -p $EXPNAME_PATH
-cp $0 $EXPNAME_PATH/
 
+# Path to the output checkpoints 
 CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
-LOGFILE=$AQUILA2_HOME/log.txt
-LOGFILE=$AQUILA2_HOME/output/logs/log.txt.$EXPNAME
-DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
-HOSTFILE=$AQUILA2_HOME/examples/hostfile
+
+# Name of the output checkpoint
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
+
+# Path to the deepspeed config 
+DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
+
+# Path to the hostfile
+HOSTFILE=$AQUILA2_HOME/examples/hostfile
 
 
 

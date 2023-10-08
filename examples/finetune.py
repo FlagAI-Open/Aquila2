@@ -41,6 +41,7 @@ from flagai.model.aquila2.conversation import get_conversation_template
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
+os.environ['TRANSFORMERS_NO_ADVISORY_WARNINGS'] = 'true'
 
 @dataclass
 class TrainingArguments(transformers.TrainingArguments):
