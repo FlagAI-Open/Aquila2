@@ -1,3 +1,5 @@
+''' Copied from https://github.com/QwenLM/Qwen/tree/main/eval. '''
+
 import os
 import pandas as pd
 import numpy as np
