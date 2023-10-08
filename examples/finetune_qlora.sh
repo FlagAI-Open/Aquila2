@@ -7,8 +7,7 @@ CKPT_INPUT=$AQUILA2_HOME/checkpoints
 MODEL_NAME_INPUT=aquila2chat-hf
 
 # Path and name of dataset file
-DATASETS=/data2/20230907
-DATA_FILE=sft_v0.9.12_train.jsonl
+DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
 
 
 
@@ -64,7 +63,7 @@ do
 	         $AQUILA2_HOME/examples/finetune.py \
              --model_dir $CKPT_INPUT \
              --model_name $MODEL_NAME_INPUT \
-             --data_path $DATASETS/$DATA_FILE \
+             --data_path $DATA_FILE \
              --use_lora True \
              --q_lora True \
              --lora_r 8 \

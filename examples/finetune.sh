@@ -6,9 +6,9 @@ AQUILA2_HOME=/data2/yzd/git/Aquila2
 CKPT_INPUT=$AQUILA2_HOME/checkpoints
 MODEL_NAME_INPUT=aquila2chat-hf
 
-# Path and name of dataset file
-DATASETS=/data2/20230907
-DATA_FILE=sft_v0.9.12_train.jsonl
+# Path to dataset file
+DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
+
 
 
 
@@ -72,7 +72,7 @@ do
 	           finetune.py \
              --model_name $MODEL_NAME_INPUT \
              --model_dir $CKPT_INPUT \
-             --data_path $DATASETS/$DATA_FILE \
+             --data_path $DATA_FILE \
              --convo_template $CONVO_TEMPLATE \
              --fp16 \
              --model_max_length 2048 \
