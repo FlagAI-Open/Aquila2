@@ -66,7 +66,7 @@ do
              --model_name $MODEL_NAME_INPUT \
              --data_path $DATASETS/$DATA_FILE \
              --use_lora True \
-             --q_lora True \
+             --q_lora False \
              --lora_r 8 \
              --lora_alpha 16 \
              --lora_dropout 0.05 \
