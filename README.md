@@ -70,16 +70,16 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 <br><br>
 
 ### Long Context Performance
-| Model                     | Method             | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Other |
-|:--------------------------|:------------------:|:--------:|:-------:|:-------------:|:---------------:|:--------:|:-----:|
-| GPT-3.5-Turbo-16K         | Unknown            |          |         |               |                 |          |       |
-| LongChat-7B-v1.5-32K      | PI+SFT             |          |         |               |                 |          |       |
-| ChatGLM2-6B-32K           | Continual Pretrain |          |         |               |                 |          |       |
-| Baichuan2-13B-Chat-16K    | None               |          |         |               |                 |          |       |
-| Qwen-14B-Chat-dynamic-ntk | Dynamic NTK        |          |         |               |                 |          |       |
-| Internlm-20B-Chat         | None               |          |         |               |                 |          |       |
-| Aquila2-7B-16K            | PI+SFT             |          |         |               |                 |          |       |
-| Aquila2-33B-16K           | PI+SFT             |          |         |               |                 |          |       |
+| Model                     | Method             | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Other |
+|:--------------------------|:------------------:|:--------:|:-------:|:-------------:|:---------------:|:--------:|:----------:|:-----:|
+| GPT-3.5-Turbo-16K         | Unknown            | 47.6     | 36.2    | 23.0          | 54.5            | 77.5     | 27.5       | 35.3  |
+| LongChat-7B-v1.5-32K      | PI+SFT             | 27.5     | 20.3    | 22.5          | 57.0            | 62.9     | 18.8       | 23.7  |
+| ChatGLM2-6B-32K           | Continual Pretrain | 44.1     | 34.7    | 20.8          | 52.7            | 68.7     | 23.6       | 31.6  |
+| Baichuan2-13B-Chat-16K    | None               | 14.5     | 12.6    | 14.0          |                 | 22.2     | 11.9       | 14.7  |
+| Qwen-14B-Chat-dynamic-ntk | Dynamic NTK        | 24.4     | 20.2    | 22.3          | 37.3            | 47.2     | 18.6       | 24.0      |
+| Internlm-20B-Chat         | None               | 19.2     | 17.5    | 16.7          | 26.0            | 41.0     | 16.5       | 19.7  |
+| Aquila2-7B-16K            | PI+SFT             | 21.8     | 22.4    | 19.1          | 22.8            | 50.1     | 18.4       | 25.0  |
+| Aquila2-33B-16K           | PI+SFT             |          |         |               |                 |          |            |       |
 
 ### Reasoning Performance
 | Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
