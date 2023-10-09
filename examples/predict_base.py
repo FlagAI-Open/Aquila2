@@ -2,7 +2,7 @@ from flagai.auto_model.auto_loader import AutoLoader
 
 
 # 模型名称
-model_name = 'AquilaChat2-7B'
+model_name = 'Aquila2-7B'
 
 # 加载模型以及tokenizer
 autoloader = AutoLoader("aquila2", model_name=model_name)
