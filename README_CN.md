@@ -193,7 +193,7 @@ cd examples
 - 使用`./finetune_lora.sh`实现LoRA微调 
 - 使用`./finetune_qlora.sh`实现Q-LoRA微调 
 
-
+---如果多机运行，需要修改hostfile文件---
 
 实现全参数微调只需运行如下脚本
 
@@ -230,27 +230,6 @@ qlora: 2.14s/it, 19.9G
 34B, qlora, 37.7G, 8.22s/it
 
 
-
-<table>
-    <tr>
-      <th rowspan="2">Model Size</th><th rowspan="2">Method</th><th colspan="4" align="center">Sequence Length</th>
-    </tr>
-    <tr>
-        <th align="center">256</th><th align="center">512</th><th align="center">1024</th><th align="center">2048</th>
-    </tr>
-    <tr>
-        <th rowspan="2">7B</th><td>LoRA</td><td align="center">33.5G / 1.6s/it</td><td align="center">34.0G / 1.7s/it</td><td align="center">35.0G / 3.0s/it</td><td align="center">35.0G / 5.7s/it</td>
-    </tr>
-    <tr>
-        <td>Q-LoRA</td><td align="center">11.5G / 3.0s/it</td><td align="center">12.2G / 3.6s/it</td><td align="center">12.7G / 4.8s/it</td><td align="center">13.9G / 7.3s/it</td>
-    </tr>
-    <tr>
-        <th rowspan="2">14B</th><td>LoRA</td><td align="center">51.0G / 2.1s/it</td><td align="center">51.0G / 2.7s/it</td><td align="center">51.5G / 5.0s/it</td><td align="center">53.9G / 9.2s/it</td>
-    </tr>
-    <tr>
-        <td>Q-LoRA</td><td align="center">18.3G / 5.4s/it</td><td align="center">18.4G / 6.4s/it</td><td align="center">18.5G / 8.5s/it</td><td align="center">19.9G / 12.4s/it</td>
-    </tr>
-</table>
 
 <br><br>
 
