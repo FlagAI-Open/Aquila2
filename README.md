@@ -261,7 +261,7 @@ To extend the context length and break the bottleneck of training sequence lengt
 
 ## Tokenizer
 
-Our tokenizer based on BBPE.
+Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from deduplicated Pile and deduplicated WuDao contents. We also add some special tokens for passage and conversation separation.
 <br><br>
 
 ## Reproduction
