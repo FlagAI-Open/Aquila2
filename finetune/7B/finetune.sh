@@ -4,7 +4,7 @@ AQUILA2_HOME=/data2/yzd/git/Aquila2
 
 # Location and name of the checkpoint file
 CKPT_INPUT=$AQUILA2_HOME/checkpoints
-MODEL_NAME_INPUT=aquila2chat-hf
+MODEL_NAME_INPUT=aquilachat2-7b
 
 # Path to dataset file
 DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
