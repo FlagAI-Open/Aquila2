@@ -106,26 +106,85 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 <br>
 
 ## Quickstart
+We have provided a straightforward example to illustrate how to quickly get started with Aquila2.
 
-Below, we provide simple examples to show how to use Aquila2-Chat with BAAI ModelHub.
-
-Before running the code, make sure you have setup the environment and installed the required packages. Make sure you meet the above requirements, and then install the dependent libraries.
-
-```bash
+Before proceeding, ensure that your environment is properly configured and that the necessary packages have been installed. First and foremost, ensure that these prerequisites are met and then follow the instructions below to install the necessary libraries and dependencies.
+```
 pip install -r requirements.txt
 ```
 
-If your device supports fp16 or bf16, we recommend installing [flash-attention](https://github.com/Dao-AILab/flash-attention) for higher efficiency and lower memory usage. (**flash-attention is optional and the project can run normally without installing it**)
+If your device supports fp16 or bf16 precision, we also recommend installing flash-attention to enhance execution speed and reduce memory consumption. It's important to note that flash-attention is optional, and the project can be executed normally without it.
 
-```bash
-git clone -b v1.0.8 https://github.com/Dao-AILab/flash-attention
-cd flash-attention && pip install .
-# Below are optional. Installing them might be slow.
-# pip install csrc/layer_norm
-# pip install csrc/rotary
+For the installation of flash-attention, please refer to https://github.com/Dao-AILab/flash-attention/.
+
+### Chat Model Inference
+
+You can now utilize the AquilaChat2-7B model for inference as follows:
+
+```
+from flagai.auto_model.auto_loader import AutoLoader
+
+
+# Model name
+model_name = 'AquilaChat2-7B'
+# model_name = 'AquilaChat2-34B'
+
+# Load the model and tokenizer
+autoloader = AutoLoader("aquila2", model_name=model_name）
+# To modify the model loading path, use the model_dir parameter
+# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
+# To load the LoRA module, you need to provide the path to the LoRA module
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# To load the LoRA module, you need to provide the path to the LoRA module
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+
+# 对话测试样例
+test_data = [
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer))
 ```
 
-Now you can start with ModelHub.
+The results of our execution are as follows:
+
+```
+model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: Write a tongue twister that's extremely difficult to pronounce.###Assistant:
+Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfast.  Say that three times fast and see how long you can make it last!
+```
+### Base Model Inference
+
+The distinction between the basic model inference and the dialogue model is that it requires setting sft=False during the model inference.
+
+```
+from flagai.auto_model.auto_loader import AutoLoader
+
+
+# Model name
+model_name = 'Aquila2-7B'
+# model_name = 'Aquila2-34B'
+
+# Load the model and tokenizer
+autoloader = AutoLoader("aquila2", model_name=model_name）
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+
+# Example
+test_data = [
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer, sft=False))
+```
+
 
 #### ModelHub
 
@@ -194,58 +253,44 @@ We also profile the peak GPU memory usage for encoding 2048 tokens as context (a
 ## Finetuning
 
 ### Usage
-Now we provide the official training script, `finetune.py`, for users to finetune the pretrained model for downstream applications in a simple fashion. Additionally, we provide shell scripts to launch finetuning with no worries. This script supports the training with [DeepSpeed](https://github.com/microsoft/DeepSpeed). The shell scripts that we provide use DeepSpeed (Note: this may have conflicts with the latest version of pydantic) and Peft. You can install them by:
-```bash
-pip install peft deepspeed
-```
+We provide users with a series of fine-tuning scripts designed to adapt models to various downstream tasks using custom data. Within the comments section of the scripts, users will find detailed instructions indicating which parameters may need adjustments based on specific needs.
 
-To prepare your training data, you need to put all the samples into a list and save it to a json file. Each sample is a dictionary consisting of an id and a list for conversation. Below is a simple example list with 1 sample:
+Before initiating the fine-tuning process, you are required to have your training data prepared. All samples should be consolidated into a list and stored in a json file. Each sample should be represented as a dictionary, encompassing an ID and conversation, with the latter presented in list format. Below is an example for your reference:
+
 ```json
-]
+{"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
 ```
+Subsequently, you can utilize the variety of fine-tuning scripts we offer for different purposes:
 
-After data preparation, you can use the provided shell scripts to run finetuning. Remember to specify the path to the data file, `$DATA`.
+- Execute finetune/7B/finetune.sh for a full parameter fine-tuning of the 7B model
+- Apply finetune/7B/finetune_lora.sh for LoRA fine-tuning of the 7B model
+- Use finetune/7B/finetune_qlora.sh for Q-LoRA fine-tuning of the 7B model
+- Implement finetune/34B/finetune.sh for a full parameter fine-tuning of the 34B model
+- Initiate finetune/34B/finetune_lora.sh for LoRA fine-tuning of the 34B model
+- Opt for finetune/34B/finetune_qlora.sh for Q-LoRA fine-tuning of the 34B model
 
-The finetuning scripts allow you to perform:
-- Full-parameter finetuning
-- LoRA
-- Q-LoRA
 
-Full-parameter parameter finetuning requires updating all parameters in the whole training process. To launch your training, run the following script:
+### Optimization Effects
 
-```bash
-# Distributed training. We do not provide single-GPU training script as the insufficient GPU memory will break down the training.
-sh finetune/finetune_ds.sh
-```
+Below are the data on memory usage and training speed for the 7B and 34B models using full-parameter fine-tuning, LoRA, and QLoRA with different input lengths. The evaluation was conducted on a machine equipped with an A100-SXM4-80G GPU, utilizing CUDA 12.1 and Pytorch 2.1. The input length for the 7B model is 2048, and for the 34B model, it is 4096. All tests were performed using a batch size of 4 and a gradient accumulation of 1, and both memory usage (in GB) and training speed (in s/iter) were recorded. The specific data is as follows:
 
-```bash
-# Single GPU training
-sh finetune/finetune_lora_single_gpu.sh
-# Distributed training
-sh finetune/finetune_lora_ds.sh
-```
-
-In comparison with full-parameter finetuning, LoRA ([paper](https://arxiv.org/abs/2106.09685)) only updates the parameters of adapter layers but keeps the original large language model layers frozen. This allows much fewer memory costs and thus fewer computation costs. However, if you still suffer from insufficient memory, you can consider Q-LoRA ([paper](https://arxiv.org/abs/2305.14314)), which uses the quantized large language model and other techniques such as paged attention to allow even fewer memory costs. 
-
-Note: To run single-GPU Q-LoRA training, you may need to install `mpi4py` through `pip` or `conda`.
-
-To run Q-LoRA, directly run the following script:
-
-```bash
-# Single GPU training
-sh finetune/finetune_qlora_single_gpu.sh
-# Distributed training
-sh finetune/finetune_qlora_ds.sh
-```
-
-For Q-LoRA, we advise you to load our provided quantized model.
-
-Different from full-parameter finetuning, the training of both LoRA and Q-LoRA only saves the adapter parameters.
-
-```python
-```
-
-For multi-GPU training, you need to specify the proper hyperparameters for distributed training based on your machine. 
+<table>
+    <tr>
+      <th>Model Size</th><th>Method</th><th>Memory</th><th>speed</th>
+    </tr>
+    <tr>
+        <th rowspan="3">7B</th><td>SFT</td><td>43.9G</td><td>2.67s/iter</td>
+    </tr>
+    <tr>
+        <td>LoRA</td><td>29.4G</td><td>2.04s/iter</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td>19.9G</td><td>2.14s/iter</td>
+    </tr>
+    <tr>
+        <th rowspan="1">34B</th><td>Q-LoRA</td><td>37.7G</td><td>8.22s/iter</td>
+    </tr>
+</table>
 
 <br>
 
