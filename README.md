@@ -266,7 +266,7 @@ Our tokenizer based on BBPE.
 
 ## Reproduction
 
-For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/EVALUATION.md](eval/EVALUATION.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
+For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/EVALUATION.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
 <br><br>
 
 ## FAQ
