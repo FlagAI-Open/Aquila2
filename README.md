@@ -67,8 +67,6 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 | **Aquila2-7B**     | 53.0     | 46.2     | 44.5     |          |           |          |           |               |             |
 | **Aquila2-33B**    |          |          |          |          |           |          |           |               |             |
 
-<br><br>
-
 ### Long Context Performance
 | Model                     | Method             | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Other |
 |:--------------------------|:------------------:|:--------:|:-------:|:-------------:|:---------------:|:--------:|:----------:|:-----:|
@@ -97,7 +95,7 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 | Aquila-7b-knowledge5-ep2-110973-chat-clean-coig-pc-ep1-sft-v0.911-ep2-hf | 0.73 | 0.03   | 0.4 | 0.56 | 0.57 | 0.43 | 0.4 | 0.5 | 0.43 | 0.45 |
 | Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.488888889 |
 
-
+<br><br>
 
 ## Requirements
 
