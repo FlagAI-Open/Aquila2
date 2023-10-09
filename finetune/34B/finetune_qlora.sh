@@ -4,7 +4,7 @@ AQUILA2_HOME=/data2/yzd/git/Aquila2
 
 # Location and name of the checkpoint file
 CKPT_INPUT=$AQUILA2_HOME/checkpoints
-MODEL_NAME_INPUT=aquilachat2-7b
+MODEL_NAME_INPUT=aquilachat2-34b
 
 # Path and name of dataset file
 DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
@@ -31,10 +31,10 @@ CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
 # Path to the deepspeed config 
-DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/7B/ds_zero2.config
+DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/34B/ds_zero2.config
 
 # Path to the hostfile
-HOSTFILE=$AQUILA2_HOME/finetune/7B/hostfile
+HOSTFILE=$AQUILA2_HOME/finetune/34B/hostfile
 
 
 
@@ -60,7 +60,7 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         $AQUILA2_HOME/finetune/7B/finetune.py \
+	         $AQUILA2_HOME/finetune/34B/finetune.py \
              --model_dir $CKPT_INPUT \
              --model_name $MODEL_NAME_INPUT \
              --data_path $DATA_FILE \

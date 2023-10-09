@@ -4,11 +4,10 @@ AQUILA2_HOME=/data2/yzd/git/Aquila2
 
 # Location and name of the checkpoint file
 CKPT_INPUT=$AQUILA2_HOME/checkpoints
-MODEL_NAME_INPUT=aquilachat2-7b
+MODEL_NAME_INPUT=aquilachat2-34b
 
-# Path to dataset file
+# Path and name of dataset file
 DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
-
 
 
 
@@ -32,20 +31,12 @@ CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
 # Path to the deepspeed config 
-DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/7B/ds_zero2.config
+DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/34B/ds_zero2.config
 
 # Path to the hostfile
-HOSTFILE=$AQUILA2_HOME/finetune/7B/hostfile
+HOSTFILE=$AQUILA2_HOME/finetune/34B/hostfile
 
 
-
-
-
-# *** Create directories **
-export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
-mkdir -p $EXPNAME_PATH
-cp $0 $EXPNAME_PATH/
-mkdir -p $CKPT_INPUT
 
 
 # *** Training Process **
@@ -69,16 +60,21 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         $AQUILA2_HOME/finetune/7B/finetune.py \
-             --model_name $MODEL_NAME_INPUT \
+	         $AQUILA2_HOME/finetune/34B/finetune.py \
              --model_dir $CKPT_INPUT \
+             --model_name $MODEL_NAME_INPUT \
              --data_path $DATA_FILE \
+             --use_lora True \
+             --q_lora False \
+             --lora_r 8 \
+             --lora_alpha 16 \
+             --lora_dropout 0.05 \
              --convo_template $CONVO_TEMPLATE \
              --fp16 \
              --model_max_length 2048 \
              --output_dir $CKPT_OUTPUT/$MODEL_NAME_OUTPUT \
              --num_train_epochs $EPOCHS \
-             --per_device_train_batch_size 4 \
+             --per_device_train_batch_size 1 \
              --per_device_eval_batch_size 1 \
              --gradient_accumulation_steps 1 \
              --evaluation_strategy no \
