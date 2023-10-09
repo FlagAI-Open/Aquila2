@@ -15,8 +15,13 @@
 </p>
 <br><br>
 
-|     |                                                              Aquila2-Chat                                                               |                                                                Aquila2-Chat (Int4)                                                                |                                                            Aquila2                                                            |
-|-----|:------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------:|
+| Model Name         | Huggingface | Modelhub | 
+|----------------------|:----:|:-----------: |
+| Aquila2-7B | - |    https://model.baai.ac.cn/model-detail/100118     | 
+| AquilaChat2-7B | - |    https://model.baai.ac.cn/model-detail/100117     | 
+| Aquila2-34B | - |    https://model.baai.ac.cn/model-detail/100119     | 
+| AquilaChat2-34B | - |    https://model.baai.ac.cn/model-detail/100116     | 
+
 
 
 We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **Aquila2-Chat**, the chat models, namely **Aquila2-7B-Chat** and **Aquila2-34B-Chat**.
@@ -262,12 +267,12 @@ Before initiating the fine-tuning process, you are required to have your trainin
 ```
 Subsequently, you can utilize the variety of fine-tuning scripts we offer for different purposes:
 
-- Execute finetune/7B/finetune.sh for a full parameter fine-tuning of the 7B model
-- Apply finetune/7B/finetune_lora.sh for LoRA fine-tuning of the 7B model
-- Use finetune/7B/finetune_qlora.sh for Q-LoRA fine-tuning of the 7B model
-- Implement finetune/34B/finetune.sh for a full parameter fine-tuning of the 34B model
-- Initiate finetune/34B/finetune_lora.sh for LoRA fine-tuning of the 34B model
-- Opt for finetune/34B/finetune_qlora.sh for Q-LoRA fine-tuning of the 34B model
+- Execute `finetune/7B/finetune.sh` for a full parameter fine-tuning of the 7B model
+- Execute `finetune/7B/finetune_lora.sh` for LoRA fine-tuning of the 7B model
+- Execute `finetune/7B/finetune_qlora.sh` for Q-LoRA fine-tuning of the 7B model
+- Execute `finetune/34B/finetune.sh` for a full parameter fine-tuning of the 34B model
+- Execute `finetune/34B/finetune_lora.sh` for LoRA fine-tuning of the 34B model
+- Execute `finetune/34B/finetune_qlora.sh` for Q-LoRA fine-tuning of the 34B model
 
 
 ### Optimization Effects
