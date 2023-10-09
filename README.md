@@ -30,7 +30,7 @@ In this repo, you can figure out:
 * License agreement
 * ...
 
-Also, if you meet problems, turn to [FAQ](FAQ.md) for help first. Still feeling struggled? Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
+Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
 
 Would like to chat with us or date us coffee time? Welcome to our WeChat! 
 <br><br>
@@ -266,12 +266,7 @@ Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from dedu
 
 ## Reproduction
 
-For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/EVALUATION.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
-<br><br>
-
-## FAQ
-
-If you meet problems, please refer to [FAQ](FAQ.md) and the issues first to search a solution before you launch a new issue.
+For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/README.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
 <br><br>
 
 ## License Agreement
