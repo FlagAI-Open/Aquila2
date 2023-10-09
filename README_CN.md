@@ -96,30 +96,9 @@ for text in test_data:
 我们运行的结果如下:
 ```
 model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 北京的十大景点是什么?请将回答翻译成英文和日语###Assistant:
-以下是北京的十大景点及其翻译:
-
-1. 故宫博物院 - Palace Museum (tō-gū shisō hokusei-en)
-
-2. 天坛公园 - Tiantan Park (tān-tāng kōen)
-
-3. 颐和园 - Yingge Garden (yíhé yuán)
-
-4. 长城 - Great Wall (dà chéng)
-
-5. 鸟巢 - Bird's Nest (hóngtǒng)
-
-6. 北京大学 - Peking University (bei-jing dàxué)
-
-7. 王府井小吃街 - Wangfujing Snack Street (wángfújǐng kǎo dì)
-
-8. 恭王府 - Gong Palace (gōng wǔ fǔ)
-
-9. 清华大学 - T
+北京十大景点: 1. 天安门广场 2. 故宫 3. 颐和园 4. 天坛 5. 鸟巢 6. 北京大学 7. 清华大学 8. 北京动物园 9. 北京植物园 10. 长城。
 model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 写一首中秋主题的五言绝句###Assistant:
-月到中秋分外明，
-团圆美满度佳节。
-人间共度亲情月，
-家和万事均如意。
+皎洁月光洒九洲，团圆佳节倍思悠。
 ```
 
 ### 基础模型推理
@@ -179,34 +158,34 @@ for text in test_data:
 {"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
 ```
 
-备好数据后，你可以使用我们提供的shell脚本实现微调。注意，你需要在脚本中指定你的数据的路径。
+然后您可以使用我们提供不同的微调脚本实现不同功能：
+- 使用`finetune/7B/finetune.sh`实现7B模型全参数微调 
+- 使用`finetune/7B/finetune_lora.sh`实现7B模型LoRA微调 
+- 使用`finetune/7B/finetune_qlora.sh`实现7B模型Q-LoRA微调 
+- 使用`finetune/34B/finetune.sh`实现34B模型全参数微调 
+- 使用`finetune/34B/finetune_lora.sh`实现34B模型LoRA微调 
+- 使用`finetune/34B/finetune_qlora.sh`实现34B模型Q-LoRA微调 
 
-若未提供自定义的模型文件，脚本将会基于指定的模型名称自动从 ModelHub 下载相应的模型，并执行微调操作。
+注意，你需要在脚本中指定训练数据的路径, 并配置hostfile文件。若未在脚本里提供自定义的模型文件，脚本将会基于指定的模型名称自动从 ModelHub 下载相应的模型，并执行微调操作。
 
-先进入`./examples`目录
-```
-cd examples
-```
 
-然后您可以使用不同的微调脚本实现不同功能：
-- 使用`./finetune.sh`实现全参数微调 
-- 使用`./finetune_lora.sh`实现LoRA微调 
-- 使用`./finetune_qlora.sh`实现Q-LoRA微调 
-
----如果多机运行，需要修改hostfile文件---
-
-实现全参数微调只需运行如下脚本
+实现Aquila2全参数微调只需运行如下脚本
 
 ```
-bash finetune.sh
-
+# 微调7B模型
+bash finetune/7B/finetune.sh
+# 微调34B模型
+bash finetune/34B/finetune.sh
 ```
 
 LoRA (参见[论文](https://arxiv.org/abs/2106.09685)) 的微调方法与全参数微调有所不同。LoRA 仅更新 adapter 层的参数，而不更新原始语言模型的参数。这样做可以减小显存和计算开销，LoRA 适用于各种不同大小的模型和各种不同的任务，能够帮助用户更高效地微调模型以适应特定的任务或数据集。
 
 实现LORA只需运行如下脚本
 ```
-bash finetune_lora.sh
+# 微调7B模型
+bash finetune/7B/finetune_lora.sh
+# 微调34B模型
+bash finetune/34B/finetune_lora.sh
 ```
 
 如果显存资源仍然受限，可以考虑使用 Q-LoRA (参见[论文](https://arxiv.org/abs/2305.14314))，这是一种通过使用4比特量化模型和 paged attention 技术，进一步降低显存使用的优化方案。
@@ -214,20 +193,39 @@ bash finetune_lora.sh
 实现Q-LoRA只需运行如下脚本
 
 ```
-bash finetune_qlora.sh
+# 微调7B模型
+bash finetune/7B/finetune_qlora.sh
+# 微调34B模型
+bash finetune/34B/finetune_qlora.sh
 ```
-
 
 
 
 
 ### 优化效果
 
-7B 全参, 2048: 2.67s/it, 43.9G
-lora: 2.04s/it, 29.4G
-qlora: 2.14s/it, 19.9G
+以下是7B和34B模型使用全参数微调，LoRA 和 QLoRA 处理不同输入长度时的显存占用和训练速度的数据。评测是在一台装备有 A100-SXM4-80G GPU 的机器上进行，使用 CUDA 12.1 和 Pytorch 2.1。其中7B模型的输入长度为2048， 34B模型的输入长度为4096。我们进行的所有测试均采用了批次大小为 4 和梯度累积为 1 的配置，并且记录了以GB为单位的显存占用和以s/iter为单位的训练速度。具体的数据如下：
 
-34B, qlora, 37.7G, 8.22s/it
+<table>
+    <tr>
+      <th>Model Size</th><th>Method</th><th>Memory</th><th>speed</th>
+    </tr>
+    <tr>
+        <th rowspan="3">7B</th><td>SFT</td><td>43.9G</td><td>2.67s/iter</td>
+    </tr>
+    <tr>
+        <td>LoRA</td><td>29.4G</td><td>2.04s/iter</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td>19.9G</td><td>2.14s/iter</td>
+    </tr>
+    <tr>
+        <th rowspan="2">34B</th><td>LoRA</td><td>LoRA</td><td>LoRA</td>
+    </tr>
+    <tr>
+        <td>Q-LoRA</td><td>8.22s/it</td><td>37.7G</td>
+    </tr>
+</table>
 
 
 
