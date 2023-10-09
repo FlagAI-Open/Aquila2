@@ -15,7 +15,12 @@
 
 ---介绍我们这次开源了哪些模型(7B/33B, base和chat)---
 
----加一个modelhub链接的表格---
+| 模型名称         | Huggingface | Modelhub | 
+|----------------------|:----:|:-----------: |
+| Aquila2-7B | - |    https://model.baai.ac.cn/model-detail/100118     | 
+| AquilaChat2-7B | - |    https://model.baai.ac.cn/model-detail/100117     | 
+| Aquila2-34B | - |    https://model.baai.ac.cn/model-detail/100119     | 
+| AquilaChat2-34B | - |    https://model.baai.ac.cn/model-detail/100116     |
 
 ---介绍一些Aquila2的优势---
 
