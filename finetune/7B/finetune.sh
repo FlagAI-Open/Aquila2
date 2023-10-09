@@ -6,8 +6,9 @@ AQUILA2_HOME=/data2/yzd/git/Aquila2
 CKPT_INPUT=$AQUILA2_HOME/checkpoints
 MODEL_NAME_INPUT=aquila2chat-hf
 
-# Path and name of dataset file
+# Path to dataset file
 DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
+
 
 
 
@@ -31,12 +32,20 @@ CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
 # Path to the deepspeed config 
-DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/ds_zero2.config
+DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/7B/ds_zero2.config
 
 # Path to the hostfile
-HOSTFILE=$AQUILA2_HOME/examples/hostfile
+HOSTFILE=$AQUILA2_HOME/examples/7B/hostfile
 
 
+
+
+
+# *** Create directories **
+export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
+mkdir -p $EXPNAME_PATH
+cp $0 $EXPNAME_PATH/
+mkdir -p $CKPT_INPUT
 
 
 # *** Training Process **
@@ -60,15 +69,10 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         $AQUILA2_HOME/examples/finetune.py \
-             --model_dir $CKPT_INPUT \
+	           finetune.py \
              --model_name $MODEL_NAME_INPUT \
+             --model_dir $CKPT_INPUT \
              --data_path $DATA_FILE \
-             --use_lora True \
-             --q_lora False \
-             --lora_r 8 \
-             --lora_alpha 16 \
-             --lora_dropout 0.05 \
              --convo_template $CONVO_TEMPLATE \
              --fp16 \
              --model_max_length 2048 \

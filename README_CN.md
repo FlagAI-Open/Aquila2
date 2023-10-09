@@ -36,30 +36,6 @@
 
 ---表格---
 
-<!-- <p align="left">
-    <img src="assets/radar_14b.jpg" width="600"/>
-<p>
-<br>
-
-| Model                  |   MMLU   |  C-Eval  |  GSM8K   |   MATH   | HumanEval |   MBPP    |   BBH    |  CMMLU   |
-|:-----------------------|:--------:|:--------:|:--------:|:--------:|:---------:|:---------:|:--------:|:--------:|
-|                        |  5-shot  |  5-shot  |  8-shot  |  4-shot  |  0-shot   |  3-shot   |  3-shot  |  5-shot  |
-| LLaMA2-7B              |   46.8   |   32.5   |   16.7   |   3.3    |   12.8    |   20.8    |   38.2   |   31.8   |
-| LLaMA2-13B             |   55.0   |   41.4   |   29.6   |   5.0    |   18.9    |   30.3    |   45.6   |   38.4   |
-| LLaMA2-34B             |   62.6   |    -     |   42.2   |   6.2    |   22.6    |   33.0    |   44.1   |    -     |
-| ChatGLM2-6B            |   47.9   |   51.7   |   32.4   |   6.5    |     -     |     -     |   33.7   |    -     |
-| InternLM-7B            |   51.0   |   53.4   |   31.2   |   6.3    |   10.4    |   14.0    |   37.0   |   51.8   |
-| InternLM-20B           |   62.1   |   58.8   |   52.6   |   7.9    |   25.6    |   35.6    |   52.5   |   59.0   |
-| Baichuan2-7B           |   54.7   |   56.3   |   24.6   |   5.6    |   18.3    |   24.2    |   41.6   |   57.1   |
-| Baichuan2-13B          |   59.5   |   59.0   |   52.8   |   10.1   |   17.1    |   30.2    |   49.0   |   62.0   |
-| **Qwen-7B (original)** |   56.7   |   59.6   |   51.6   |     10.4     |   24.4    |   31.2    |   40.6   |   58.8   |
-| **Qwen-7B**            |   58.2   |   63.5   |   51.7   |   11.6   |   29.9    |   31.6    |   45.0   |   62.2   |
-| **Qwen-14B**           | **66.3** | **72.1** | **61.3** | **24.8** | **32.3**  | **40.8**  | **53.4** | **71.0** |
-
-
-对于以上所有对比模型，我们列出了其官方汇报结果与[OpenCompass](https://opencompass.org.cn/leaderboard-llm)结果之间的最佳分数。
-
-更多的实验结果和细节请查看我们的技术备忘录。点击[这里](https://qianwen-res.oss-cn-beijing.aliyuncs.com/QWEN_TECHNICAL_REPORT.pdf)。 -->
 <br><br>
 
 ## 安装环境
@@ -83,25 +59,25 @@ pip install -r requirements.txt
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
-接下来可以使用Aquila2模型来进行推理：
+### 对话模型推理
+
+接下来可以使用`AquilaChat2-7B`对话模型来进行推理：
 
 ```
 from flagai.auto_model.auto_loader import AutoLoader
 
-# 模型位置
-state_dict = "./checkpoints/"
 
 # 模型名称
 model_name = 'Aquila2Chat-hf'
 
 # 加载模型以及tokenizer
-autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name）
-# 使用torch_dtype参数调整模型精度
-# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，torch_dtype=torch.bfloat16）
-# 如需加载lora模型，需要额外提供lora模块的地址
-# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
-# 如需加载lora模型，需要额外提供qlora模块的地址
-# autoloader = AutoLoader("aquila2", model_dir=state_dict, model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+autoloader = AutoLoader("aquila2", model_name=model_name）
+# 使用model_dir参数调整模型加载路径
+# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
+# 如需加载LoRA模型，需要额外提供LoRA模块的地址
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# 如需加载Q-LoRA模型，需要额外提供Q-LoRA模块的地址
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
@@ -110,14 +86,68 @@ tokenizer = autoloader.get_tokenizer()
 # 对话测试样例
 test_data = [
     "北京的十大景点是什么?请将回答翻译成英文和日语",
-    "写一首中秋主题的五言绝句并翻译成英文和韩语",
+    "写一首中秋主题的五言绝句",
 ]
 
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
 ```
 
----加一个transformers的用法---
+我们运行的结果如下:
+```
+model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 北京的十大景点是什么?请将回答翻译成英文和日语###Assistant:
+以下是北京的十大景点及其翻译:
+
+1. 故宫博物院 - Palace Museum (tō-gū shisō hokusei-en)
+
+2. 天坛公园 - Tiantan Park (tān-tāng kōen)
+
+3. 颐和园 - Yingge Garden (yíhé yuán)
+
+4. 长城 - Great Wall (dà chéng)
+
+5. 鸟巢 - Bird's Nest (hóngtǒng)
+
+6. 北京大学 - Peking University (bei-jing dàxué)
+
+7. 王府井小吃街 - Wangfujing Snack Street (wángfújǐng kǎo dì)
+
+8. 恭王府 - Gong Palace (gōng wǔ fǔ)
+
+9. 清华大学 - T
+model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 写一首中秋主题的五言绝句###Assistant:
+月到中秋分外明，
+团圆美满度佳节。
+人间共度亲情月，
+家和万事均如意。
+```
+
+### 基础模型推理
+
+基础模型推理与对话模型的不同在于模型推理的时候需要设置`sft=False`
+```
+from flagai.auto_model.auto_loader import AutoLoader
+
+
+# 模型名称
+model_name = 'Aquila2Chat-hf'
+
+# 加载模型以及tokenizer
+autoloader = AutoLoader("aquila2", model_name=model_name)
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+# 对话测试样例
+test_data = [
+    "北京的十大景点是什么?请将回答翻译成英文和日语",
+    "写一首中秋主题的五言绝句",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer, sft=False))
+```
+
 
 
 ## 量化
@@ -187,23 +217,7 @@ bash finetune_lora.sh
 bash finetune_qlora.sh
 ```
 
-### 调整参数
-下面是微调过程中一些可调整的重要参数:
 
-|   参数名          |  类型   | 描述  |                                  
-| :---------------- | :------- | :-- |   
-| per_device_train_batch_size         | int  |   每次迭代训练时，从数据集中抽取的样本数。一般来说，它越大，处理速度越快，但会占用更多的内存。   |
-| gradient_accumulation_steps          |int  |    在更新模型权重之前，要对多个小批次进行梯度计算的次数。主要应用于GPU显存较小的情况下，可以使用小的batch_size，通过梯度累积达到与大batch_size相同的效果。    |
-| learning_rate          |float  |    指控制模型更新参数时的步长或速率。学习率过高可能导致模型不收敛，而学习率过低则可能导致训练时间过长或者陷入局部最优解。   |  
-| gradient_checkpointing           |bool |    一种内存优化技术，用于减少神经网络训练过程中的 GPU 或其他计算设备的内存使用量。这种技术特别有用对于那些有限的硬件资源，但需要训练大型神经网络的情况。 | 
-| warmup_ratio           |float |   初始学习率与原始学习率的比例。     | 
-| save_strategy          | str  |    保存模型权重的策略，当训练时间较长时，保存间隔可以避免因突然中断或出现错误导致训练成果全部丢失; 可选项有: 1.'epoch'代表在每一轮训练结束时保存权重 2. 'steps'代表每隔一定步数保存一次模型，具体的步数在`save_steps`参数里指定。   |   
-| logging_steps           |int  |    日志输出的间隔，即每训练多少个iteration输出一次日志信息。    | 
-| use_lora           |bool  |    是否启用lora微调。   | 
-| q_lora           |bool  |    是否启用qlora微调, 需要`use_lora`为true时，此参数才会生效。   | 
-| lora_r          |int  |    `lora_r`是低秩适应的秩。这个参数控制了低秩适应的复杂性。通过调整`lora_r`的值，可以控制降维的程度，从而影响模型的性能和效率。较小的 lora_r 值可能导致更简单、更快的模型，但可能牺牲一些性能。    |  
-| lora_alpha           |int  |    在 LoRA 中，`lora_alpha`和`lora_r`的比率通常用来调整低秩适应层的学习率。具体来说，该比率将决定低秩适应层的学习率相对于原始模型其他部分的学习率的倍数。通过调整这个比率，你可以控制 LoRA 层参数更新的速度。   | 
-| lora_dropout           |float |    `lora_dropout`是dropout率。在深度学习和神经网络中，dropout是一种正则化技术，通过随机关闭一部分神经元来防止过拟合。   | 
 
 
 
