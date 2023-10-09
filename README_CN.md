@@ -26,7 +26,7 @@
 
 ## 更新
 
-* 2023年10月x日，发布Aquila2 xxx版本
+* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **Aquila2-34B-Chat**。
 
 ## 评测表现(袁野)
 
@@ -113,20 +113,21 @@ flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
 接下来可以使用`AquilaChat2-7B`对话模型来进行推理：
 
-```
+```python
 from flagai.auto_model.auto_loader import AutoLoader
 
 
 # 模型名称
 model_name = 'AquilaChat2-7B'
+# model_name = 'AquilaChat2-34B'
 
 # 加载模型以及tokenizer
 autoloader = AutoLoader("aquila2", model_name=model_name）
 # 使用model_dir参数调整模型加载路径
 # autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
-# 如需加载LoRA模型，需要额外提供LoRA模块的地址
+# 如需加载LoRA模块，需要额外提供LoRA模块的地址
 # autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
-# 如需加载Q-LoRA模型，需要额外提供Q-LoRA模块的地址
+# 如需加载Q-LoRA模块，需要额外提供Q-LoRA模块的地址
 # autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
 
 model = autoloader.get_model()
@@ -154,12 +155,13 @@ model in: A chat between a curious human and an artificial intelligence assistan
 ### 基础模型推理
 
 基础模型推理与对话模型的不同在于模型推理的时候需要设置`sft=False`
-```
+```python
 from flagai.auto_model.auto_loader import AutoLoader
 
 
 # 模型名称
 model_name = 'Aquila2-7B'
+# model_name = 'Aquila2-34B'
 
 # 加载模型以及tokenizer
 autoloader = AutoLoader("aquila2", model_name=model_name)
@@ -204,7 +206,7 @@ for text in test_data:
 
 在进行微调操作之前，您必须先准备好您的训练数据。所有样本需要集中到一个列表中，并存储在一个 json 文件里。每个样本应表现为一个字典，包括 id 和 conversation，其中，conversation 以列表的形式展现。以下提供了一个示例：
 
-```
+```json
 {"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
 ```
 
@@ -216,33 +218,34 @@ for text in test_data:
 - 使用`finetune/34B/finetune_lora.sh`实现34B模型LoRA微调 
 - 使用`finetune/34B/finetune_qlora.sh`实现34B模型Q-LoRA微调 
 
-注意，你需要在脚本中指定训练数据的路径, 并配置hostfile文件。若未在脚本里提供自定义的模型文件，脚本将会基于指定的模型名称自动从 ModelHub 下载相应的模型，并执行微调操作。
+Note that you are required to specify the path to the training data within the script, and configure the hostfile accordingly. If a custom model file is not provided in the script, it will automatically download the corresponding model from ModelHub based on the specified model name and proceed with the fine-tuning operation.
 
 
-实现全参数微调只需运行如下脚本
+To perform full-parameter fine-tuning, execute the following scripts:
 
-```
-# 微调7B模型
+```bash
+# Fine-tuning the 7B model
 bash finetune/7B/finetune.sh
-# 微调34B模型
+# Fine-tuning the 34B model
 bash finetune/34B/finetune.sh
 ```
 
-LoRA (参见[论文](https://arxiv.org/abs/2106.09685)) 的微调方法与全参数微调有所不同。LoRA 仅更新 adapter 层的参数，而不更新原始语言模型的参数。这样做可以减小显存和计算开销，LoRA 适用于各种不同大小的模型和各种不同的任务，能够帮助用户更高效地微调模型以适应特定的任务或数据集。
+The fine-tuning approach of LoRA (as detailed in the [paper](https://arxiv.org/abs/2106.09685)) varies from the full-parameter method. LoRA solely updates the parameters of the adapter layer without modifying the original language model parameters. This practice reduces memory and computational overhead. Applicable to a variety of model sizes and tasks, LoRA facilitates more efficient model fine-tuning to cater to specific tasks or datasets.
 
-实现LORA只需运行如下脚本
-```
+To implement LoRA, execute the following scripts:
+
+```bash
 # 微调7B模型
 bash finetune/7B/finetune_lora.sh
 # 微调34B模型
 bash finetune/34B/finetune_lora.sh
 ```
 
-如果显存资源仍然受限，可以考虑使用 Q-LoRA (参见[论文](https://arxiv.org/abs/2305.14314))，这是一种通过使用4比特量化模型和 paged attention 技术，进一步降低显存使用的优化方案。
+If memory resources remain constrained, consider employing Q-LoRA (refer to the [paper](https://arxiv.org/abs/2305.14314)), an optimized solution that further reduces memory usage through the utilization of 4-bit quantized models and paged attention techniques.
 
-实现Q-LoRA只需运行如下脚本
+To implement Q-LoRA, execute the following scripts:
 
-```
+```bash
 # 微调7B模型
 bash finetune/7B/finetune_qlora.sh
 # 微调34B模型
@@ -258,7 +261,7 @@ bash finetune/34B/finetune_qlora.sh
 
 <table>
     <tr>
-      <th>Model Size</th><th>Method</th><th>Memory</th><th>speed</th>
+      <th>模型大小</th><th>微调方法</th><th>显存占用</th><th>训练速度</th>
     </tr>
     <tr>
         <th rowspan="3">7B</th><td>SFT</td><td>43.9G</td><td>2.67s/iter</td>
@@ -270,10 +273,7 @@ bash finetune/34B/finetune_qlora.sh
         <td>Q-LoRA</td><td>19.9G</td><td>2.14s/iter</td>
     </tr>
     <tr>
-        <th rowspan="2">34B</th><td>LoRA</td><td>LoRA</td><td>LoRA</td>
-    </tr>
-    <tr>
-        <td>Q-LoRA</td><td>8.22s/it</td><td>37.7G</td>
+        <th rowspan="1">34B</th><td>Q-LoRA</td><td>37.7G</td><td>8.22s/iter</td>
     </tr>
 </table>
 
