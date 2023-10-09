@@ -32,10 +32,10 @@ CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
 # Path to the deepspeed config 
-DEEPSPEED_CONFIG=$AQUILA2_HOME/examples/7B/ds_zero2.config
+DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/7B/ds_zero2.config
 
 # Path to the hostfile
-HOSTFILE=$AQUILA2_HOME/examples/7B/hostfile
+HOSTFILE=$AQUILA2_HOME/finetune/7B/hostfile
 
 
 
@@ -69,7 +69,7 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	           finetune.py \
+	         $AQUILA2_HOME/finetune/7B/finetune.py \
              --model_name $MODEL_NAME_INPUT \
              --model_dir $CKPT_INPUT \
              --data_path $DATA_FILE \
