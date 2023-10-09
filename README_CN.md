@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI/AquilaChat-7B">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-14B-Chat-Demo/summary">Demo</a> | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
+        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-14B-Chat-Demo/summary">Demo</a> | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
 </p>
 <br><br>
 
@@ -68,7 +68,7 @@ from flagai.auto_model.auto_loader import AutoLoader
 
 
 # 模型名称
-model_name = 'Aquila2Chat-hf'
+model_name = 'AquilaChat2-7B'
 
 # 加载模型以及tokenizer
 autoloader = AutoLoader("aquila2", model_name=model_name）
@@ -109,7 +109,7 @@ from flagai.auto_model.auto_loader import AutoLoader
 
 
 # 模型名称
-model_name = 'Aquila2Chat-hf'
+model_name = 'AquilaChat2-7B'
 
 # 加载模型以及tokenizer
 autoloader = AutoLoader("aquila2", model_name=model_name)
