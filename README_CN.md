@@ -9,31 +9,41 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-14B-Chat-Demo/summary">Demo</a> | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
+        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
 </p>
 <br><br>
 
----介绍我们这次开源了哪些模型(7B/33B, base和chat)---
+我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **Aquila2-7B-Chat** 和 **Aquila2-34B-Chat**。
 
-| 模型名称         | Huggingface | Modelhub | 
+| 模型名称         | Modelhub  | Huggingface | 
 |----------------------|:----:|:-----------: |
-| Aquila2-7B | - |    https://model.baai.ac.cn/model-detail/100118     | 
-| AquilaChat2-7B | - |    https://model.baai.ac.cn/model-detail/100117     | 
-| Aquila2-34B | - |    https://model.baai.ac.cn/model-detail/100119     | 
-| AquilaChat2-34B | - |    https://model.baai.ac.cn/model-detail/100116     |
+| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
+| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
+| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
+| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
 
----介绍一些Aquila2的优势---
+在这个仓库中，您可以：
 
----简单列一下接下来大纲---
+* 快速开始使用 Aquila2，进行简单的推理。
+* 有关量化模型的详细信息，包括使用方法、内存、推理速度。为了比较，我们还提供了 BF16 模型的统计数据。
+* 微调教程，包括全参数调优、LoRA 和 Q-LoRA。
+* 长文本理解评估的统计数据
+* 许可协议
+* ...
 
----遇到问题的话怎么办，然后再放一波社群的链接---
+欢迎对我们提出任何问题（建议用英语，这样更多人会明白你的问题哦）！如果有兴趣帮我们改进 **Aquila2**，可以提交你的Pull Requests， 我们会及时处理。
+
+如果你想与我们进行讨论和交流，请尽快加入我们的微信群吧(请参见文档顶部以获取入口信息)！
+
+
+
 <br><br>
 
 ## 更新
 
 * 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **Aquila2-34B-Chat**。
 
-## 评测表现(袁野)
+## 评测表现
 
 Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下文进行了训练，上下文长度从2048扩展到了8192）相比同规模的基线模型在各项评测数据集上均表现更优，评测数据集包括MMLU、C-Eval、GSM8K、MATH、HumanEval等，考察了模型的自然语言理解能力、数学问题求解能力、代码能力等各方面能力。
 
