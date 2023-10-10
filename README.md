@@ -9,45 +9,40 @@
 <br>
 
 <p align="center">
-    <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp
+    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp<a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 <br>
-<a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 </p>
 <br><br>
 
-| Model Name         | Huggingface | Modelhub | 
+
+We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**.
+
+| Model Name         | Modelhub  | Huggingface | 
 |----------------------|:----:|:-----------: |
-| Aquila2-7B | - |    https://model.baai.ac.cn/model-detail/100118     | 
-| AquilaChat2-7B | - |    https://model.baai.ac.cn/model-detail/100117     | 
-| Aquila2-34B | - |    https://model.baai.ac.cn/model-detail/100119     | 
-| AquilaChat2-34B | - |    https://model.baai.ac.cn/model-detail/100116     | 
-
-
-
-We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **Aquila2-Chat**, the chat models, namely **Aquila2-7B-Chat** and **Aquila2-34B-Chat**.
+| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
+| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
+| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
+| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
 
 In this repo, you can figure out:
 
 * Quickstart with Aquila2, and enjoy the simple inference.
-* Details about the quantization models, including usage, memory, inference speed. For comparison, we also provide the statistics of the BF16 models.
 * Tutorials on finetuning, including full-parameter tuning, LoRA, and Q-LoRA.
 * Statistics of long-context understanding evaluation
 * License agreement
 * ...
 
 Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
-
-Would like to chat with us or date us coffee time? Welcome to our WeChat! 
 <br><br>
 
 ## News and Updates
 
-* 2023.10.10 🔥 We release **Aquila2-34B** and **Aquila2-34B-Chat** on ModelHub and Hugging Face.
+* 2023.10.10 🔥 We release **Aquila2-34B** and **AquilaChat2-34B** on BAAI ModelHub and Hugging Face.
 <br>
 
 ## Performance
 
-Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and the context length is extended from 2048 to 8192) outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval, MBPP, BBH, etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
+Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
 <p align="left">
     <img src="assets/radar_34b.jpg" width="600"/>
@@ -103,7 +98,7 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 
 ## Requirements
 
-* python 3.8 and above
+* python 3.10 and above
 * pytorch 1.12 and above, 2.0 and above are recommended
 * transformers 4.32 and above
 * CUDA 11.4 and above are recommended (this is for GPU users, flash-attention users, etc.)
@@ -138,9 +133,9 @@ autoloader = AutoLoader("aquila2", model_name=model_name）
 # To modify the model loading path, use the model_dir parameter
 # autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat'）
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat'）
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
@@ -217,13 +212,6 @@ pip install auto-gptq optimum
 
 ```python
 ```
-
-### Performance
-
-| Quantization         | MMLU | CEval (val) | GSM8K | Humaneval |
-|----------------------|:----:|:-----------:|:-----:|:---------:|
-| Aquila2-34B (BF16) | 64.6 |    69.8     | 61.0  |   43.9    |
-| Aquila2-34B (Int4) | 63.3 |    69.0     | 59.8  |   45.7    |
 
 ### Inference Speed
 
