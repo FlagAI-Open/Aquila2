@@ -129,7 +129,7 @@ model_name = 'AquilaChat2-7B'
 # model_name = 'AquilaChat2-34B'
 
 # Load the model and tokenizer
-autoloader = AutoLoader("aquila2", model_name=model_nam)
+autoloader = AutoLoader("aquila2", model_name=model_name)
 # To modify the model loading path, use the model_dir parameter
 # autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name)
 # To load the LoRA module, you need to provide the path to the LoRA module
