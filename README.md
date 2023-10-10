@@ -175,7 +175,8 @@ for text in test_data:
 ```
 
 <br>
-#### Hugging Face
+
+### Hugging Face
 
 To use AquilaChat2-7B for the inference, all you need to do is to input a few lines of codes as demonstrated below. 
 
