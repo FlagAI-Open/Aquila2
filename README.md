@@ -17,12 +17,12 @@
 
 We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**.
 
-| Model Name         | Modelhub  | Huggingface | 
-|----------------------|:----:|:-----------: |
-| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
-| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
-| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
-| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
+| Model Name         | Download Sources  | 
+|-------------------|:---------:|
+| Aquila2-7B        | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
 
 In this repo, you can figure out:
 
@@ -110,13 +110,20 @@ We have provided a straightforward example to illustrate how to quickly get star
 Before proceeding, ensure that your environment is properly configured and that the necessary packages have been installed. First and foremost, ensure that these prerequisites are met and then follow the instructions below to install the necessary libraries and dependencies.
 ```
 pip install -r requirements.txt
+https://github.com/FlagAI-Open/FlagAI.git
+(cd FlagAI/ && python setup.py install)
 ```
+
 
 If your device supports fp16 or bf16 precision, we also recommend installing flash-attention to enhance execution speed and reduce memory consumption. It's important to note that flash-attention is optional, and the project can be executed normally without it.
 
 For the installation of flash-attention, please refer to https://github.com/Dao-AILab/flash-attention/.
 
-### ModelHub
+You can also set up the environment required for Aquila2 by directly[downloading the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
+
+Now you can use <img src="assets/baai.png" width="14"/>  Modelhub or 🤗Transformers to run our model。
+
+### <img src="assets/baai.png" width="18"/> ModelHub
 
 You can now utilize the AquilaChat2-7B model for inference as follows:
 
@@ -141,7 +148,7 @@ model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
 
 
-# 对话测试样例
+# Example
 test_data = [
     "Write a tongue twister that's extremely difficult to pronounce.",
 ]
@@ -155,12 +162,13 @@ The results of our execution are as follows:
 ```
 Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfast.  Say that three times fast and see how long you can make it last!
 ```
-### Base Model Inference
-
 
 The distinction between the basic model inference and the dialogue model is that it requires setting sft=False during the model inference.
 
-```
+<details>
+  <summary>Aquila2 base model inference</summary>
+
+```python
 from flagai.auto_model.auto_loader import AutoLoader
 
 
@@ -184,8 +192,42 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
+</details>
+
+
+
+### 🤗 Transformers
+
+```python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+device = torch.device("cuda")
+model_info = "BAAI/AquilaChat2-7B"
+tokenizer = AutoTokenizer.from_pretrained(model_info, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_info, trust_remote_code=True)
+model.eval()
+model.to(device)
+text = "请给出10个要到北京旅游的理由。"
+tokens = tokenizer.encode_plus(text)['input_ids'][:-1]
+tokens = torch.tensor(tokens)[None,].to(device)
+stop_tokens = ["###", "[UNK]", "</s>"]
+with torch.no_grad():
+    out = model.generate(tokens, do_sample=True, max_length=512, eos_token_id=100007, bad_words_ids=[[tokenizer.encode(token)[0] for token in stop_tokens]])[0]
+    out = tokenizer.decode(out.cpu().numpy().tolist())
+    print(out)
+```
+
 
 ## Quantization
+
+Before using quantization, BitsAndBytesConfig needs to be installed:
+
+```
+pip install bitsandbytes
+```
+
+After that, you're all set to use the quantized models for inference!
+
 
 ### Usage
 
