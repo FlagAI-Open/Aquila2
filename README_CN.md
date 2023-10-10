@@ -156,9 +156,8 @@ for text in test_data:
 
 我们运行的结果如下:
 ```
-model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 北京的十大景点是什么?请将回答翻译成英文和日语###Assistant:
 北京十大景点: 1. 天安门广场 2. 故宫 3. 颐和园 4. 天坛 5. 鸟巢 6. 北京大学 7. 清华大学 8. 北京动物园 9. 北京植物园 10. 长城。
-model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: 写一首中秋主题的五言绝句###Assistant:
+
 皎洁月光洒九洲，团圆佳节倍思悠。
 ```
 

@@ -145,7 +145,6 @@ for text in test_data:
 The results of our execution are as follows:
 
 ```
-model in: A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.###Human: Write a tongue twister that's extremely difficult to pronounce.###Assistant:
 Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfast.  Say that three times fast and see how long you can make it last!
 ```
 ### Base Model Inference
