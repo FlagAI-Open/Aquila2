@@ -198,6 +198,8 @@ test_data = [
 
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
+    # 如果是基础模型Aquila2-7B或者Aquila2-34B，需要设置 sft=False
+    # print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
 我们运行的结果如下:
@@ -207,36 +209,6 @@ for text in test_data:
 皎洁月光洒九洲，团圆佳节倍思悠。
 ```
 
-基础模型推理的用法类似，与对话模型的不同之处只在于模型推理的时候需要设置`sft=False`
-
-<details>
-  <summary>Aquila2基础模型推理</summary>
-
-```python
-from flagai.auto_model.auto_loader import AutoLoader
-
-
-# 模型名称
-model_name = 'Aquila2-7B'
-# model_name = 'Aquila2-34B'
-
-# 加载模型以及tokenizer
-autoloader = AutoLoader("aquila2", model_name=model_name)
-
-model = autoloader.get_model()
-tokenizer = autoloader.get_tokenizer()
-
-# 对话测试样例
-test_data = [
-    "北京的十大景点是什么?请将回答翻译成英文和日语",
-    "写一首中秋主题的五言绝句",
-]
-
-for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer, sft=False))
-```
-
-</details>
 
 ### 🤗 Transformers
 
