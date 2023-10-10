@@ -75,7 +75,7 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 <br><br>
 
 ### 推理任务表现
-| Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
+<!-- | Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
 |:---------------------------------------------------------------:|:-------------:|:------:|:-------------:|:--------------:|:------------:|:---------------------:|:------------:|:--------------:|:--------------:|:-----------:|
 | ChatGPT                                                         | 0.47          | 0.07   | 0.866666667   | 0.833333333    | 0.633333333  | 0.7                   | 0.8          | 0.5            | 0.466666667    | 0.59        |
 | GPT4                                                            | 0.93          | 0.37   | 1             | 0.9            | 0.833333333  | 0.833333333           | 0.966666667  | 0.6            | 0.833333333    | 0.81        |
@@ -88,7 +88,19 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 | Aquila-33b-knowledge6-135000-megatron-sft-v0.912-ep2            | 0.63          | 0.27   | 0.5           | 0.73           | 0.6          | 0.53                  | 0.46         | 0.5            | 0.7333333      | 0.55        |
 | Aquila-33b-knowledge6-341000-sft-v0.9.16                        | 0.55          | 0.17   | 0.53          | 0.77           | 0.8          | 0.7                   | 0.5          | 0.57           | 0.6            | 0.58        |
 | Aquila-7b-knowledge5-ep2-110973-chat-clean-coig-pc-ep1-sft-v0.911-ep2-hf | 0.73 | 0.03   | 0.4 | 0.56 | 0.57 | 0.43 | 0.4 | 0.5 | 0.43 | 0.45 |
-| Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.488888889 |
+| Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.488888889 | -->
+
+|      Model      | Placeholder |
+| :-------------: | :---------: |
+|     ChatGPT     |             |
+|      GPT-4      |             |
+|  InternLM-20B   |             |
+|  Baichuan2-7B   |             |
+|  Baichuan2-13B  |             |
+|     Qwen-7b     |             |
+|    Qwen-14b     |             |
+| **Aquila2-7B**  |             |
+| **Aquila2-33B** |             |
 
 
 <br><br>
