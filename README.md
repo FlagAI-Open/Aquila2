@@ -9,14 +9,14 @@
 <br>
 
 <p align="center">
-    <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp
+    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>
 <br>
 <a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 </p>
 <br><br>
 
 
-We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **Aquila2-Chat**, the chat models, namely **Aquila2-7B-Chat** and **Aquila2-34B-Chat**.
+We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**.
 
 | Model Name         | Modelhub  | Huggingface | 
 |----------------------|:----:|:-----------: |
@@ -28,34 +28,30 @@ We opensource our **Aquila2** series, now including **Aquila2**, the base langua
 In this repo, you can figure out:
 
 * Quickstart with Aquila2, and enjoy the simple inference.
-* Details about the quantization models, including usage, memory, inference speed. For comparison, we also provide the statistics of the BF16 models.
 * Tutorials on finetuning, including full-parameter tuning, LoRA, and Q-LoRA.
 * Statistics of long-context understanding evaluation
 * License agreement
 * ...
 
 Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
-
-Would like to chat with us or date us coffee time? Welcome to our WeChat! 
 <br><br>
 
 ## News and Updates
 
-* 2023.10.10 🔥 We release **Aquila2-34B** and **Aquila2-34B-Chat** on ModelHub and Hugging Face.
+* 2023.10.10 🔥 We release **Aquila2-34B** and **AquilaChat2-34B** on ModelHub and Hugging Face.
 <br>
 
 ## Performance
 
-Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and the context length is extended from 2048 to 8192) outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval, MBPP, BBH, etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
+Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and the context length is extended from 2048 to 8192) outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
 <p align="left">
     <img src="assets/radar_34b.jpg" width="600"/>
 <p>
 <br>
 
-| Model              | C-Eval   | MMLU     | CMMLU    | GSM8K    | GaoKao    | MATH     | HumanEval | WMT22 (en-zh) | WinoGranded |
+| Model              | C-Eval   | MMLU     | CMMLU    | GSM8K    | GaoKao    | MATH（4-shot）     | HumanEval | WMT22 (en-zh) | WinoGranded |
 |:-------------------|:--------:|:--------:|:--------:|:--------:|:---------:|:--------:|:---------:|:-------------:|:-----------:|
-|                    |          |          |          |          |           | 4-shot   |           |               |             |
 | InternLM-7B        | 53.4     | 51.0     |          | 31.2     |           | 7.1?6.3  | 10.4      | 53.3          | 68.2        |
 | InternLM-20B       | 58.8     | 62.1     |          | 52.6     |           | 7.9      | 25.6      | 56.9          | 69.4        |
 | ChatGLM2-6B        | 51.7     | 47.9     | 48.8     | 32.4     | 49.4      | 6.5      | 9.2       | 45.7          |             |
@@ -86,24 +82,24 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 ### Reasoning Performance
 | Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
 |:---------------------------------------------------------------:|:-------------:|:------:|:-------------:|:--------------:|:------------:|:---------------------:|:------------:|:--------------:|:--------------:|:-----------:|
-| ChatGPT                                                         | 0.47          | 0.07   | 0.866666667   | 0.833333333    | 0.633333333  | 0.7                   | 0.8          | 0.5            | 0.466666667    | 0.59        |
-| GPT4                                                            | 0.93          | 0.37   | 1             | 0.9            | 0.833333333  | 0.833333333           | 0.966666667  | 0.6            | 0.833333333    | 0.81        |
-| Baichuan-13B-Chat                                               | 0.73          | 0.03   | 0.17          | 0.57           | 0.6          | 0.6                   | 0.633333333  | 0.6            | 0.466666667    | 0.49        |
+| ChatGPT                                                         | 0.47          | 0.07   | 0.87   | 0.83    | 0.63  | 0.7                   | 0.8          | 0.5            | 0.47    | 0.59        |
+| GPT4                                                            | 0.93          | 0.37   | 1             | 0.9            | 0.83  | 0.83           | 0.97  | 0.6            | 0.83    | 0.81        |
+| Baichuan-13B-Chat                                               | 0.73          | 0.03   | 0.17          | 0.57           | 0.6          | 0.6                   | 0.63  | 0.6            | 0.47    | 0.49        |
 | Baichuan2-7B-Chat                                               | 0.4           | 0.27   | 0.43          | 0.73           | 0.53         | 0.63                  | 0.2          | 0.63           | 0.5            | 0.45        |
 | Baichuan2-13B-Chat                                              | 0.33          | 0.1    | 0.67          | 0.8            | 0.66         | 0.77                  | 0.6          | 0.53           | 0.63           | 0.57        |
 | Qwen-7B-chat                                                    | 0.2           | 0.1    | 0.67          | 0.87           | 0.57         | 0.87                  | 0.37         | 0.63           | 0.57           | 0.54        |
 | Qwen-14B-chat                                                   | 0.27          | 0.1    | 0.63          | 0.87           | 0.63         | 0.87                  | 0.7          | 0.77           | 0.57           | 0.6         |
 | INternLM-20B-chat                                               | 0.47          | 0.13   | 0.43          | 0.8            | 0.7          | 0.93                  | 0.6          | 0.7            | 0.7            | 0.61        |
-| Aquila-33b-knowledge6-135000-megatron-sft-v0.912-ep2            | 0.63          | 0.27   | 0.5           | 0.73           | 0.6          | 0.53                  | 0.46         | 0.5            | 0.7333333      | 0.55        |
+| Aquila-33b-knowledge6-135000-megatron-sft-v0.912-ep2            | 0.63          | 0.27   | 0.5           | 0.73           | 0.6          | 0.53                  | 0.46         | 0.5            | 0.73      | 0.55        |
 | Aquila-33b-knowledge6-341000-sft-v0.9.16                        | 0.55          | 0.17   | 0.53          | 0.77           | 0.8          | 0.7                   | 0.5          | 0.57           | 0.6            | 0.58        |
 | Aquila-7b-knowledge5-ep2-110973-chat-clean-coig-pc-ep1-sft-v0.911-ep2-hf | 0.73 | 0.03   | 0.4 | 0.56 | 0.57 | 0.43 | 0.4 | 0.5 | 0.43 | 0.45 |
-| Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.488888889 |
+| Aquila-7b-knowledge5-ep2-110973-v910-ep1-knowledge62-150000-megatron-sft-v0.915-ep3-bsz64-tpl-hf | 0.5 | 0.23 | 0.33 | 0.7 | 0.53 | 0.6 | 0.47 | 0.47 | 0.57 | 0.49 |
 
 <br><br>
 
 ## Requirements
 
-* python 3.8 and above
+* python 3.10 and above
 * pytorch 1.12 and above, 2.0 and above are recommended
 * transformers 4.32 and above
 * CUDA 11.4 and above are recommended (this is for GPU users, flash-attention users, etc.)
@@ -138,9 +134,9 @@ autoloader = AutoLoader("aquila2", model_name=model_name）
 # To modify the model loading path, use the model_dir parameter
 # autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat'）
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat'）
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
