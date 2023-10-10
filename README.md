@@ -185,23 +185,6 @@ for text in test_data:
 ```
 
 
-#### ModelHub
-
-To use Aquila2-Chat for the inference, all you need to do is to input a few lines of codes as demonstrated below. 
-
-```python
-```
-
-Running Aquila2 pretrained base model is also simple.
-
-<details>
-  <summary>Running Aquila2</summary>
-
-```python
-```
-
-</details>
-
 ## Quantization
 
 ### Usage
@@ -328,9 +311,13 @@ For your reproduction of the model performance on benchmark datasets, we provide
 
 ## License Agreement
 
+
+
 <br><br>
 
 ## Contact Us
 
 If you are interested to leave a message to either our research team or product team, join our WeChat groups!
+
+<img src="./assets/wechat-qrcode.jpg" width = "200" height = "200"  align=center />
 

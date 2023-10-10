@@ -248,17 +248,6 @@ for text in test_data:
 
 ```
 
-### 效果评测
-
----量化效果(可选)---
-
-### 推理速度
-
----量化推理速度(可选)---
-
-### 显存使用
-
----量化显存使用(可选)---
 <br><br>
 
 ## 微调
@@ -349,15 +338,11 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 长文本理解
 
----介绍---
 
----评测结果---
 
-## Tokenization
+## Tokenizer
 
----中文可以简单说说tokenization是什么（因为这词没有好的中文对应翻译）---
-
----给一个tokenizer文档的link(可选)---
+我们的BBPE Tokenizer是在一个50GB的语料库上训练的，主要是从去重后的Pile和去重后的WuDao内容中抽取的样本。我们还添加了一些特殊的标记用于段落和对话的分隔。
 <br><br>
 
 ## 复现
@@ -375,7 +360,7 @@ bash finetune/34B/finetune_qlora.sh
 ## 使用协议
 
 Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)
----可能还需要补充---
+
 <br><br>
 
 ## 联系我们
