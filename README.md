@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp<a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
+    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp<a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 <br>
 </p>
 <br><br>
@@ -37,12 +37,12 @@ Feel free to shoot us issues (better in English so that more people can understa
 
 ## News and Updates
 
-* 2023.10.10 🔥 We release **Aquila2-34B** and **AquilaChat2-34B** on ModelHub and Hugging Face.
+* 2023.10.10 🔥 We release **Aquila2-34B** and **AquilaChat2-34B** on BAAI ModelHub and Hugging Face.
 <br>
 
 ## Performance
 
-Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and the context length is extended from 2048 to 8192) outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
+Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
 <p align="left">
     <img src="assets/radar_34b.jpg" width="600"/>
@@ -212,13 +212,6 @@ pip install auto-gptq optimum
 
 ```python
 ```
-
-### Performance
-
-| Quantization         | MMLU | CEval (val) | GSM8K | Humaneval |
-|----------------------|:----:|:-----------:|:-----:|:---------:|
-| Aquila2-34B (BF16) | 64.6 |    69.8     | 61.0  |   43.9    |
-| Aquila2-34B (Int4) | 63.3 |    69.0     | 59.8  |   45.7    |
 
 ### Inference Speed
 
