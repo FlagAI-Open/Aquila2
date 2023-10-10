@@ -384,13 +384,6 @@ bash finetune/34B/finetune_qlora.sh
 ---复现评测的脚本(可选)---
 <br><br>
 
-## FAQ
-
-欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/FlagAI/issues) 中提出你的问题，或在 [Discussions ](https://github.com/FlagAI-Open/FlagAI/discussions) 板块交流使用经验。
-
----之后可以弄一个常见问题的文档link放到这里---
-<br><br>
-
 ## 使用协议
 
 Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)
