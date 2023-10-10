@@ -157,6 +157,7 @@ Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfas
 ```
 ### Base Model Inference
 
+
 The distinction between the basic model inference and the dialogue model is that it requires setting sft=False during the model inference.
 
 ```
