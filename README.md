@@ -123,7 +123,6 @@ You can now utilize the AquilaChat2-7B model for inference as follows:
 ```python
 from flagai.auto_model.auto_loader import AutoLoader
 
-
 # Model name
 model_name = 'AquilaChat2-7B'
 # model_name = 'AquilaChat2-34B'
@@ -139,7 +138,6 @@ autoloader = AutoLoader("aquila2", model_name=model_name)
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
-
 
 # 对话测试样例
 test_data = [
@@ -163,7 +161,6 @@ The distinction between the basic model inference and the dialogue model is that
 ```
 from flagai.auto_model.auto_loader import AutoLoader
 
-
 # Model name
 model_name = 'Aquila2-7B'
 # model_name = 'Aquila2-34B'
@@ -174,7 +171,6 @@ autoloader = AutoLoader("aquila2", model_name=model_name)
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
 
-
 # Example
 test_data = [
     "Write a tongue twister that's extremely difficult to pronounce.",
@@ -184,23 +180,14 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
+<br><br>
+#### Hugging Face
 
-#### ModelHub
-
-To use Aquila2-Chat for the inference, all you need to do is to input a few lines of codes as demonstrated below. 
-
-```python
-```
-
-Running Aquila2 pretrained base model is also simple.
-
-<details>
-  <summary>Running Aquila2</summary>
+To use AquilaChat2-7B for the inference, all you need to do is to input a few lines of codes as demonstrated below. 
 
 ```python
 ```
-
-</details>
+<br><br>
 
 ## Quantization
 
@@ -210,7 +197,6 @@ Running Aquila2 pretrained base model is also simple.
 import torch 
 from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
-
 
 model_name = 'AquilaChat2-7B'
 
@@ -259,7 +245,6 @@ We also profile the peak GPU memory usage for encoding 2048 tokens as context (a
 
 <br>
 
-### Usage
 ## Pretraining
 ### Usage
 <br><br>
@@ -282,7 +267,6 @@ Subsequently, you can utilize the variety of fine-tuning scripts we offer for di
 - Execute `finetune/34B/finetune.sh` for a full parameter fine-tuning of the 34B model
 - Execute `finetune/34B/finetune_lora.sh` for LoRA fine-tuning of the 34B model
 - Execute `finetune/34B/finetune_qlora.sh` for Q-LoRA fine-tuning of the 34B model
-
 
 ### Optimization Effects
 
@@ -311,6 +295,9 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
 ## Demo
 
 ### Web UI
+Our web will be open soon.
+
+<br><br>
 
 ## Long-Context Understanding
 
