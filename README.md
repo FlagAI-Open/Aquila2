@@ -89,17 +89,17 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 ### Reasoning Tasks Performance
 
-|      Model      | bAbI-task-16<br>(Inductive) | CLUTRR<br>(Inductive) | bAbI-task-15<br>(Deductive) | EntailmentBank<br>(Deductive) | $\alpha$NLI<br>(Abductive) | E-Care dataset<br>(Casual) | Avg. |
-| :-------------: | :-------------------------: | :-------------------: | :-------------------------: | :---------------------------: | :------------------------: | :------------------------: | ---- |
-|     ChatGPT     |                             |                       |                             |                               |                            |                            |      |
-|      GPT-4      |                             |                       |                             |                               |                            |                            |      |
-|  InternLM-20B   |                             |                       |                             |                               |                            |                            |      |
-|  Baichuan2-7B   |                             |                       |                             |                               |                            |                            |      |
-|  Baichuan2-13B  |                             |                       |                             |                               |                            |                            |      |
-|     Qwen-7b     |                             |                       |                             |                               |                            |                            |      |
-|    Qwen-14b     |                             |                       |                             |                               |                            |                            |      |
-| **Aquila2-7B**  |                             |                       |                             |                               |                            |                            |      |
-| **Aquila2-33B** |                             |                       |                             |                               |                            |                            |      |
+|      Model      | bAbI-task-16<br>(Inductive) | CLUTRR<br>(Inductive) | bAbI-task-15<br>(Deductive) | EntailmentBank<br>(Deductive) | αNLI<br>(Abductive) | E-Care dataset<br>(Casual) | Avg. |
+| :-------------: | :-------------------------: | :-------------------: | :-------------------------: | :---------------------------: | :-----------------: | :------------------------: | ---- |
+|     ChatGPT     |                             |                       |                             |                               |                     |                            |      |
+|      GPT-4      |                             |                       |                             |                               |                     |                            |      |
+|  InternLM-20B   |                             |                       |                             |                               |                     |                            |      |
+|  Baichuan2-7B   |                             |                       |                             |                               |                     |                            |      |
+|  Baichuan2-13B  |                             |                       |                             |                               |                     |                            |      |
+|     Qwen-7b     |                             |                       |                             |                               |                     |                            |      |
+|    Qwen-14b     |                             |                       |                             |                               |                     |                            |      |
+| **Aquila2-7B**  |                             |                       |                             |                               |                     |                            |      |
+| **Aquila2-33B** |                             |                       |                             |                               |                     |                            |      |
 
 <br>
 
