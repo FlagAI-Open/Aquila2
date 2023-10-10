@@ -54,21 +54,23 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 <p>
 <br>
 
-|     Model     | C-Eval |  MMLU  | CMMLU  | GSM8K  | GaoKao |  MATH  | HumanEval | WMT22 (en-zh) | WinoGrande |
-| :-----------: | :----: | :----: | :----: | :----: | :----: | :----: | :-------: | :-----------: | :--------: |
-|               | 5-shot | 5-shot | 5-shot | 8-shot |        | 4-shot |  0-shot   |    0-shot     |   0-shot   |
-|  InternLM-7B  |  48.6  |  51.2  |  51.8  |  31.2  |  49.6  |  6.3   |   13.4    |     53.3      |    68.2    |
-| InternLM-20B  |  53.7  |  61.8  |  59.0  |  52.6  |  63.6  |  7.9   |   25.6    |     56.9      |    75.1    |
-|  ChatGLM2-6B  |  51.7  |  47.9  |  48.8  |  32.4  |  49.4  |  6.5   |    9.2    |     45.7      |            |
-| ChatGLM2-12B  |  61.6  |  56.2  |        |  40.9  |        |        |           |               |            |
-| Baichuan2-7B  |  52.3  |  54.6  |  57.1  |  24.5  |  53.6  |  5.6   |   18.3    |     55.9      |    68.4    |
-| Baichuan2-13B |  55.6  |  56.9  |  62.0  |  52.8  |  59.7  |  10.1  |   17.1    |     60.5      |    70.3    |
-|    Qwen-7b    |  56.7  |  58.0  |  62.2  |  51.7  |  58.5  |  6.5   |   29.9    |     58.1      |    66.1    |
-|   Qwen-14b    |  71.4  |  65.8  |  70.5  |  58.7  |  65.4  |  13.4  |   32.3    |     55.0      |    67.4    |
-|   LLaMA2-7B   |  34.1  |  46.9  |  31.4  |  16.2  |  41.7  |  3.2   |   12.8    |     36.4      |    67.1    |
-|  LLaMA2-70B   |  52.1  |  69.5  |        |  56.8  |  64.5  |  13.5  |   29.9    |               |    78.0    |
-|  Aquila2-7B   |  48.9  |  54.9  |  56.1  |  41.9  |  54.0  |  10.9  |   21.4    |     57.3      |    67.5    |
-|  Aquila2-33B  |  62.2  |  60.0  |  65.9  |  56.3  |  64.6  |  11.6  |   25.3    |     60.0      |    70.6    |
+|      Model      | C-Eval |  MMLU  | CMMLU  | GSM8K  | GaoKao |  MATH  | HumanEval | WMT22 (en-zh) | WinoGrande |
+| :-------------: | :----: | :----: | :----: | :----: | :----: | :----: | :-------: | :-----------: | :--------: |
+|                 | 5-shot | 5-shot | 5-shot | 8-shot |        | 4-shot |  0-shot   |    0-shot     |   0-shot   |
+|   InternLM-7B   |  48.6  |  51.2  |  51.8  |  31.2  |  49.6  |  6.3   |   13.4    |     53.3      |    68.2    |
+|  InternLM-20B   |  53.7  |  61.8  |  59.0  |  52.6  |  63.6  |  7.9   |   25.6    |     56.9      |    75.1    |
+|   ChatGLM2-6B   |  51.7  |  47.9  |  48.8  |  32.4  |  49.4  |  6.5   |    9.2    |     45.7      |            |
+|  ChatGLM2-12B   |  61.6  |  56.2  |        |  40.9  |        |        |           |               |            |
+|  Baichuan2-7B   |  52.3  |  54.6  |  57.1  |  24.5  |  53.6  |  5.6   |   18.3    |     55.9      |    68.4    |
+|  Baichuan2-13B  |  55.6  |  56.9  |  62.0  |  52.8  |  59.7  |  10.1  |   17.1    |     60.5      |    70.3    |
+|     Qwen-7b     |  56.7  |  58.0  |  62.2  |  51.7  |  58.5  |  6.5   |   29.9    |     58.1      |    66.1    |
+|    Qwen-14b     |  71.4  |  65.8  |  70.5  |  58.7  |  65.4  |  13.4  |   32.3    |     55.0      |    67.4    |
+|    LLaMA2-7B    |  34.1  |  46.9  |  31.4  |  16.2  |  41.7  |  3.2   |   12.8    |     36.4      |    67.1    |
+|   LLaMA2-70B    |  52.1  |  69.5  |        |  56.8  |  64.5  |  13.5  |   29.9    |               |    78.0    |
+| **Aquila2-7B**  |  48.9  |  54.9  |  56.1  |  41.9  |  54.0  |  10.9  |   21.4    |     57.3      |    67.5    |
+| **Aquila2-33B** |  62.2  |  60.0  |  65.9  |  56.3  |  64.6  |  11.6  |   25.3    |     60.0      |    70.6    |
+
+<br><br>
 
 ### Long Context Performance
 | Model                     | Method             | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Other |
@@ -81,6 +83,8 @@ Aquila2-34B and Aquila2-7B (this is the new version trained with more tokens and
 | Internlm-20B-Chat         | None               | 19.2     | 17.5    | 16.7          | 26.0            | 41.0     | 16.5       | 19.7  |
 | Aquila2-7B-16K            | PI+SFT             | 21.8     | 22.4    | 19.1          | 22.8            | 50.1     | 18.4       | 25.0  |
 | Aquila2-33B-16K           | PI+SFT             |          |         |               |                 |          |            |       |
+
+<br><br>
 
 ### Reasoning Performance
 | Model                                                           | bAbI -task 16 | CLUTRR | bAbI -task 15 | EntailmentBank | aNLI dataset | CommonsenseQA dataset | PiQA dataset | Pep-3K dataset | E-Care dataset | Average     |
