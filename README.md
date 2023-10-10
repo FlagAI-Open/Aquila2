@@ -15,16 +15,15 @@
 </p>
 <br><br>
 
-| Model Name         | Huggingface | Modelhub | 
-|----------------------|:----:|:-----------: |
-| Aquila2-7B | - |    https://model.baai.ac.cn/model-detail/100118     | 
-| AquilaChat2-7B | - |    https://model.baai.ac.cn/model-detail/100117     | 
-| Aquila2-34B | - |    https://model.baai.ac.cn/model-detail/100119     | 
-| AquilaChat2-34B | - |    https://model.baai.ac.cn/model-detail/100116     | 
-
-
 
 We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **Aquila2-Chat**, the chat models, namely **Aquila2-7B-Chat** and **Aquila2-34B-Chat**.
+
+| Model Name         | Modelhub  | Huggingface | 
+|----------------------|:----:|:-----------: |
+| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
+| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
+| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
+| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
 
 In this repo, you can figure out:
 
