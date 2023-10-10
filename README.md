@@ -31,12 +31,12 @@ In this repo, you can figure out:
 * ...
 
 Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
-<br>
+<br><br>
 
 ## News and Updates
 
 * 2023.10.10 🔥 We release **Aquila2-34B** and **AquilaChat2-34B** on BAAI ModelHub and Hugging Face.
-<br>
+<br><br>
 
 ## Performance
 
@@ -148,7 +148,7 @@ TODO:
 * pytorch 1.12 and above, 2.0 and above are recommended
 * transformers 4.32 and above
 * CUDA 11.4 and above are recommended (this is for GPU users, flash-attention users, etc.)
-<br>
+<br><br>
 
 ## Quickstart
 We have provided a straightforward example to illustrate how to quickly get started with Aquila2.
@@ -225,7 +225,7 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
-<br>
+<br><br>
 
 ### Hugging Face
 
@@ -233,7 +233,7 @@ To use AquilaChat2-7B for the inference, all you need to do is to input a few li
 
 ```python
 ```
-<br>
+<br><br>
 
 ## Quantization
 
@@ -287,11 +287,11 @@ We also profile the peak GPU memory usage for encoding 2048 tokens as context (a
 | Aquila2-34B-Chat (BF16) |               30.15GB               |                38.94GB                |
 | Aquila2-34B-Chat (Int4) |               13.00GB               |                21.79GB                |
 
-<br>
+<br><br>
 
 ## Pretraining
 ### Usage
-<br>
+<br><br>
 
 ## Finetuning
 
@@ -334,32 +334,35 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
     </tr>
 </table>
 
-<br>
+<br><br>
 
 ## Demo
 
 ### Web UI
-Our web will be open soon.
+Our web will be coming soon.
 
-<br>
+<br><br>
 
 ## Long-Context Understanding
 
 To extend the context length and break the bottleneck of training sequence length, we introduce several techniques, including NTK-aware interpolation, window attention, and LogN attention scaling.
 
+<br><br>
+
 ## Tokenizer
 
 Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from deduplicated Pile and deduplicated WuDao contents. We also add some special tokens for passage and conversation separation.
-<br>
+<br><br>
 
 ## Reproduction
 
 For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/README.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
-<br>
+
+<br><br>
 
 ## License Agreement
 
-<br>
+<br><br>
 
 ## Contact Us
 
