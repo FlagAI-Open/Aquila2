@@ -42,6 +42,18 @@ Feel free to shoot us issues (better in English so that more people can understa
 
 Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
+
+
+TODO:
+
+- Model name identity?
+  - AquilaChat2-34B ? Aquila2-34B-Chat
+  - 34B ? 33B
+  - Chat ? chat
+  - 7B ? 7b
+
+
+
 ### Base Model Performance
 
 <br>
@@ -60,7 +72,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 |    LLaMA2-7B    |  34.1  |  46.9  |  31.4  |  16.2  |  41.7  |  3.2   |   12.8    |     36.4      |    67.1    |
 |   LLaMA2-70B    |  52.1  |  69.5  |        |  56.8  |  64.5  |  13.5  |   29.9    |               |    78.0    |
 | **Aquila2-7B**  |  48.9  |  54.9  |  56.1  |  41.9  |  54.0  |  10.9  |   21.4    |     57.3      |    67.5    |
-| **Aquila2-33B** |  62.2  |  60.0  |  65.9  |  56.3  |  64.6  |  11.6  |   25.3    |     60.0      |    70.6    |
+| **Aquila2-34B** |  62.2  |  60.0  |  65.9  |  56.3  |  64.6  |  11.6  |   25.3    |     60.0      |    70.6    |
 
 <br>
 
@@ -68,10 +80,23 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 <br>
 
-|      Model          | Placeholder |
-| :-----------------: | :---------: |
-| **AquilaChat2-7B**  |             |
-| **AquilaChat2-33B** |             |
+| Model              | Avg<br/>(obj. + subj.v2.0) | Avg<br/>(obj. + subj.v1.0) | Avg<br/>(obj.) | Avg<br/>(EN-obj.) | Avg<br/>(ZH-obj.) | Avg<br/>(ZH-subj.v2.0) | Avg<br/>(ZH-subj.v1.0) |
+| :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
+| AquilaChat2-34B    |           70.2            |                            | 70.0 | 75.9 | 67.8 | 75.0 |                        |
+| Baichuan2-13B-Chat |           64.3            |                            | 63.8 | 67.3 | 62.4 | 73.2 |                        |
+| YuLan-Chat-2-13B   |           63.1            |                            | 63.1 | 69.8 | 60.2 | 63.3 |                        |
+| InternLM-Chat-7B   |           61.1            | 61.5 | 61.7 | 62.4 | 61.4 | 50.2 | 58.1 |
+| AquilaChat2-7B     |           60.2            |                            | 59.8 | 68.6 | 56.4 | 67.7 |                        |
+| Baichuan2-7B-Chat  |           58.5            |                            | 57.9 | 62.1 | 56.4 | 67.9 |                        |
+| InternLM-Chat-20B  |           53.8            |                            | 53.3 | 29.7 | 62.4 | 62.7 |                        |
+| ChatGLM2-6B        |           35.3            | 35.7 | 34.2 | 43.7 | 30.2 | 54.2 | 62.1 |
+| Qwen-14B-Chat      |           26.0            |                            | 23.2 | 23.1 | 23.0 | 77.4 |                        |
+| Qwen-7B-Chat       |           13.0            | 13.4 | 0.0 | 0.0 | 0.0 | 67.4 | 75.4 |
+| Baichuan-13B-Chat  |                           | 59.4 | 58.6 | 62.0 | 57.3 |                        | 73.3 |
+| LLaMA-2-13B-Chat   |                           | 49.4 | 50.9 | 65.4 | 45.4 |                        | 22.0 |
+| LLaMA-2-7B-Chat    |                           | 45.8 | 47.3 | 60.5 | 42.2 |                        | 18.3 |
+| Alpaca             |                           | 43.2 | 43.2 | 58.4 | 36.9 |                        |                        |
+| Ziya-LLaMA         |                           | 41.3 | 40.3 | 50.3 | 36.1 |                        | 59.5 |
 
 <br>
 
@@ -84,16 +109,16 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 | GPT-3.5-Turbo-16k    |      -      | 33.6 |  44.7   |  22.6   |          16.0          |         29.2          |         51.6          |         37.7          |
 | AquilaChat2-34b-16k  |  PI + SFT   | 31.7 |  40.2   |  23.3   |          16.5          |         30.0          |         41.9          |         38.5          |
 | ChatGLM2-6B-32k      |  PI + SFT   | 30.8 |  39.6   |  22.0   |          16.2          |         27.7          |         45.1          |         34.0          |
-| AquilaChat2-7b-16k   |  PI + SFT   | 29.5 |  31.7   |  27.2   |          14.4          |         40.0          |         36.1          |         27.3          |
+| AquilaChat2-7B-16k   |  PI + SFT   | 29.5 |  31.7   |  27.2   |          14.4          |         40.0          |         36.1          |         27.3          |
 | InternLM-7B-8k       |      -      | 22.4 |  30.6   |  14.3   |          13.0          |         15.5          |         33.3          |         27.9          |
 | ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |          14.6          |         20.5          |         33.0          |         20.2          |
 | LongChat-7B-v1.5-32k |  PI + SFT   | 21.7 |  26.1   |  17.4   |          14.0          |         20.8          |         31.5          |         20.6          |
-| Baichuan2-7b-chat    |    None     | 21.3 |  25.9   |  16.8   |          13.6          |         20.0          |         32.8          |         18.9          |
-| internlm-20b-chat    |    None     | 16.6 |  24.3   |   8.9   |          11.9          |          6.0          |         24.4          |         24.2          |
-| Qwen-14b-chat        | Dynamic NTK | 16.1 |  20.8   |  11.5   |          16.6          |          6.4          |         22.9          |         18.8          |
+| Baichuan2-7B-chat    |    None     | 21.3 |  25.9   |  16.8   |          13.6          |         20.0          |         32.8          |         18.9          |
+| Internlm-20B-chat    |    None     | 16.6 |  24.3   |   8.9   |          11.9          |          6.0          |         24.4          |         24.2          |
+| Qwen-14B-chat        | Dynamic NTK | 16.1 |  20.8   |  11.5   |          16.6          |          6.4          |         22.9          |         18.8          |
 | XGen-7B-8k           |  Pre-train  | 16.0 |  21.3   |  10.8   |          1.5           |         20.0          |         14.2          |         28.3          |
 | Llama2-7B-chat-4k    |    None     | 14.0 |  18.0   |  10.0   |          0.2           |         19.8          |         11.6          |         24.3          |
-| Baichuan2-13b-chat   |    None     | 10.5 |  14.8   |   6.3   |          7.0           |          5.5          |         16.0          |         13.6          |
+| Baichuan2-13B-chat   |    None     | 10.5 |  14.8   |   6.3   |          7.0           |          5.5          |         16.0          |         13.6          |
 
 <br>
 
