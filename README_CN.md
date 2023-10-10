@@ -9,18 +9,19 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
+        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
 </p>
 <br><br>
 
-我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **Aquila2-7B-Chat** 和 **Aquila2-34B-Chat**。
+我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**。
 
-| 模型名称         | Modelhub  | Huggingface | 
-|----------------------|:----:|:-----------: |
-| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
-| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
-| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
-| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
+| 模型名称           | 下载方式  |
+|-------------------|:---------:|
+| Aquila2-7B        | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+
 
 在这个仓库中，您可以：
 
@@ -41,13 +42,15 @@
 
 ## 更新
 
-* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **Aquila2-34B-Chat**。
+* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **AquilaChat2-34B**。
 
 ## 评测表现
 
 Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下文进行了训练，上下文长度从2048扩展到了8192）相比同规模的基线模型在各项评测数据集上均表现更优，评测数据集包括MMLU、C-Eval、GSM8K、MATH、HumanEval等，考察了模型的自然语言理解能力、数学问题求解能力、代码能力等各方面能力。
 
 ### 基础模型表现
+
+<br>
 
 |      Model      | C-Eval |  MMLU  | CMMLU  | GSM8K  | GaoKao |  MATH  | HumanEval | WMT22 (en-zh) | WinoGrande |
 | :-------------: | :----: | :----: | :----: | :----: | :----: | :----: | :-------: | :-----------: | :--------: |
@@ -69,28 +72,53 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 ### 对话模型表现
 
-|      Model          | Placeholder |
-| :-----------------: | :---------: |
-| **AquilaChat2-7B**  |             |
-| **AquilaChat2-33B** |             |
+<br>
+
+| Model              | Avg<br/>(obj. + subj.v2.0) | Avg<br/>(obj. + subj.v1.0) | Avg<br/>(obj.) | Avg<br/>(EN-obj.) | Avg<br/>(ZH-obj.) | Avg<br/>(ZH-subj.v2.0) | Avg<br/>(ZH-subj.v1.0) |
+| :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
+| AquilaChat2-34B    |           70.2            |                            | 70.0 | 75.9 | 67.8 | 75.0 |                        |
+| Baichuan2-13B-Chat |           64.3            |                            | 63.8 | 67.3 | 62.4 | 73.2 |                        |
+| YuLan-Chat-2-13B   |           63.1            |                            | 63.1 | 69.8 | 60.2 | 63.3 |                        |
+| InternLM-Chat-7B   |           61.1            | 61.5 | 61.7 | 62.4 | 61.4 | 50.2 | 58.1 |
+| AquilaChat2-7B     |           60.2            |                            | 59.8 | 68.6 | 56.4 | 67.7 |                        |
+| Baichuan2-7B-Chat  |           58.5            |                            | 57.9 | 62.1 | 56.4 | 67.9 |                        |
+| InternLM-Chat-20B  |           53.8            |                            | 53.3 | 29.7 | 62.4 | 62.7 |                        |
+| ChatGLM2-6B        |           35.3            | 35.7 | 34.2 | 43.7 | 30.2 | 54.2 | 62.1 |
+| Qwen-14B-Chat      |           26.0            |                            | 23.2 | 23.1 | 23.0 | 77.4 |                        |
+| Qwen-7B-Chat       |           13.0            | 13.4 | 0.0 | 0.0 | 0.0 | 67.4 | 75.4 |
+| Baichuan-13B-Chat  |                           | 59.4 | 58.6 | 62.0 | 57.3 |                        | 73.3 |
+| LLaMA-2-13B-Chat   |                           | 49.4 | 50.9 | 65.4 | 45.4 |                        | 22.0 |
+| LLaMA-2-7B-Chat    |                           | 45.8 | 47.3 | 60.5 | 42.2 |                        | 18.3 |
+| Alpaca             |                           | 43.2 | 43.2 | 58.4 | 36.9 |                        |                        |
+| Ziya-LLaMA         |                           | 41.3 | 40.3 | 50.3 | 36.1 |                        | 59.5 |
 
 <br>
 
 ### 长文本任务表现
-|           Model           |       Method       | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Selection | Other |
-| :-----------------------: | :----------------: | :------: | :-----: | :-----------: | :-------------: | :------: | :--------: | :-------: | :---: |
-|     GPT-3.5-Turbo-16K     |      Unknown       |   47.6   |  36.2   |     23.0      |      54.5       |   77.5   |    27.5    |   33.6    | 35.3  |
-|   LongChat-7B-v1.5-32K    |       PI+SFT       |   27.5   |  20.3   |     22.5      |      57.0       |   62.9   |    18.8    |   21.7    | 23.7  |
-|      ChatGLM2-6B-32K      | Continual Pretrain |   44.1   |  34.7   |     20.8      |      52.7       |   68.7   |    23.6    |   30.8    | 31.6  |
-|  Baichuan2-13B-Chat-16K   |        None        |   14.5   |  12.6   |     14.0      |                 |   22.2   |    11.9    |   11.6    | 14.7  |
-| Qwen-14B-Chat-dynamic-ntk |    Dynamic NTK     |   24.4   |  20.2   |     22.3      |      37.3       |   47.2   |    18.6    |   16.1    | 24.0  |
-|     Internlm-20B-Chat     |        None        |   19.2   |  17.5   |     16.7      |      26.0       |   41.0   |    16.5    |   16.6    | 19.7  |
-|    **Aquila2-7B-16K**     |       PI+SFT       |   21.8   |  22.4   |     19.1      |      22.8       |   50.1   |    18.4    |   29.5    | 25.0  |
-|    **Aquila2-33B-16K**    |       PI+SFT       |          |         |               |                 |          |            |   31.7    | 29.5  |
+
+<br>
+
+| Model                |   Method    | Avg. | ZH-Avg. | EN-Avg. | VCSUM(zh)<br>(Chinese) | LSHT(zh)<br>(Chinese) | HotpotQA<br>(English) | 2WikiMQA<br>(English) |
+| :------------------- | :---------: | :--: | :-----: | :-----: | :--------------------: | :-------------------: | :-------------------: | :-------------------: |
+| GPT-3.5-Turbo-16k    |      -      | 33.6 |  44.7   |  22.6   |          16.0          |         29.2          |         51.6          |         37.7          |
+| AquilaChat2-34b-16k  |  PI + SFT   | 31.7 |  40.2   |  23.3   |          16.5          |         30.0          |         41.9          |         38.5          |
+| ChatGLM2-6B-32k      |  PI + SFT   | 30.8 |  39.6   |  22.0   |          16.2          |         27.7          |         45.1          |         34.0          |
+| AquilaChat2-7b-16k   |  PI + SFT   | 29.5 |  31.7   |  27.2   |          14.4          |         40.0          |         36.1          |         27.3          |
+| InternLM-7B-8k       |      -      | 22.4 |  30.6   |  14.3   |          13.0          |         15.5          |         33.3          |         27.9          |
+| ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |          14.6          |         20.5          |         33.0          |         20.2          |
+| LongChat-7B-v1.5-32k |  PI + SFT   | 21.7 |  26.1   |  17.4   |          14.0          |         20.8          |         31.5          |         20.6          |
+| Baichuan2-7b-chat    |    None     | 21.3 |  25.9   |  16.8   |          13.6          |         20.0          |         32.8          |         18.9          |
+| internlm-20b-chat    |    None     | 16.6 |  24.3   |   8.9   |          11.9          |          6.0          |         24.4          |         24.2          |
+| Qwen-14b-chat        | Dynamic NTK | 16.1 |  20.8   |  11.5   |          16.6          |          6.4          |         22.9          |         18.8          |
+| XGen-7B-8k           |  Pre-train  | 16.0 |  21.3   |  10.8   |          1.5           |         20.0          |         14.2          |         28.3          |
+| Llama2-7B-chat-4k    |    None     | 14.0 |  18.0   |  10.0   |          0.2           |         19.8          |         11.6          |         24.3          |
+| Baichuan2-13b-chat   |    None     | 10.5 |  14.8   |   6.3   |          7.0           |          5.5          |         16.0          |         13.6          |
 
 <br>
 
 ### 推理任务表现
+
+<br>
 
 | Model                        | Avg. | bAbI#16<br>(Inductive) | CLUTRR<br>(Inductive) | bAbI#15<br>(Deductive) | EntailmentBank<br>(Deductive) | αNLI<br>(Abductive) | E-Care<br>(Casual) |
 | :--------------------------- | :--: | :--------------------: | :-------------------: | :--------------------: | :---------------------------: | :-----------------: | :----------------: |
@@ -102,9 +130,9 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 | ChatGPT                      | 55.6 |          46.7          |          6.7          |          86.7          |             83.3              |        63.3         |        46.7        |
 | LLaMA-70B-Chat               | 57.2 |          63.3          |         20.0          |          53.3          |             80.0              |        66.7         |        60.0        |
 | GPT-4                        | 81.1 |          93.3          |         36.7          |         100.0          |             90.0              |        83.3         |        83.3        |
-| **Aquila2-34B-Chat**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
-| **Aquila2-34B-Chat+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
-| **Aquila2-34B-Chat+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
+| **AquilaChat2-34B**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
+| **AquilaChat2-34B+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
+| **AquilaChat2-34B+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
 
 <br>
 
@@ -121,18 +149,23 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 在您动手操作之前，请确认您已经设置好了运行环境，并成功安装了必要的代码包。首先，请确保满足这些先决条件，然后按照下面的指示安装必要的库和依赖。
 
+
 ```
 pip install -r requirements.txt
+https://github.com/FlagAI-Open/FlagAI.git
+(cd FlagAI/ && python setup.py install)
 ```
 
 如果您的显卡兼容 fp16 或 bf16 精度，我们还建议您安装 flash-attention，以增加运行速度和减少显存使用。请注意，flash-attention 不是必须的，没有它您也能正常执行该项目。
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
-现在可以开始使用 Transformers 或 Modelhub 来运行我们的模型。
+除了以上这些，您也可以通过直接[下载docker文件](https://model.baai.ac.cn/model-detail/220118)并安装来配置Aquila2所需的环境。
+
+现在可以开始使用 <img src="assets/baai.png" width="14"/> Modelhub 或 🤗Transformers 来运行我们的模型。
 
 
-### ModelHub
+### <img src="assets/baai.png" width="18"/> ModelHub
 
 要使用 Aquila2-Chat 进行推理，你只需要输入下面演示的几行代码。
 
@@ -205,10 +238,38 @@ for text in test_data:
 
 </details>
 
+### 🤗 Transformers
+
+```python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+device = torch.device("cuda")
+model_info = "BAAI/AquilaChat2-7B"
+tokenizer = AutoTokenizer.from_pretrained(model_info, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_info, trust_remote_code=True)
+model.eval()
+model.to(device)
+text = "请给出10个要到北京旅游的理由。"
+tokens = tokenizer.encode_plus(text)['input_ids'][:-1]
+tokens = torch.tensor(tokens)[None,].to(device)
+stop_tokens = ["###", "[UNK]", "</s>"]
+with torch.no_grad():
+    out = model.generate(tokens, do_sample=True, max_length=512, eos_token_id=100007, bad_words_ids=[[tokenizer.encode(token)[0] for token in stop_tokens]])[0]
+    out = tokenizer.decode(out.cpu().numpy().tolist())
+    print(out)
+```
 
 ## 量化
 
 ### 用法
+
+使用量化之前，需要安装`BitsAndBytesConfig`：
+
+```
+pip install bitsandbytes
+```
+
+接下来就可以使用量化模型进行推理啦！
 
 ```python
 import torch 
@@ -241,17 +302,6 @@ for text in test_data:
 
 ```
 
-### 效果评测
-
----量化效果(可选)---
-
-### 推理速度
-
----量化推理速度(可选)---
-
-### 显存使用
-
----量化显存使用(可选)---
 <br><br>
 
 ## 微调
@@ -261,7 +311,17 @@ for text in test_data:
 在进行微调操作之前，您必须先准备好您的训练数据。所有样本需要集中到一个列表中，并存储在一个 json 文件里。每个样本应表现为一个字典，包括 id 和 conversation，其中，conversation 以列表的形式展现。以下提供了一个示例：
 
 ```json
-{"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
+{
+	"id": "alpaca_data.json_1",
+	"conversations": [{
+		"from": "human",
+		"value": "What are the three primary colors?"
+	}, {
+		"from": "gpt",
+		"value": "The three primary colors are red, blue, and yellow."
+	}],
+	"instruction": ""
+}
 ```
 
 然后您可以使用我们提供不同的微调脚本实现不同功能：
@@ -343,33 +403,27 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 长文本理解
 
----介绍---
 
----评测结果---
 
-## Tokenization
+## Tokenizer
 
----中文可以简单说说tokenization是什么（因为这词没有好的中文对应翻译）---
+我们的 tokenizer 是 50G 大小数据集上训练得到的 BBPE 类型 tokenizer。数据集主要从去重后的Pile和悟道数据集抽样得到。
 
----给一个tokenizer文档的link(可选)---
 <br><br>
 
 ## 复现
 
----复现评测的脚本(可选)---
 <br><br>
 
 ## FAQ
 
 欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/FlagAI/issues) 中提出你的问题，或在 [Discussions ](https://github.com/FlagAI-Open/FlagAI/discussions) 板块交流使用经验。
-
----之后可以弄一个常见问题的文档link放到这里---
 <br><br>
 
 ## 使用协议
 
 Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)
----可能还需要补充---
+
 <br><br>
 
 ## 联系我们

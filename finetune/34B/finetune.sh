@@ -32,7 +32,7 @@ CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
 MODEL_NAME_OUTPUT=$MODEL_NAME_INPUT-sft-$EXPNAME
 
 # Path to the deepspeed config 
-DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/34B/ds_zero2.config
+DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/34B/ds_zero3.config
 
 # Path to the hostfile
 HOSTFILE=$AQUILA2_HOME/finetune/34B/hostfile
