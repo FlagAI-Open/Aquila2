@@ -43,6 +43,8 @@ Feel free to shoot us issues (better in English so that more people can understa
 
 Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
+### Base Model Performance
+
 |      Model      | C-Eval |  MMLU  | CMMLU  | GSM8K  | GaoKao |  MATH  | HumanEval | WMT22 (en-zh) | WinoGrande |
 | :-------------: | :----: | :----: | :----: | :----: | :----: | :----: | :-------: | :-----------: | :--------: |
 |                 | 5-shot | 5-shot | 5-shot | 8-shot |        | 4-shot |  0-shot   |    0-shot     |   0-shot   |
@@ -61,7 +63,17 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 <br>
 
+### Chat Model Performance
+
+|      Model          | Placeholder |
+| :-----------------: | :---------: |
+| **AquilaChat2-7B**  |             |
+| **AquilaChat2-33B** |             |
+
+<br>
+
 ### Long Context Performance
+
 |           Model           |       Method       | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Selection | Other |
 | :-----------------------: | :----------------: | :------: | :-----: | :-----------: | :-------------: | :------: | :--------: | :-------: | :---: |
 |     GPT-3.5-Turbo-16K     |      Unknown       |   47.6   |  36.2   |     23.0      |      54.5       |   77.5   |    27.5    |   33.6    | 35.3  |
@@ -75,7 +87,8 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 <br>
 
-### Reasoning Performance
+### Reasoning Tasks Performance
+
 |      Model      | Placeholder |
 | :-------------: | :---------: |
 |     ChatGPT     |             |
