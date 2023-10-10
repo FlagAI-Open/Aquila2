@@ -12,8 +12,7 @@
     <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp<a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 <br>
 </p>
-<br><br>
-
+<br>
 
 We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**.
 
@@ -33,7 +32,7 @@ In this repo, you can figure out:
 * ...
 
 Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
-<br><br>
+<br>
 
 ## News and Updates
 
@@ -60,7 +59,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 | **Aquila2-7B**  |  48.9  |  54.9  |  56.1  |  41.9  |  54.0  |  10.9  |   21.4    |     57.3      |    67.5    |
 | **Aquila2-33B** |  62.2  |  60.0  |  65.9  |  56.3  |  64.6  |  11.6  |   25.3    |     60.0      |    70.6    |
 
-<br><br>
+<br>
 
 ### Long Context Performance
 |           Model           |       Method       | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Selection | Other |
@@ -74,7 +73,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 |    **Aquila2-7B-16K**     |       PI+SFT       |   21.8   |  22.4   |     19.1      |      22.8       |   50.1   |    18.4    |   29.5    | 25.0  |
 |    **Aquila2-33B-16K**    |       PI+SFT       |          |         |               |                 |          |            |   31.7    | 29.5  |
 
-<br><br>
+<br>
 
 ### Reasoning Performance
 |      Model      | Placeholder |
@@ -89,7 +88,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 | **Aquila2-7B**  |             |
 | **Aquila2-33B** |             |
 
-<br><br>
+<br>
 
 ## Requirements
 
@@ -175,14 +174,14 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
-<br><br>
+<br>
 #### Hugging Face
 
 To use AquilaChat2-7B for the inference, all you need to do is to input a few lines of codes as demonstrated below. 
 
 ```python
 ```
-<br><br>
+<br>
 
 ## Quantization
 
@@ -236,13 +235,11 @@ We also profile the peak GPU memory usage for encoding 2048 tokens as context (a
 | Aquila2-34B-Chat (BF16) |               30.15GB               |                38.94GB                |
 | Aquila2-34B-Chat (Int4) |               13.00GB               |                21.79GB                |
 
-<br><br>
-
 <br>
 
 ## Pretraining
 ### Usage
-<br><br>
+<br>
 
 ## Finetuning
 
@@ -292,7 +289,7 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
 ### Web UI
 Our web will be open soon.
 
-<br><br>
+<br>
 
 ## Long-Context Understanding
 
@@ -301,16 +298,16 @@ To extend the context length and break the bottleneck of training sequence lengt
 ## Tokenizer
 
 Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from deduplicated Pile and deduplicated WuDao contents. We also add some special tokens for passage and conversation separation.
-<br><br>
+<br>
 
 ## Reproduction
 
 For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/README.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
-<br><br>
+<br>
 
 ## License Agreement
 
-<br><br>
+<br>
 
 ## Contact Us
 
