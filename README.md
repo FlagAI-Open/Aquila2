@@ -301,7 +301,17 @@ We provide users with a series of fine-tuning scripts designed to adapt models t
 Before initiating the fine-tuning process, you are required to have your training data prepared. All samples should be consolidated into a list and stored in a json file. Each sample should be represented as a dictionary, encompassing an ID and conversation, with the latter presented in list format. Below is an example for your reference:
 
 ```json
-{"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
+{
+	"id": "alpaca_data.json_1",
+	"conversations": [{
+		"from": "human",
+		"value": "What are the three primary colors?"
+	}, {
+		"from": "gpt",
+		"value": "The three primary colors are red, blue, and yellow."
+	}],
+	"instruction": ""
+}
 ```
 Subsequently, you can utilize the variety of fine-tuning scripts we offer for different purposes:
 
