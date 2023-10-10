@@ -42,18 +42,6 @@ Feel free to shoot us issues (better in English so that more people can understa
 
 Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
 
-
-
-TODO:
-
-- Model name identity?
-  - AquilaChat2-34B ? Aquila2-34B-Chat
-  - 34B ? 33B
-  - Chat ? chat
-  - 7B ? 7b
-
-
-
 ### Base Model Performance
 
 <br>
