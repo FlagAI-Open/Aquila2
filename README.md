@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>
+    <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp<a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp
 <br>
 <a href="assets/wechat-qrcode.jpg">WeChat (微信)</a>&nbsp&nbsp
 </p>
