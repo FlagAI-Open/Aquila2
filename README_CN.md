@@ -336,9 +336,10 @@ bash finetune/34B/finetune_qlora.sh
 <br><br>
 
 ## 预训练
+从Aquila2开始，我们升级了底层的预训练框架，现在以[FlagScale](https://github.com/FlagOpen/FlagScale)项目进行开源。目前，它基于Megatron-LM项目，旨在在不牺牲数值稳定性和模型有效性的前提下，高效利用计算资源来训练大型语言模型（LLMs）。
 
----预训练使用(玉龙)---
-<br><br>
+在FlagScale中，我们率先提供了实际训练中使用的Aquila2-7B和Aquila2-34B的训练方案，包括并行策略、优化选择和超参数设置。通过使用FlagScale，模型FLOPs利用率在Aquila2-7B和Aquila2-34B上均可达到约58%。目前，FlagScale仍处于早期阶段，我们将与社区共同努力，以在不同的硬件架构上支持各种LLMs。
+
 
 ## 长文本理解
 
