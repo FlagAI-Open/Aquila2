@@ -200,7 +200,7 @@ test_data = [
 
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
-    # False Aquila2-7B or Aquila2-34B，you need to set sft=False
+    # For Aquila2-7B or Aquila2-34B，you need to set sft=False
     # print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
