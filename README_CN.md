@@ -37,7 +37,7 @@
 
 
 
-<br><br>
+<br>
 
 ## 更新
 
@@ -124,9 +124,12 @@ pip install -r requirements.txt
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
-### 对话模型推理
+现在可以开始使用 Transformers 或 Modelhub 来运行我们的模型。
 
-接下来可以使用`AquilaChat2-7B`对话模型来进行推理：
+
+### ModelHub
+
+要使用 Aquila2-Chat 进行推理，你只需要输入下面演示的几行代码。
 
 ```python
 from flagai.auto_model.auto_loader import AutoLoader
@@ -137,13 +140,13 @@ model_name = 'AquilaChat2-7B'
 # model_name = 'AquilaChat2-34B'
 
 # 加载模型以及tokenizer
-autoloader = AutoLoader("aquila2", model_name=model_name）
+autoloader = AutoLoader("aquila2", model_name=model_name)
 # 使用model_dir参数调整模型加载路径
-# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
+# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name)
 # 如需加载LoRA模块，需要额外提供LoRA模块的地址
-# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf')
 # 如需加载Q-LoRA模块，需要额外提供Q-LoRA模块的地址
-# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf')
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
@@ -167,9 +170,11 @@ model in: A chat between a curious human and an artificial intelligence assistan
 皎洁月光洒九洲，团圆佳节倍思悠。
 ```
 
-### 基础模型推理
+基础模型推理的用法类似，与对话模型的不同之处只在于模型推理的时候需要设置`sft=False`
 
-基础模型推理与对话模型的不同在于模型推理的时候需要设置`sft=False`
+<details>
+  <summary>Aquila2基础模型推理</summary>
+
 ```python
 from flagai.auto_model.auto_loader import AutoLoader
 
@@ -194,13 +199,43 @@ for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
+</details>
 
 
 ## 量化
 
 ### 用法
 
----量化用法---
+```python
+import torch 
+from flagai.auto_model.auto_loader import AutoLoader
+from transformers import BitsAndBytesConfig
+
+
+model_name = 'AquilaChat2-7B'
+
+autoloader = AutoLoader("aquila2", model_name=model_name, 
+    quantization_config=BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16,
+    ))
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+# 
+
+test_data = [
+    "北京的十大景点是什么?请将回答翻译成英文和日语",
+    "写一首中秋主题的五言绝句",
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer))
+
+```
 
 ### 效果评测
 

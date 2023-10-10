@@ -121,11 +121,11 @@ If your device supports fp16 or bf16 precision, we also recommend installing fla
 
 For the installation of flash-attention, please refer to https://github.com/Dao-AILab/flash-attention/.
 
-### Chat Model Inference
+### ModelHub
 
 You can now utilize the AquilaChat2-7B model for inference as follows:
 
-```
+```python
 from flagai.auto_model.auto_loader import AutoLoader
 
 
@@ -134,13 +134,13 @@ model_name = 'AquilaChat2-7B'
 # model_name = 'AquilaChat2-34B'
 
 # Load the model and tokenizer
-autoloader = AutoLoader("aquila2", model_name=model_name）
+autoloader = AutoLoader("aquila2", model_name=model_nam)
 # To modify the model loading path, use the model_dir parameter
-# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name）
+# autoloader = AutoLoader("aquila2", model_dir='./checkpoints', model_name=model_name)
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，lora_dir='./examples/checkpoints/lora/aquila2chat-hf')
 # To load the LoRA module, you need to provide the path to the LoRA module
-# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf'）
+# autoloader = AutoLoader("aquila2", model_name=model_name，qlora_dir='./examples/checkpoints/qlora/aquila2chat-hf')
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
@@ -211,11 +211,33 @@ Running Aquila2 pretrained base model is also simple.
 
 ### Usage
 
-```bash
-pip install auto-gptq optimum
-```
-
 ```python
+import torch 
+from flagai.auto_model.auto_loader import AutoLoader
+from transformers import BitsAndBytesConfig
+
+
+model_name = 'AquilaChat2-7B'
+
+autoloader = AutoLoader("aquila2", model_name=model_name, 
+    quantization_config=BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.bfloat16,
+    ))
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+# 
+
+test_data = [
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer))
+
 ```
 
 ### Performance
