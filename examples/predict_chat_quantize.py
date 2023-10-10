@@ -1,4 +1,4 @@
-import torch 
+import torch
 from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
 

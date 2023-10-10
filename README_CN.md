@@ -15,12 +15,13 @@
 
 我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**。
 
-| 模型名称         | Modelhub  | Huggingface | 
-|----------------------|:----:|:-----------: |
-| Aquila2-7B | https://model.baai.ac.cn/model-detail/100118 |    -     | 
-| AquilaChat2-7B | https://model.baai.ac.cn/model-detail/100117 |   -      | 
-| Aquila2-34B | https://model.baai.ac.cn/model-detail/100119  |    -    | 
-| AquilaChat2-34B | https://model.baai.ac.cn/model-detail/100116 |   -      |
+| 模型名称           | 下载方式  |
+|-------------------|:---------:|
+| Aquila2-7B        | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+
 
 在这个仓库中，您可以：
 
@@ -148,18 +149,23 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 在您动手操作之前，请确认您已经设置好了运行环境，并成功安装了必要的代码包。首先，请确保满足这些先决条件，然后按照下面的指示安装必要的库和依赖。
 
+
 ```
 pip install -r requirements.txt
+https://github.com/FlagAI-Open/FlagAI.git
+(cd FlagAI/ && python setup.py install)
 ```
 
 如果您的显卡兼容 fp16 或 bf16 精度，我们还建议您安装 flash-attention，以增加运行速度和减少显存使用。请注意，flash-attention 不是必须的，没有它您也能正常执行该项目。
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
-现在可以开始使用 Transformers 或 Modelhub 来运行我们的模型。
+除了以上这些，您也可以通过直接[下载docker文件](https://model.baai.ac.cn/model-detail/220118)并安装来配置Aquila2所需的环境。
+
+现在可以开始使用 <img src="assets/baai.png" width="14"/> Modelhub 或 🤗Transformers 来运行我们的模型。
 
 
-### ModelHub
+### <img src="assets/baai.png" width="18"/> ModelHub
 
 要使用 Aquila2-Chat 进行推理，你只需要输入下面演示的几行代码。
 
@@ -232,10 +238,38 @@ for text in test_data:
 
 </details>
 
+### 🤗 Transformers
+
+```python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+device = torch.device("cuda")
+model_info = "BAAI/AquilaChat2-7B"
+tokenizer = AutoTokenizer.from_pretrained(model_info, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(model_info, trust_remote_code=True)
+model.eval()
+model.to(device)
+text = "请给出10个要到北京旅游的理由。"
+tokens = tokenizer.encode_plus(text)['input_ids'][:-1]
+tokens = torch.tensor(tokens)[None,].to(device)
+stop_tokens = ["###", "[UNK]", "</s>"]
+with torch.no_grad():
+    out = model.generate(tokens, do_sample=True, max_length=512, eos_token_id=100007, bad_words_ids=[[tokenizer.encode(token)[0] for token in stop_tokens]])[0]
+    out = tokenizer.decode(out.cpu().numpy().tolist())
+    print(out)
+```
 
 ## 量化
 
 ### 用法
+
+使用量化之前，需要安装`BitsAndBytesConfig`：
+
+```
+pip install bitsandbytes
+```
+
+接下来就可以使用量化模型进行推理啦！
 
 ```python
 import torch 
@@ -268,17 +302,6 @@ for text in test_data:
 
 ```
 
-### 效果评测
-
----量化效果(可选)---
-
-### 推理速度
-
----量化推理速度(可选)---
-
-### 显存使用
-
----量化显存使用(可选)---
 <br><br>
 
 ## 微调
@@ -288,7 +311,17 @@ for text in test_data:
 在进行微调操作之前，您必须先准备好您的训练数据。所有样本需要集中到一个列表中，并存储在一个 json 文件里。每个样本应表现为一个字典，包括 id 和 conversation，其中，conversation 以列表的形式展现。以下提供了一个示例：
 
 ```json
-{"id": "alpaca_data.json_1", "conversations": [{"from": "human", "value": "What are the three primary colors?"}, {"from": "gpt", "value": "The three primary colors are red, blue, and yellow."}], "instruction": ""}
+{
+	"id": "alpaca_data.json_1",
+	"conversations": [{
+		"from": "human",
+		"value": "What are the three primary colors?"
+	}, {
+		"from": "gpt",
+		"value": "The three primary colors are red, blue, and yellow."
+	}],
+	"instruction": ""
+}
 ```
 
 然后您可以使用我们提供不同的微调脚本实现不同功能：
@@ -369,11 +402,9 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 长文本理解
 
----介绍---
 
----评测结果---
 
-## Tokenization
+## Tokenizer
 
 我们的 tokenizer 是 50G 大小数据集上训练得到的 BBPE 类型 tokenizer。数据集主要从去重后的Pile和悟道数据集抽样得到。
 
@@ -381,13 +412,17 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 复现
 
----复现评测的脚本(可选)---
+<br><br>
+
+## FAQ
+
+欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/FlagAI/issues) 中提出你的问题，或在 [Discussions ](https://github.com/FlagAI-Open/FlagAI/discussions) 板块交流使用经验。
 <br><br>
 
 ## 使用协议
 
 Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)
----可能还需要补充---
+
 <br><br>
 
 ## 联系我们
