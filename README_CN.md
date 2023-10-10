@@ -9,11 +9,11 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp <a href="https://model.baai.ac.cn/models">ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
+        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">微信</a>
 </p>
 <br><br>
 
-我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **Aquila2-7B-Chat** 和 **Aquila2-34B-Chat**。
+我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**。
 
 | 模型名称         | Modelhub  | Huggingface | 
 |----------------------|:----:|:-----------: |
@@ -41,7 +41,7 @@
 
 ## 更新
 
-* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **Aquila2-34B-Chat**。
+* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **AquilaChat2-34B**。
 
 ## 评测表现
 
@@ -116,9 +116,9 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 | ChatGPT                      | 55.6 |          46.7          |          6.7          |          86.7          |             83.3              |        63.3         |        46.7        |
 | LLaMA-70B-Chat               | 57.2 |          63.3          |         20.0          |          53.3          |             80.0              |        66.7         |        60.0        |
 | GPT-4                        | 81.1 |          93.3          |         36.7          |         100.0          |             90.0              |        83.3         |        83.3        |
-| **Aquila2-34B-Chat**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
-| **Aquila2-34B-Chat+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
-| **Aquila2-34B-Chat+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
+| **AquilaChat2-34B**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
+| **AquilaChat2-34B+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
+| **AquilaChat2-34B+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
 
 <br>
 
@@ -362,9 +362,8 @@ bash finetune/34B/finetune_qlora.sh
 
 ## Tokenization
 
----中文可以简单说说tokenization是什么（因为这词没有好的中文对应翻译）---
+我们的 tokenizer 是 50G 大小数据集上训练得到的 BBPE 类型 tokenizer。数据集主要从去重后的Pile和悟道数据集抽样得到。
 
----给一个tokenizer文档的link(可选)---
 <br><br>
 
 ## 复现
