@@ -200,6 +200,8 @@ test_data = [
 
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
+    # False Aquila2-7B or Aquila2-34B，you need to set sft=False
+    # print(model.predict(text, tokenizer=tokenizer, sft=False))
 ```
 
 The results of our execution are as follows:
@@ -208,33 +210,6 @@ The results of our execution are as follows:
 Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfast.  Say that three times fast and see how long you can make it last!
 ```
 
-The distinction between the basic model inference and the dialogue model is that it requires setting sft=False during the model inference.
-
-<details>
-  <summary>Aquila2 base model inference</summary>
-
-```python
-from flagai.auto_model.auto_loader import AutoLoader
-
-# Model name
-model_name = 'Aquila2-7B'
-# model_name = 'Aquila2-34B'
-
-# Load the model and tokenizer
-autoloader = AutoLoader("aquila2", model_name=model_name)
-
-model = autoloader.get_model()
-tokenizer = autoloader.get_tokenizer()
-
-# Example
-test_data = [
-    "Write a tongue twister that's extremely difficult to pronounce.",
-]
-
-for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer, sft=False))
-```
-</details>
 <br><br>
 
 
