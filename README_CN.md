@@ -49,6 +49,8 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 ### 基础模型表现
 
+<br>
+
 |      Model      | C-Eval |  MMLU  | CMMLU  | GSM8K  | GaoKao |  MATH  | HumanEval | WMT22 (en-zh) | WinoGrande |
 | :-------------: | :----: | :----: | :----: | :----: | :----: | :----: | :-------: | :-----------: | :--------: |
 |                 | 5-shot | 5-shot | 5-shot | 8-shot |        | 4-shot |  0-shot   |    0-shot     |   0-shot   |
@@ -69,6 +71,8 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 ### 对话模型表现
 
+<br>
+
 |      Model          | Placeholder |
 | :-----------------: | :---------: |
 | **AquilaChat2-7B**  |             |
@@ -77,20 +81,30 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 <br>
 
 ### 长文本任务表现
-|           Model           |       Method       | SingleQA | MultiQA | Summarization | Code Completion | Few Shot | Synthetics | Selection | Other |
-| :-----------------------: | :----------------: | :------: | :-----: | :-----------: | :-------------: | :------: | :--------: | :-------: | :---: |
-|     GPT-3.5-Turbo-16K     |      Unknown       |   47.6   |  36.2   |     23.0      |      54.5       |   77.5   |    27.5    |   33.6    | 35.3  |
-|   LongChat-7B-v1.5-32K    |       PI+SFT       |   27.5   |  20.3   |     22.5      |      57.0       |   62.9   |    18.8    |   21.7    | 23.7  |
-|      ChatGLM2-6B-32K      | Continual Pretrain |   44.1   |  34.7   |     20.8      |      52.7       |   68.7   |    23.6    |   30.8    | 31.6  |
-|  Baichuan2-13B-Chat-16K   |        None        |   14.5   |  12.6   |     14.0      |                 |   22.2   |    11.9    |   11.6    | 14.7  |
-| Qwen-14B-Chat-dynamic-ntk |    Dynamic NTK     |   24.4   |  20.2   |     22.3      |      37.3       |   47.2   |    18.6    |   16.1    | 24.0  |
-|     Internlm-20B-Chat     |        None        |   19.2   |  17.5   |     16.7      |      26.0       |   41.0   |    16.5    |   16.6    | 19.7  |
-|    **Aquila2-7B-16K**     |       PI+SFT       |   21.8   |  22.4   |     19.1      |      22.8       |   50.1   |    18.4    |   29.5    | 25.0  |
-|    **Aquila2-33B-16K**    |       PI+SFT       |          |         |               |                 |          |            |   31.7    | 29.5  |
+
+<br>
+
+| Model                |   Method    | Avg. | ZH-Avg. | EN-Avg. |
+| :------------------- | :---------: | :--: | :-----: | :-----: |
+| GPT-3.5-Turbo-16k    |      -      | 33.6 |  44.7   |  22.6   |
+| AquilaChat2-34b-16k  |  PI + SFT   | 31.7 |  40.2   |  23.3   |
+| ChatGLM2-6B-32k      |  PI + SFT   | 30.8 |  39.6   |  22.0   |
+| AquilaChat2-7b-16k   |  PI + SFT   | 29.5 |  31.7   |  27.2   |
+| InternLM-7B-8k       |      -      | 22.4 |  30.6   |  14.3   |
+| ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |
+| LongChat-7B-v1.5-32k |  PI + SFT   | 21.7 |  26.1   |  17.4   |
+| Baichuan2-7b-chat    |    None     | 21.3 |  25.9   |  16.8   |
+| internlm-20b-chat    |    None     | 16.6 |  24.3   |   8.9   |
+| Qwen-14b-chat        | Dynamic NTK | 16.1 |  20.8   |  11.5   |
+| XGen-7B-8k           |  Pre-train  | 16.0 |  21.3   |  10.8   |
+| Llama2-7B-chat-4k    |    None     | 14.0 |  18.0   |  10.0   |
+| Baichuan2-13b-chat   |    None     | 10.5 |  14.8   |   6.3   |
 
 <br>
 
 ### 推理任务表现
+
+<br>
 
 | Model                        | Avg. | bAbI#16<br>(Inductive) | CLUTRR<br>(Inductive) | bAbI#15<br>(Deductive) | EntailmentBank<br>(Deductive) | αNLI<br>(Abductive) | E-Care<br>(Casual) |
 | :--------------------------- | :--: | :--------------------: | :-------------------: | :--------------------: | :---------------------------: | :-----------------: | :----------------: |
