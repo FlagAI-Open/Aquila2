@@ -13,14 +13,16 @@
 </p>
 <br><br>
 
-我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，以及对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**。
+我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**，长文本对话模型**AquilaChat2-7B-16k** 和 **AquilaChat2-34B-16k**
 
 | 模型名称           | 下载方式  |
 |-------------------|:---------:|
 | Aquila2-7B        | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
 | AquilaChat2-7B    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| AquilaChat2-7B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) 🤗|    -    | 
 | Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
 | AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) 🤗|    -    |
 
 
 在这个仓库中，您可以：
@@ -123,7 +125,6 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 | ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |          14.6          |         20.5          |         33.0          |         20.2          |
 | LongChat-7B-v1.5-32K |  PI + SFT   | 21.7 |  26.1   |  17.4   |          14.0          |         20.8          |         31.5          |         20.6          |
 | Baichuan2-7B-Chat   |    None     | 21.3 |  25.9   |  16.8   |          13.6          |         20.0          |         32.8          |         18.9          |
-| **AquilaChat2-7B-NLPE** | NLPE | 17.2 | 19.8 | 14.6 |          10.3          |         19.0          |         19.6          |         20.0          |
 | Internlm-20B-Chat   |    None     | 16.6 |  24.3   |   8.9   |          11.9          |          6.0          |         24.4          |         24.2          |
 | Qwen-14B-Chat       | Dynamic NTK | 16.1 |  20.8   |  11.5   |          16.6          |          6.4          |         22.9          |         18.8          |
 | XGen-7B-8K          |  Pre-train  | 16.0 |  21.3   |  10.8   |          1.5           |         20.0          |         14.2          |         28.3          |
@@ -389,8 +390,9 @@ bash finetune/34B/finetune_qlora.sh
 在FlagScale中，我们率先提供了实际训练中使用的Aquila2-7B和Aquila2-34B的训练方案，包括并行策略、优化选择和超参数设置。通过使用FlagScale，模型FLOPs利用率在Aquila2-7B和Aquila2-34B上均可达到约58%。目前，FlagScale仍处于早期阶段，我们将与社区共同努力，以在不同的硬件架构上支持各种LLMs。
 
 
-## 长文本理解
-
+## 长文本处理
+AquilaChat2-34B-16K以Aquila2-34B为基座，经过位置编码内插法处理，并在20W条优质长文本对话数据集上做了SFT，将模型的有效上下文窗口长度扩展至16K。我们在[LongBench](https://github.com/THUDM/LongBench)上测试了四项中英文长文本问答、总结任务。评测效果显示，AquilaChat2-34B-16K处于开源长文本模型的领先水平，接近 GPT-3.5-16k。
+### 用法
 
 
 ## Tokenizer

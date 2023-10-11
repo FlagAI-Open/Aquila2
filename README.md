@@ -13,14 +13,16 @@
 </p>
 <br>
 
-We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**.
+We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**
 
 | Model Name         | Download Sources  | 
 |-------------------|:---------:|
 | Aquila2-7B        | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
 | AquilaChat2-7B    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| AquilaChat2-7B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) 🤗|    -    | 
 | Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
 | AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) 🤗|    -    |
 
 In this repo, you can figure out:
 
@@ -117,7 +119,6 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 | ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |          14.6          |         20.5          |         33.0          |         20.2          |
 | LongChat-7B-v1.5-32K |  PI + SFT   | 21.7 |  26.1   |  17.4   |          14.0          |         20.8          |         31.5          |         20.6          |
 | Baichuan2-7B-Chat   |    None     | 21.3 |  25.9   |  16.8   |          13.6          |         20.0          |         32.8          |         18.9          |
-| **AquilaChat2-7B-NLPE** | NLPE | **17.2** | **19.8** | **14.6** |          **10.3**          |         **19.0**      |         **19.6**      |         **20.0**      |
 | Internlm-20B-Chat   |    None     | 16.6 |  24.3   |   8.9   |          11.9          |          6.0          |         24.4          |         24.2          |
 | Qwen-14B-Chat       | Dynamic NTK | 16.1 |  20.8   |  11.5   |          16.6          |          6.4          |         22.9          |         18.8          |
 | XGen-7B-8K          |  Pre-train  | 16.0 |  21.3   |  10.8   |          1.5           |         20.0          |         14.2          |         28.3          |
@@ -277,28 +278,6 @@ for text in test_data:
 
 ```
 
-### Inference Speed
-
-We measured the average inference speed (tokens/s) of generating 2048 and 8192 tokens under BF16 precision and Int4 quantization, respectively.
-
-| Quantization         | Speed (2048 tokens) | Speed (8192 tokens) |
-|----------------------|:-------------------:|:-------------------:|
-| Aquila2-34B-Chat (BF16) |        30.70        |        21.73        |
-| Aquila2-34B-Chat (Int4) |        37.11        |        26.11        |
-
-In detail, the setting of profiling is generating 8192 new tokens with 1 context token. The profiling runs on a single A100-SXM4-80G GPU with PyTorch 2.0.1 and CUDA 11.4. The inference speed is averaged over the generated 8192 tokens.
-
-### GPU Memory Usage
-
-We also profile the peak GPU memory usage for encoding 2048 tokens as context (and generating single token) and generating 8192 tokens (with single token as context) under BF16 or Int4 quantization level, respectively. The results are shown below.
-
-| Quantization         | Peak Usage for Encoding 2048 Tokens | Peak Usage for Generating 8192 Tokens |
-|----------------------|:-----------------------------------:|:-------------------------------------:|
-| Aquila2-34B-Chat (BF16) |               30.15GB               |                38.94GB                |
-| Aquila2-34B-Chat (Int4) |               13.00GB               |                21.79GB                |
-
-<br><br>
-
 ## Pretraining
 
 From Aquila2, we upgrade the underlying pretraining framework, which is now open-sourced as [FlagScale](https://github.com/FlagOpen/FlagScale). It is based on the Megatron-LM project and aims at utilizing the computation resources efficiently for LLMs without sacrificing the numerical stability and model effectiveness. 
@@ -366,7 +345,7 @@ Our web will be coming soon.
 
 ## Long-Context Understanding
 
-To extend the context length and break the bottleneck of training sequence length, we introduce several techniques, including NTK-aware interpolation, window attention, and LogN attention scaling.
+AquilaChat2-34B-16K is built on Aquila2-34B, processed by positional coding interpolation and SFT on 200k high-quality long text conversations dataset to extend the effective context window. We tested the model four Chinese and English long text quiz and summarization tasks from [LongBench](https://github.com/THUDM/ LongBench). The evaluation results show that AquilaChat2-34B-16K reaches the leading level of open source long text models, close to GPT-3.5-16k.
 
 <br><br>
 
