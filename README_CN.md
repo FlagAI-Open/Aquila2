@@ -385,7 +385,7 @@ bash finetune/34B/finetune_qlora.sh
 
 ## FAQ
 
-欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) 中提出你的问题，或在 [Discussions ](https://github.com/FlagAI-Open/Aquila2/discussions) 板块交流使用经验。
+欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) 中提出你的问题或交流使用经验。
 <br><br>
 
 ## 使用协议
