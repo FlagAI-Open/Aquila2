@@ -70,7 +70,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 | Model              | Avg<br/>(obj. + subj.v2.0) | Avg<br/>(obj. + subj.v1.0) | Avg<br/>(obj.) | Avg<br/>(EN-obj.) | Avg<br/>(ZH-obj.) | Avg<br/>(ZH-subj.v2.0) | Avg<br/>(ZH-subj.v1.0) |
 | :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
-| AquilaChat2-34B    |           70.2            |                            | 70.0 | 75.9 | 67.8 | 75.0 |                        |
+| **AquilaChat2-34B**    |           70.2            |                            | 70.0 | 75.9 | 67.8 | 75.0 |                        |
 | Baichuan2-13B-Chat |           64.3            |                            | 63.8 | 67.3 | 62.4 | 73.2 |                        |
 | YuLan-Chat-2-13B   |           63.1            |                            | 63.1 | 69.8 | 60.2 | 63.3 |                        |
 | InternLM-Chat-7B   |           61.1            | 61.5 | 61.7 | 62.4 | 61.4 | 50.2 | 58.1 |
@@ -95,9 +95,9 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 | Model                |   Method    | Avg. | ZH-Avg. | EN-Avg. | VCSUM(zh)<br>(Chinese) | LSHT(zh)<br>(Chinese) | HotpotQA<br>(English) | 2WikiMQA<br>(English) |
 | :------------------- | :---------: | :--: | :-----: | :-----: | :--------------------: | :-------------------: | :-------------------: | :-------------------: |
 | GPT-3.5-Turbo-16k    |      -      | 33.6 |  44.7   |  22.6   |          16.0          |         29.2          |         51.6          |         37.7          |
-| AquilaChat2-34b-16k  |  PI + SFT   | 31.7 |  40.2   |  23.3   |          16.5          |         30.0          |         41.9          |         38.5          |
+| **AquilaChat2-34B-16k**  |  PI + SFT   | 31.7 |  40.2   |  23.3   |          16.5          |         30.0          |         41.9          |         38.5          |
 | ChatGLM2-6B-32k      |  PI + SFT   | 30.8 |  39.6   |  22.0   |          16.2          |         27.7          |         45.1          |         34.0          |
-| AquilaChat2-7B-16k   |  PI + SFT   | 29.5 |  31.7   |  27.2   |          14.4          |         40.0          |         36.1          |         27.3          |
+| **AquilaChat2-7B-16k**   |  PI + SFT   | 29.5 |  31.7   |  27.2   |          14.4          |         40.0          |         36.1          |         27.3          |
 | InternLM-7B-8k       |      -      | 22.4 |  30.6   |  14.3   |          13.0          |         15.5          |         33.3          |         27.9          |
 | ChatGLM2-6B          |    None     | 22.1 |  26.6   |  17.6   |          14.6          |         20.5          |         33.0          |         20.2          |
 | LongChat-7B-v1.5-32k |  PI + SFT   | 21.7 |  26.1   |  17.4   |          14.0          |         20.8          |         31.5          |         20.6          |
@@ -124,9 +124,9 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 | ChatGPT                      | 55.6 |          46.7          |          6.7          |          86.7          |             83.3              |        63.3         |        46.7        |
 | LLaMA-70B-Chat               | 57.2 |          63.3          |         20.0          |          53.3          |             80.0              |        66.7         |        60.0        |
 | GPT-4                        | 81.1 |          93.3          |         36.7          |         100.0          |             90.0              |        83.3         |        83.3        |
-| **Aquila2-34B-Chat**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
-| **Aquila2-34B-Chat+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
-| **Aquila2-34B-Chat+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
+| **AquilaChat2-34B**         | 58.3 |          43.3          |         16.7          |          63.6          |             80.0              |        80.0         |        66.7        |
+| **AquilaChat2-34B+SFT**     | 65.6 |          73.3          |         16.7          |          76.7          |             80.0              |        76.7         |        70.0        |
+| **AquilaChat2-34B+SFT+CoT** | 69.4 |          80.0          |         23.3          |          83.3          |             73.3              |        80.0         |        76.7        |
 
 <br>
 
