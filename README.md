@@ -314,7 +314,7 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
 
 ## Web UI
 
-<a href="[https://huggingface.co/BAAI](https://flagopen.baai.ac.cn/#/ability/demo/chat_model?demo_url=/web-chat/&demo_url_en=/web-chat/)">AquilaChat2</a>
+<a href="https://flagopen.baai.ac.cn/#/ability/demo/chat_model?demo_url=/web-chat/&demo_url_en=/web-chat/">AquilaChat2</a>
 
 <br><br>
 
