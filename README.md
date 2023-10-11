@@ -13,16 +13,16 @@
 </p>
 <br>
 
-We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**
+We opensource our **Aquila2** series, now including **Aquila2**, the base language models, namely **Aquila2-7B** and **Aquila2-34B**, as well as **AquilaChat2**, the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**, You can enter the download page by clicking the icon below.
 
 | Model Name         | Download Sources  | 
 |-------------------|:---------:|
-| Aquila2-7B        | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
-| AquilaChat2-7B    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
-| AquilaChat2-7B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) 🤗|    -    | 
-| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
-| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
-| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) 🤗|    -    |
+| Aquila2-7B        | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)|    -    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)|    -    | 
+| AquilaChat2-7B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) |    -    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) |    -    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)|    -    |
+| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) |    -    |
 
 In this repo, you can figure out:
 
@@ -46,63 +46,17 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 ### Base Model Performance
 
 <br>
-
-|        Dataset         | Qwen-14B | Aquila2-34B | InternLM-20B | LLaMA2-70B | Baichuan2-13B |
-| :--------------------: | :------: | :---------: | :----------: | :--------: | :-----------: |
-|        **Avg.**        | **65.3** |    64.4     |     62.9     |    63.5    |     59.1      |
-|      **EN-Avg.**       | **69.7** |    66.6     |     64.7     |    63.8    |     60.2      |
-|      **ZH-Avg.**       |   60.8   |    62.2     |     61.1     |  **63.2**  |     57.9      |
-| HumanEval<br>(0-shot)  | **32.3** |    25.3     |     25.6     |    29.9    |     17.1      |
-|    MMLU<br>(5-shot)    |   65.8   |    61.8     |     61.8     |  **69.5**  |     56.9      |
-|   C-Eval<br>(5-shot)   | **71.4** |    62.2     |     53.7     |    52.1    |     55.6      |
-|   CMMLU<br>(5-shot)    | **70.5** |    65.9     |     59.0     |     -      |     62.0      |
-|          CSL           |   52.6   |  **64.2**   |     51.0     |    54.6    |     49.5      |
-|   BoolQ<br>(0-shot)    |   86.7   |  **89.2**   |     82.1     |    83.7    |     79.1      |
-| TruthfulQA<br>(0-shot) |   49.5   |    47.0     |   **51.9**   |    44.8    |     39.8      |
-|          RAFT          |   68.3   |    68.9     |   **75.2**   |  **75.2**  |     71.4      |
-|          ChID          | **84.7** |    83.4     |     72.4     |    66.0    |     74.0      |
-|         SLSRC          |   84.6   |    76.8     |   **86.3**   |    79.6    |     82.1      |
-|         SLPWC          |   69.9   |    63.8     |   **70.2**   |    59.9    |     48.6      |
-|         SLRFC          | **78.9** |    64.8     |     61.3     |    61.5    |     59.4      |
-|        EPRSTMT         |   91.2   |  **92.5**   |     91.2     |    89.3    |     86.6      |
-|         TNEWS          | **53.8** |    40.5     |     51.2     |    51.7    |     44.6      |
-|         OCNLI          |   55.0   |  **74.8**   |     62.9     |    57.6    |     43.3      |
-|  GSM8K<br>(4~8-shot)   | **58.7** |    56.3     |     52.6     |    56.8    |     52.8      |
-|    MATH<br>(4-shot)    |   13.4   |    11.6     |     7.9      |  **13.5**  |     10.1      |
-| WinoGrande<br>(0-shot) |   67.4   |    70.6     |     75.1     |  **78.0**  |     70.3      |
-| HellaSwag<br>(10-shot) |   84.0   |    81.5     |     82.1     |  **87.3**  |     76.1      |
-| OpenBookQA<br>(0-shot) |   43.6   |    45.2     |     42.6     |  **48.8**  |     43.6      |
-|    PIQA<br>(0-shot)    |   81.1   |    79.6     |     80.6     |  **82.8**  |     78.8      |
-|   ARC-e<br>(0-shot)    |   47.3   |    74.2     |   **81.1**   |    81.0    |     73.9      |
-|         BUSTM          |   73.2   |  **74.9**   |     59.4     |    71.2    |     70.5      |
-|      WMT22(en-zh)      |   55.0   |    60.0     |     56.9     |     -      |   **60.5**    |
-|        CLUEWSC         | **85.6** |    83.6     |     84.7     |    85.0    |     75.6      |
-|         LLSRC          | **76.4** |    62.5     |     73.9     |    67.7    |     69.5      |
-
+<p align="center">
+    <img src="assets/base_metrics.jpeg" width="1024"/>
+<p>
 <br>
 
 ### Chat Model Performance
 
 <br>
-
-| Model              | Average<br/>Objective+<br/>Subjective(v2.0) | Average<br/>Objective+<br/>Subjective(v1.0) | Average<br/>Objective | Average<br/>EN-Objective | Average<br/>ZH-Objective | Average<br/>ZH-Subjective(v2.0) | Average<br/>ZH-Subjective(v1.0) |
-| :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
-| **AquilaChat2-34B**    |           **70.2**        | - | **70.0** | **75.9** | **67.8** | **75.0** | - |
-| Baichuan2-13B-Chat |           64.3            | - | 63.8 | 67.3 | 62.4 | 73.2 | - |
-| YuLan-Chat-2-13B   |           63.1            | - | 63.1 | 69.8 | 60.2 | 63.3 | - |
-| InternLM-Chat-7B   |           61.1            | 61.5 | 61.7 | 62.4 | 61.4 | 50.2 | 58.1 |
-| **AquilaChat2-7B** |           **60.2**        | - | **59.8** | **68.6** | **56.4** | **67.7** | - |
-| Baichuan2-7B-Chat  |           58.5            | - | 57.9 | 62.1 | 56.4 | 67.9 | - |
-| InternLM-Chat-20B  |           53.8            | - | 53.3 | 29.7 | 62.4 | 62.7 | - |
-| ChatGLM2-6B        |           35.3            | 35.7 | 34.2 | 43.7 | 30.2 | 54.2 | 62.1 |
-| Qwen-14B-Chat      |           26.0            | - | 23.2 | 23.1 | 23.0 | 77.4 | - |
-| Qwen-7B-Chat       |           13.0            | 13.4 | 0.0 | 0.0 | 0.0 | 67.4 | 75.4 |
-| Baichuan-13B-Chat  | - | 59.4 | 58.6 | 62.0 | 57.3 | - | 73.3 |
-| LLaMA-2-13B-Chat   | - | 49.4 | 50.9 | 65.4 | 45.4 | - | 22.0 |
-| LLaMA-2-7B-Chat    | - | 45.8 | 47.3 | 60.5 | 42.2 | - | 18.3 |
-| Alpaca             | - | 43.2 | 43.2 | 58.4 | 36.9 | - | - |
-| Ziya-LLaMA         | - | 41.3 | 40.3 | 50.3 | 36.1 | - | 59.5 |
-
+<p align="center">
+    <img src="assets/chat_metrics.jpeg" width="1024"/>
+<p>
 <br>
 
 ### Long Context Performance
@@ -339,7 +293,8 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
 
 ## Web UI
 
-Our web will be coming soon.
+Please click the link to visit the official [FlagOpen](https://flagopen.baai.ac.cn) website, click on "Model Trial - Dialogue Model" to fill out the application form. After approval, you can experience the dialogue capabilities of AquilaChat2 online.
+
 
 <br><br>
 
@@ -359,13 +314,9 @@ Our tokenizer of BBPE type is trained on a 50GB text dataset, mainly sampled fro
 You're welcome to submit your questions or share your user experience in [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) .
 <br><br>
 
-## Reproduction
-
-To facilitate the reproduction of our model's performance on benchmark datasets, we have provided scripts for you. Please refer to [eval/README.md](eval/README.md) for additional information. Please note that the reproduced results may slightly differ from the results we have reported.
-
-<br><br>
-
 ## License Agreement
+
+The Aquila2 project is based on the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0); The Aquila2 series models are based on the [BAAI Aquila Model License Agreement](./assets/aquila_license.pdf).
 
 <br><br>
 
