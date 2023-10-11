@@ -383,10 +383,6 @@ bash finetune/34B/finetune_qlora.sh
 
 <br><br>
 
-## 复现
-
-<br><br>
-
 ## FAQ
 
 欢迎在 [GitHub Issues](https://github.com/FlagAI-Open/FlagAI/issues) 中提出你的问题，或在 [Discussions ](https://github.com/FlagAI-Open/FlagAI/discussions) 板块交流使用经验。
