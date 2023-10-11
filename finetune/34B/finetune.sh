@@ -9,9 +9,6 @@ MODEL_NAME_INPUT=aquilachat2-34b
 # Path to dataset file
 DATA_FILE=/data2/20230907/sft_v0.9.12_train.jsonl
 
-
-
-
 # *** The following parameters can be modified according to your own needs. ***
 # Epochs
 EPOCHS=5
@@ -24,6 +21,7 @@ EXPNAME=aquila_experiment
 
 # Path to the experiment logs
 EXPNAME_PATH=${AQUILA2_HOME}/output/logs/$EXPNAME
+LOGFILE=$EXPNAME_PATH/log.txt
 
 # Path to the output checkpoints 
 CKPT_OUTPUT=$AQUILA2_HOME/output/checkpoints
@@ -37,16 +35,11 @@ DEEPSPEED_CONFIG=$AQUILA2_HOME/finetune/34B/ds_zero3.config
 # Path to the hostfile
 HOSTFILE=$AQUILA2_HOME/finetune/34B/hostfile
 
-
-
-
-
 # *** Create directories **
 export PYTHONPATH=$AQUILA2_HOME:$PYTHONPATH
 mkdir -p $EXPNAME_PATH
 cp $0 $EXPNAME_PATH/
 mkdir -p $CKPT_INPUT
-
 
 # *** Training Process **
 NNodes=`wc -l ${HOSTFILE} | cut -d " " -f1`
@@ -69,7 +62,7 @@ do
              --nproc_per_node=8 \
              --master_addr=${MASTER_ADDR} \
              --master_port=20001 \
-	         $AQUILA2_HOME/finetune/34B/finetune.py \
+	     $AQUILA2_HOME/finetune/finetune.py \
              --model_name $MODEL_NAME_INPUT \
              --model_dir $CKPT_INPUT \
              --data_path $DATA_FILE \
@@ -95,7 +88,7 @@ do
              --deepspeed $DEEPSPEED_CONFIG \
              --gradient_checkpointing True \
              --flash_attn True \
-             --lazy_preprocess True" 
+             --lazy_preprocess True 1>>$LOGFILE.$ip 2>&1" &
     i=`expr $i + 1`
 done
 
