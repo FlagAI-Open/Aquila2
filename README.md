@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <img src="assets/baai.png" width="14"/> <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">WeChat(微信)</a>
+        <img src="assets/baai.png" width="14"/> <a href="https://model.baai.ac.cn/models">BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp 🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">WeChat(微信)</a>
 </p>
 <br>
 
@@ -362,6 +362,11 @@ To extend the context length and break the bottleneck of training sequence lengt
 ## Tokenizer
 
 Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from deduplicated Pile and deduplicated WuDao contents. We also add some special tokens for passage and conversation separation.
+<br><br>
+
+## FAQ
+
+You're welcome to submit your questions in [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) , or share your user experience in the [Discussions ](https://github.com/FlagAI-Open/Aquila2/discussions) section.
 <br><br>
 
 ## Reproduction
