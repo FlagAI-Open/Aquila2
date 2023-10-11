@@ -3,7 +3,7 @@ from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
 
 
-model_name = 'AquilaChat2-7B'
+model_name = 'iter_0205000_hf'
 
 autoloader = AutoLoader("aquila2", model_name=model_name, 
     quantization_config=BitsAndBytesConfig(
@@ -26,3 +26,4 @@ test_data = [
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer))
 
+import pdb;pdb.set_trace()
