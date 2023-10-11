@@ -346,9 +346,8 @@ Below are the data on memory usage and training speed for the 7B and 34B models 
 
 <br><br>
 
-## Demo
+## Web UI
 
-### Web UI
 Our web will be coming soon.
 
 <br><br>
@@ -366,7 +365,7 @@ Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from dedu
 
 ## FAQ
 
-You're welcome to submit your questions in [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) , or share your user experience in the [Discussions ](https://github.com/FlagAI-Open/Aquila2/discussions) section.
+You're welcome to submit your questions or share your user experience in [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) .
 <br><br>
 
 ## Reproduction
