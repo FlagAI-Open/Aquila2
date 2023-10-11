@@ -84,7 +84,7 @@ Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes
 
 <br>
 
-| Model              | Avg<br/>(obj.+subj.v2.0) | Avg<br/>(obj.+subj.v1.0) | Avg<br/>(obj.) | Avg<br/>(EN-obj.) | Avg<br/>(ZH-obj.) | Avg<br/>(ZH-subj.v2.0) | Avg<br/>(ZH-subj.v1.0) |
+| Model              | Average<br/>Objective+<br/>Subjective(v2.0) | Average<br/>Objective+<br/>Subjective(v1.0) | Average<br/>Objective | Average<br/>EN-Objective | Average<br/>ZH-Objective | Average<br/>ZH-Subjective(v2.0) | Average<br/>ZH-Subjective(v1.0) |
 | :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
 | **AquilaChat2-34B**    |           **70.2**        | - | **70.0** | **75.9** | **67.8** | **75.0** | - |
 | Baichuan2-13B-Chat |           64.3            | - | 63.8 | 67.3 | 62.4 | 73.2 | - |
