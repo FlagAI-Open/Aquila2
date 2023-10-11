@@ -380,12 +380,6 @@ Our tokenizer of BBPE type is trained on a 50GB text dataset, mainly sampled fro
 You're welcome to submit your questions or share your user experience in [GitHub Issues](https://github.com/FlagAI-Open/Aquila2/issues) .
 <br><br>
 
-## Reproduction
-
-To facilitate the reproduction of our model's performance on benchmark datasets, we have provided scripts for you. Please refer to [eval/README.md](eval/README.md) for additional information. Please note that the reproduced results may slightly differ from the results we have reported.
-
-<br><br>
-
 ## License Agreement
 
 <br><br>
