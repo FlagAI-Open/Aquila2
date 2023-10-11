@@ -17,10 +17,10 @@ We opensource our **Aquila2** series, now including **Aquila2**, the base langua
 
 | Model Name         | Download Sources  | 
 |-------------------|:---------:|
-| Aquila2-7B        | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
-| AquilaChat2-7B    | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
-| Aquila2-34B       | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
-| AquilaChat2-34B   | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+| Aquila2-7B        | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100118) |    [🤗](https://huggingface.co/BAAI/Aquila2-7B)    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100117) |    [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100119) |    🤗    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="14"/>](https://model.baai.ac.cn/model-detail/100116) |    🤗    |
 
 In this repo, you can figure out:
 
@@ -155,7 +155,7 @@ For the installation of flash-attention, please refer to https://github.com/Dao-
 
 You can also set up the environment required for Aquila2 by directly[downloading the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
 
-Now you can use <img src="assets/baai.png" width="14"/>  Modelhub or 🤗Transformers to run our model。
+Now you can use <img src="assets/baai.png" width="14"/> BAAI Modelhub or 🤗 Transformers to run our model。
 
 ### <img src="assets/baai.png" width="18"/> ModelHub
 
