@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="https://model.baai.ac.cn/models"><img src="assets/baai.png" width="16"/> BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">WeChat(微信)</a>
+        🤗 <a href="https://huggingface.co/BAAI">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="https://model.baai.ac.cn/models"><img src="assets/baai.png" width="18"/> BAAI ModelHub</a>&nbsp&nbsp | &nbsp&nbsp <a href="assets/wechat-qrcode.png">WeChat(微信)</a>
 </p>
 <br>
 
@@ -17,10 +17,10 @@ We opensource our **Aquila2** series, now including **Aquila2**, the base langua
 
 | Model Name         | Download Sources  | 
 |-------------------|:---------:|
-| Aquila2-7B        | [<img src="assets/baai.png" width="16"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
-| AquilaChat2-7B    | [<img src="assets/baai.png" width="16"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
-| Aquila2-34B       | [<img src="assets/baai.png" width="16"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
-| AquilaChat2-34B   | [<img src="assets/baai.png" width="16"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
+| Aquila2-7B        | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) 🤗|    -    | 
+| AquilaChat2-7B    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) 🤗|    -    | 
+| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) 🤗|    -    | 
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) 🤗|    -    |
 
 In this repo, you can figure out:
 
@@ -167,9 +167,9 @@ For the installation of flash-attention, please refer to https://github.com/Dao-
 
 You can also set up the environment required for Aquila2 by directly[downloading the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
 
-Now you can use <img src="assets/baai.png" width="14"/>  Modelhub or 🤗Transformers to run our model。
+Now you can use <img src="assets/baai.png" width="18"/>  Modelhub or 🤗Transformers to run our model。
 
-### <img src="assets/baai.png" width="18"/> ModelHub
+### <img src="assets/baai.png" width="20"/> ModelHub
 
 You can now utilize the AquilaChat2-7B model for inference as follows:
 
