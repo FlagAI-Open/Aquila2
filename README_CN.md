@@ -406,7 +406,7 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 使用协议
 
-Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)
+Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) 协议；Aquila2系列模型则是基于[智源Aquila系列模型许可协议](./assets/aquila_license.pdf)。
 
 <br><br>
 
