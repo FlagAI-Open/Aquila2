@@ -90,7 +90,7 @@ Aquila2-34B和Aquila2-7B（最新版本使用了更多数据和更长的上下�
 
 <br>
 
-| Model              | Avg<br/><font size=1>(obj.+subj.v2.0)</font> | Avg<br/><font size=1>(obj.+subj.v1.0)</font> | Avg<br/><font size=1>(obj.)</font> | Avg<br/><font size=1>(EN-obj.)</font> | Avg<br/><font size=1>(ZH-obj.)</font> | Avg<br/><font size=1>(ZH-subj.v2.0)</font> | Avg<br/><font size=1>(ZH-subj.v1.0)</font> |
+| Model              | Avg<br/>(obj.+subj.v2.0) | Avg<br/>(obj.+subj.v1.0) | Avg<br/>(obj.) | Avg<br/>(EN-obj.) | Avg<br/>(ZH-obj.) | Avg<br/>(ZH-subj.v2.0) | Avg<br/>(ZH-subj.v1.0) |
 | :----------------- | :------------------------: | :------------------------: | :------------: | :---------------: | :---------------: | :--------------------: | :--------------------: |
 | **AquilaChat2-34B**    |           **70.2**        | - | **70.0** | **75.9** | **67.8** | **75.0** | - |
 | Baichuan2-13B-Chat |           64.3            | - | 63.8 | 67.3 | 62.4 | 73.2 | - |
