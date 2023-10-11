@@ -24,11 +24,10 @@ We opensource our **Aquila2** series, now including **Aquila2**, the base langua
 
 In this repo, you can figure out:
 
-* Quickstart with Aquila2, and enjoy the simple inference.
-* Tutorials on finetuning, including full-parameter tuning, LoRA, and Q-LoRA.
-* Statistics of long-context understanding evaluation
+* Quickstart with Aquila2.
+* Tutorials on finetuning, including full-parameter, LoRA, and Q-LoRA.
+* Long-context understanding and evaluation
 * License agreement
-* ...
 
 Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
 <br><br>
@@ -40,7 +39,7 @@ Feel free to shoot us issues (better in English so that more people can understa
 
 ## Performance
 
-Aquila2-34B and Aquila2-7B outperform the baseline models of similar model sizes on a series of benchmark datasets, e.g., MMLU, C-Eval, GSM8K, MATH, HumanEval etc., which evaluate the models' capabilities on natural language understanding, mathematic problem solving, coding, etc. 
+Aquila2 series outperform the models of similar model sizes on a series of benchmark datasets. 
 
 ### Base Model Performance
 
@@ -217,8 +216,6 @@ Harry had a harpy flight, Fred had a fiddle, and George had a gecko for breakfas
 
 <br><br>
 
-
-
 ### 🤗 Transformers
 
 ```python
@@ -240,7 +237,6 @@ with torch.no_grad():
     print(out)
 ```
 
-
 ## Quantization
 
 Before using quantization, BitsAndBytesConfig needs to be installed:
@@ -250,7 +246,6 @@ pip install bitsandbytes
 ```
 
 After that, you're all set to use the quantized models for inference!
-
 
 ### Usage
 
@@ -377,7 +372,7 @@ To extend the context length and break the bottleneck of training sequence lengt
 
 ## Tokenizer
 
-Our tokenizer of BBPE type is trained on a 50GB corpus, mainly sampled from deduplicated Pile and deduplicated WuDao contents. We also add some special tokens for passage and conversation separation.
+Our tokenizer of BBPE type is trained on a 50GB text dataset, mainly sampled from deduplicated Pile and WuDao corpus. We also add some special tokens for passage and conversation separation.
 <br><br>
 
 ## FAQ
@@ -387,19 +382,18 @@ You're welcome to submit your questions or share your user experience in [GitHub
 
 ## Reproduction
 
-For your reproduction of the model performance on benchmark datasets, we provide scripts for you to reproduce the results. Check [eval/README.md](eval/README.md) for more information. Note that the reproduction may lead to slight differences from our reported results.
+To facilitate the reproduction of our model's performance on benchmark datasets, we have provided scripts for you. Please refer to [eval/README.md](eval/README.md) for additional information. Please note that the reproduced results may slightly differ from the results we have reported.
 
 <br><br>
 
 ## License Agreement
 
-
-
 <br><br>
 
 ## Contact Us
 
-If you are interested to leave a message to either our research team or product team, join our WeChat groups!
+If you are interested, please join our WeChat groups!
 
 <img src="./assets/wechat-qrcode.jpg" width = "200" height = "200"  align=center />
 
+<br><br>
