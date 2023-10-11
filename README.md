@@ -121,7 +121,7 @@ https://github.com/FlagAI-Open/FlagAI.git
 
 If your device supports fp16 or bf16 precision, we also recommend installing flash-attention to enhance execution speed and reduce memory consumption. It's important to note that flash-attention is optional, and the project can be executed normally without it.
 
-For the installation of flash-attention, please refer to https://github.com/Dao-AILab/flash-attention/.
+For the installation of flash-attention, please follow the instructions in https://github.com/Dao-AILab/flash-attention/.
 
 You can also set up the environment required for Aquila2 by directly[downloading the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
 
@@ -129,7 +129,7 @@ Now you can use <img src="assets/baai.png" width="18"/> BAAI Modelhub or 🤗 Tr
 
 ### <img src="assets/baai.png" width="20"/> ModelHub
 
-You can now utilize the AquilaChat2-7B model for inference as follows:
+You can now use the AquilaChat2-7B model for inference as follows:
 
 ```python
 from flagai.auto_model.auto_loader import AutoLoader
@@ -279,7 +279,7 @@ Before initiating the fine-tuning process, you are required to have your trainin
 	"instruction": ""
 }
 ```
-Subsequently, you can utilize the variety of fine-tuning scripts we offer for different purposes:
+Subsequently, you can use the variety of fine-tuning scripts we offer for different purposes:
 
 - Execute `finetune/7B/finetune.sh` for a full parameter fine-tuning of the 7B model
 - Execute `finetune/7B/finetune_lora.sh` for LoRA fine-tuning of the 7B model
