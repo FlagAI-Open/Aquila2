@@ -183,7 +183,7 @@ model = AutoModelForCausalLM.from_pretrained(model_info, trust_remote_code=True)
 model.eval()
 model.to(device)
 text = "请给出10个要到北京旅游的理由。"
-tokens = tokenizer.encode_plus(text)['input_ids'][:-1]
+tokens = tokenizer.encode_plus(text)['input_ids']
 tokens = torch.tensor(tokens)[None,].to(device)
 stop_tokens = ["###", "[UNK]", "</s>"]
 with torch.no_grad():
