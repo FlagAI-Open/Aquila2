@@ -1,6 +1,5 @@
 from flagai.auto_model.auto_loader import AutoLoader
 
-
 model_name = 'AquilaChat2-7B'
 
 autoloader = AutoLoader("aquila2", model_name=model_name)
@@ -15,4 +14,4 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
