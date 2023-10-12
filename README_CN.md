@@ -109,9 +109,11 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 
 ## 安装环境
 
-* Python 版本 >= 3.8
-* PyTorch 版本 >= 1.8.0
-* CUDA 版本 >= 11.7（GPU用户、flash-attention用户等需考虑此选项）
+* python 版本 >= 3.10 
+* pytorch 版本 >= 1.12, 建议2.0版本及以上
+* transformers 版本 >= 4.32 and above
+* CUDA 版本 >= 11.4 (GPU用户、flash-attention用户等需考虑此选项)
+
 <br>
 
 ## 快速使用
