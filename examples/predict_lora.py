@@ -15,5 +15,6 @@ test_data = [
     "写一首中秋主题的五言绝句",
 ]
 
+
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, model_name=model_name))

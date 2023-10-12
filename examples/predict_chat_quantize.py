@@ -15,7 +15,6 @@ autoloader = AutoLoader("aquila2", model_name=model_name,
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
-# 
 
 test_data = [
     "北京的十大景点是什么?请将回答翻译成英文和日语",

@@ -258,6 +258,7 @@ Before initiating the fine-tuning process, you are required to have your trainin
 	"instruction": ""
 }
 ```
+
 Subsequently, you can use the variety of fine-tuning scripts we offer for different purposes:
 
 - Execute `finetune/7B/finetune.sh` for a full parameter fine-tuning of the 7B model

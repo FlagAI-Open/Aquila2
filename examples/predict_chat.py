@@ -1,5 +1,6 @@
 from flagai.auto_model.auto_loader import AutoLoader
 
+
 model_name = 'AquilaChat2-7B'
 
 autoloader = AutoLoader("aquila2", model_name=model_name)
