@@ -31,7 +31,7 @@ In this repo, you can figure out:
 * Long-context understanding and evaluation
 * License agreement
 
-Feel free to shoot us issues (better in English so that more people can understand you)! If you would like to help us, send us pull requests with no hesitation! We are always excited about PR! 
+Please don't hesitate to bring up issues and feel free to submit pull requests (PRs) at any time (p.s. better in English for wider comprehension) – we're always enthusiastic about contributions!
 <br><br>
 
 ## News and Updates
