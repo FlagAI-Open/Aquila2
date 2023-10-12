@@ -25,12 +25,12 @@ pip install -e .
 
 run AI2 Reasoning Challenge (0-shot)
 
-If you want to use a model that is already downloaded locally, just replace ```BAAI/AquilaChat2-7B``` with the path to the weights and it will work.
+If you want to use a model that is already downloaded locally, just replace ```BAAI/Aquila2-7B``` with the path to the weights and it will work.
 
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks arc_easy \
     --no_cache \
     --num_fewshot 0 \
@@ -41,7 +41,7 @@ run HellaSwag (10-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks hellaswag \
     --no_cache \
     --num_fewshot 10 \
@@ -52,7 +52,7 @@ run MMLU (5-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks hendrycksTest* \
     --no_cache \
     --num_fewshot 5 \
@@ -63,7 +63,7 @@ run TruthfulQA (0-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks truthfulqa_mc \
     --no_cache \
     --num_fewshot 0 \
@@ -75,7 +75,7 @@ run BoolQ (0-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks boolq \
     --no_cache \
     --num_fewshot 0 \
@@ -88,7 +88,7 @@ run winograde (0-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks winogrande \
     --no_cache \
     --num_fewshot 0 \
@@ -100,7 +100,7 @@ run OpenBookQA (0-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks openbookqa \
     --no_cache \
     --num_fewshot 0 \
@@ -112,7 +112,7 @@ run  PIQA (0-shot)
 ```
 python main.py \
     --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/AquilaChat2-7B \
+    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
     --tasks piqa \
     --no_cache \
     --num_fewshot 0 \
