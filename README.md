@@ -158,9 +158,9 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
     # For Aquila2-7B or Aquila2-34B，you need to set sft=False
-    # print(model.predict(text, tokenizer=tokenizer, sft=False))
+    # print(model.predict(text, tokenizer=tokenizer, model_name=model_name, sft=False))
 ```
 
 The results of our execution are as follows:
@@ -228,7 +228,7 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
 
 ```
 
@@ -258,6 +258,7 @@ Before initiating the fine-tuning process, you are required to have your trainin
 	"instruction": ""
 }
 ```
+
 Subsequently, you can use the variety of fine-tuning scripts we offer for different purposes:
 
 - Execute `finetune/7B/finetune.sh` for a full parameter fine-tuning of the 7B model

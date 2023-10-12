@@ -15,7 +15,6 @@ autoloader = AutoLoader("aquila2", model_name=model_name,
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
-# 
 
 test_data = [
     "北京的十大景点是什么?请将回答翻译成英文和日语",
@@ -24,5 +23,4 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
-
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))

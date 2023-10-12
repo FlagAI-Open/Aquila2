@@ -168,9 +168,9 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
     # 如果是基础模型Aquila2-7B或者Aquila2-34B，需要设置 sft=False
-    # print(model.predict(text, tokenizer=tokenizer, sft=False))
+    # print(model.predict(text, tokenizer=tokenizer, model_name=model_name, sft=False))
 ```
 
 我们运行的结果如下:
@@ -241,7 +241,7 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
 
 ```
 
