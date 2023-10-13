@@ -2,10 +2,9 @@
 ## Overview
 We evaluate models on few benchmarks using the [Eleuther AI Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) , a unified framework to test generative language models on a large number of different evaluation tasks.
 
-* AI2 Reasoning Challenge (0-shot) - a set of grade-school science questions.
-* HellaSwag (10-shot) - a test of commonsense inference, which is easy for humans (~95%) but challenging for SOTA models.
-* MMLU (5-shot) - a test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more.
-* TruthfulQA (0-shot) - a test to measure a model’s propensity to reproduce falsehoods commonly found online. Note: TruthfulQA in the Harness is actually a minima a 6-shots task, as it is prepended by 6 examples
+* AI2 Reasoning Challenge (0-shot)
+* HellaSwag (10-shot)
+* TruthfulQA (0-shot)
 * BoolQ (0-shot)
 * winograde (0-shot)
 * OpenBookQA (0-shot)
@@ -45,17 +44,6 @@ python main.py \
     --tasks hellaswag \
     --no_cache \
     --num_fewshot 10 \
-    --device cuda:0
-```
-
-run MMLU (5-shot)
-```
-python main.py \
-    --model hf-causal-experimental \
-    --model_args trust_remote_code=True,use_accelerate=True,pretrained=BAAI/Aquila2-7B \
-    --tasks hendrycksTest* \
-    --no_cache \
-    --num_fewshot 5 \
     --device cuda:0
 ```
 
