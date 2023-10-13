@@ -124,7 +124,7 @@ If your device supports fp16 or bf16 precision, we also recommend installing fla
 
 For the installation of flash-attention, please follow the instructions in https://github.com/Dao-AILab/flash-attention/.
 
-You can also set up the environment required for Aquila2 by directly[downloading the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
+You can also set up the environment required for Aquila2 by directly downloading[the Docker file](https://model.baai.ac.cn/model-detail/220118) and installing it.
 
 Now you can use <img src="assets/baai.png" width="18"/> BAAI Modelhub or 🤗 Transformers to run our model。
 
