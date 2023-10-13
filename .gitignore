@@ -1,0 +1,16 @@
+__pycache__
+.idea/
+logs/
+venv/
+*__pycache__
+.DS_Store
+.vscode
+*.swo
+*.swp
+*log
+build
+dist
+eazybigmodel.egg-info
+flagai.egg-info
+checkpoints
+wandb
