@@ -52,7 +52,7 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 ### 基础模型表现
 <br>
 <p align="center">
-    <img src="assets/base_metrics.jpeg" width="1024"/>
+    <img src="assets/base_metrics_CN.jpeg" width="1024"/>
 <p>
 <br>
 
@@ -60,8 +60,15 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 
 <br>
 <p align="center">
-    <img src="assets/chat_metrics.jpeg" width="1024"/>
+    <img src="assets/chat_metrics_CN.jpeg" width="1024"/>
 <p>
+<p>
+    <b>评测说明：</b>
+    <br>
+    对于生成式对话模型，智源团队认为需要严格按照“模型在问题输入下自由生成的答案”进行评判，这种方式贴近用户真实使用场景，因此参考斯坦福大学HELM[1]工作进行评测，该评测对于模型的上下文学习和指令跟随能力要求更为严格。实际评测过程中，部分对话模型回答不符合指令要求，可能会出现“0”分的情况。例如：根据指令要求，正确答案为“A”，如果模型生成为“B”或“答案是 A ”，都会被判为“0”分。同时，业内也有其他评测方式，比如让对话模型先拼接“问题+答案”，模型计算各个拼接文本的概率后，验证概率最高的答案与正确答案是否一致，评测过程中对话模型不会生成任何内容而是计算选项概率。这种评测方式与真实对话场景偏差较大，因此在生成式对话模型评测中没有采纳。
+    [1] https://crfm.stanford.edu/helm/latest
+</p>
+	
 <br>
 
 
