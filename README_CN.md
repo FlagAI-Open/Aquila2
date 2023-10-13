@@ -133,6 +133,7 @@ https://github.com/FlagAI-Open/FlagAI.git
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
+### 使用镜像TAR文件
 除了以上这些，您也可以通过直接[下载docker文件](https://model.baai.ac.cn/model-detail/220118)并安装来配置Aquila2所需的环境。
 
 现在可以开始使用 <img src="assets/baai.png" width="18"/> Modelhub 或 🤗Transformers 来运行我们的模型。
