@@ -51,12 +51,6 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 <p>
 <br>
 
-### Chat Model Performance
-
-<br>
-<p align="center">
-    <img src="assets/chat_metrics.jpeg" width="1024"/>
-<p>
 <p>
     In evaluating generative chat models, our team prioritizes how models autonomously respond to questions—a reflection of real-world user interactions. Guided by Stanford University's HELM [1] approach, our assessment emphasizes context understanding and instruction adherence. In some cases, models may deliver answers not in line with the instruction of input, resulting in a "0" score. For instance, if the model should respond with "A" but outputs "B" or "The answer is A", it earns a "0."
     Other industry methods include concatenating "question+answer" and assessing the combined text's probability. However, in this method, the chat model doesn't generate content but computing probability scores. Due to its divergence from real-world chat scenarios, we haven't adopted this approach in our evaluations.
