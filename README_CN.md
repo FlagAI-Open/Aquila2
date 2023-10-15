@@ -43,7 +43,7 @@
 
 ## 更新
 
-* 2023.10.10 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **AquilaChat2-34B**。
+* 2023.10.12 🔥 我们在 ModelHub 和 Hugging Face 上发布了 **Aquila2-34B** 和 **AquilaChat2-34B**。
 
 ## 评测表现
 
