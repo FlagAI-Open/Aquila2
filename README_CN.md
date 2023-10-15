@@ -55,13 +55,6 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
     <img src="assets/base_metrics_CN.jpeg" width="1024"/>
 <p>
 <br>
-
-### 对话模型表现
-
-<br>
-<p align="center">
-    <img src="assets/chat_metrics_CN.jpeg" width="1024"/>
-<p>
 <p>
     <b>评测说明：</b>
     <br>
