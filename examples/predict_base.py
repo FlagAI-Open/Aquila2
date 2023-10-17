@@ -12,7 +12,7 @@ tokenizer = autoloader.get_tokenizer()
 
 # 对话测试样例
 test_data = [
-    "北京的十大景点是什么?请将回答翻译成英文和日语",
+    "北京的十大景点是什么?",
     "写一首中秋主题的五言绝句",
 ]
 
