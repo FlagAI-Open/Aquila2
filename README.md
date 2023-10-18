@@ -267,6 +267,41 @@ Subsequently, you can use the variety of fine-tuning scripts we offer for differ
 - Execute `finetune/34B/finetune_lora.sh` for LoRA fine-tuning of the 34B model
 - Execute `finetune/34B/finetune_qlora.sh` for Q-LoRA fine-tuning of the 34B model
 
+Note that you are required to specify the path to the training data within the script, and configure the hostfile accordingly. If a custom model file is not provided in the script, it will automatically download the corresponding model from ModelHub based on the specified model name and proceed with the fine-tuning operation.
+
+
+To perform full-parameter fine-tuning, execute the following scripts:
+
+```bash
+# Fine-tuning the 7B model
+bash finetune/7B/finetune.sh
+# Fine-tuning the 34B model
+bash finetune/34B/finetune.sh
+```
+
+The fine-tuning approach of LoRA (as detailed in the [paper](https://arxiv.org/abs/2106.09685)) varies from the full-parameter method. LoRA solely updates the parameters of the adapter layer without modifying the original language model parameters. This practice reduces memory and computational overhead. Applicable to a variety of model sizes and tasks, LoRA facilitates more efficient model fine-tuning to cater to specific tasks or datasets.
+
+To implement LoRA, execute the following scripts:
+
+```bash
+# Fine-tuning the 7B model
+bash finetune/7B/finetune_lora.sh
+# Fine-tuning the 34B model
+bash finetune/34B/finetune_lora.sh
+```
+
+If memory resources remain constrained, consider employing Q-LoRA (refer to the [paper](https://arxiv.org/abs/2305.14314)), an optimized solution that further reduces memory usage through the utilization of 4-bit quantized models and paged attention techniques.
+
+To implement Q-LoRA, execute the following scripts:
+
+```bash
+# Fine-tuning the 7B model
+bash finetune/7B/finetune_qlora.sh
+# Fine-tuning the 34B model
+bash finetune/34B/finetune_qlora.sh
+```
+
+
 ### Optimization Effects
 
 Below are the data on memory usage and training speed for the 7B and 34B models using full-parameter fine-tuning, LoRA, and QLoRA with different input lengths. The evaluation was conducted on a machine equipped with an A100-SXM4-80G GPU, utilizing CUDA 12.1 and Pytorch 2.1. The input length for the 7B model is 2048, and for the 34B model, it is 4096. All tests were performed using a batch size of 4 and a gradient accumulation of 1, and both memory usage (in GB) and training speed (in s/iter) were recorded. The specific data is as follows:
