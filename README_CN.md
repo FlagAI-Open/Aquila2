@@ -126,8 +126,6 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 
 ```
 pip install -r requirements.txt
-https://github.com/FlagAI-Open/FlagAI.git
-(cd FlagAI/ && python setup.py install)
 ```
 
 如果您的显卡兼容 fp16 或 bf16 精度，我们还建议您安装 flash-attention，以增加运行速度和减少显存使用。请注意，flash-attention 不是必须的，没有它您也能正常执行该项目。
@@ -208,7 +206,7 @@ print(out)
 
 ### 用法
 
-使用量化之前，需要安装`BitsAndBytesConfig`：
+使用量化之前，需要安装`BitsAndBytes`：
 
 ```
 pip install bitsandbytes
@@ -269,6 +267,7 @@ for text in test_data:
 }
 ```
 
+
 然后您可以使用我们提供不同的微调脚本实现不同功能：
 - 使用`finetune/7B/finetune.sh`实现7B模型全参数微调 
 - 使用`finetune/7B/finetune_lora.sh`实现7B模型LoRA微调 
@@ -277,21 +276,22 @@ for text in test_data:
 - 使用`finetune/34B/finetune_lora.sh`实现34B模型LoRA微调 
 - 使用`finetune/34B/finetune_qlora.sh`实现34B模型Q-LoRA微调 
 
-Note that you are required to specify the path to the training data within the script, and configure the hostfile accordingly. If a custom model file is not provided in the script, it will automatically download the corresponding model from ModelHub based on the specified model name and proceed with the fine-tuning operation.
+注意，您需要在脚本中指定训练数据的路径，并相应地配置hostfile。
 
+如果在脚本中没有提供自定义的模型文件，它将根据指定的模型名称自动从ModelHub下载相应的模型，并继续进行微调操作。
 
-To perform full-parameter fine-tuning, execute the following scripts:
+要实现全参数微调，请运行以下脚本：
 
 ```bash
-# Fine-tuning the 7B model
+# 微调7B模型
 bash finetune/7B/finetune.sh
-# Fine-tuning the 34B model
+# 微调34B模型
 bash finetune/34B/finetune.sh
 ```
 
-The fine-tuning approach of LoRA (as detailed in the [paper](https://arxiv.org/abs/2106.09685)) varies from the full-parameter method. LoRA solely updates the parameters of the adapter layer without modifying the original language model parameters. This practice reduces memory and computational overhead. Applicable to a variety of model sizes and tasks, LoRA facilitates more efficient model fine-tuning to cater to specific tasks or datasets.
+LoRA的微调方法（如[论文](https://arxiv.org/abs/2106.09685)中详细描述）与全参微调有所不同。LoRA仅更新适配器层的参数，而不修改原始语言模型的参数。这一实践减少了内存和计算开销。LoRA适用于各种模型大小和任务，有助于更高效地微调模型以满足特定任务或数据集的需求。
 
-To implement LoRA, execute the following scripts:
+要实现LoRA，请运行以下脚本：
 
 ```bash
 # 微调7B模型
@@ -300,15 +300,17 @@ bash finetune/7B/finetune_lora.sh
 bash finetune/34B/finetune_lora.sh
 ```
 
-If memory resources remain constrained, consider employing Q-LoRA (refer to the [paper](https://arxiv.org/abs/2305.14314)), an optimized solution that further reduces memory usage through the utilization of 4-bit quantized models and paged attention techniques.
 
-To implement Q-LoRA, execute the following scripts:
+如果内存资源仍然受限，请考虑使用Q-LoRA（请参考[论文](https://arxiv.org/abs/2305.14314)），这是一个经过优化的解决方案，通过使用4位量化模型和分页注意技术进一步减少内存使用。
+
+要实现Q-LoRA，请运行以下脚本：
 
 ```bash
 # 微调7B模型
 bash finetune/7B/finetune_qlora.sh
 # 微调34B模型
 bash finetune/34B/finetune_qlora.sh
+```
 ```
 
 
