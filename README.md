@@ -116,8 +116,6 @@ We have provided a straightforward example to illustrate how to quickly get star
 Before proceeding, ensure that your environment is properly configured and that the necessary packages have been installed. First and foremost, ensure that these prerequisites are met and then follow the instructions below to install the necessary libraries and dependencies.
 ```
 pip install -r requirements.txt
-https://github.com/FlagAI-Open/FlagAI.git
-(cd FlagAI/ && python setup.py install)
 ```
 
 
@@ -195,7 +193,7 @@ print(out)
 
 ## Quantization
 
-Before using quantization, BitsAndBytesConfig needs to be installed:
+Before using quantization, `BitsAndBytes` needs to be installed:
 
 ```
 pip install bitsandbytes
