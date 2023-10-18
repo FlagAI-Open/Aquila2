@@ -2,8 +2,8 @@ import torch
 from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
 
-
 model_name = 'AquilaChat2-7B'
+model_name = 'AquilaChat2-34B'
 
 autoloader = AutoLoader("aquila2", model_name=model_name, 
     quantization_config=BitsAndBytesConfig(
