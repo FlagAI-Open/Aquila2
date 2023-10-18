@@ -70,7 +70,7 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 
 <br>
 
-| Model                |   Method    | Avg. | ZH-Avg. | EN-Avg. | VCSUM(zh)<br>(Chinese) | LSHT(zh)<br>(Chinese) | HotpotQA<br>(English) | 2WikiMQA<br>(English) |
+| Model                |   Method    | Avg. | EN-Avg. | ZH-Avg. | VCSUM(zh)<br>(Chinese) | LSHT(zh)<br>(Chinese) | HotpotQA<br>(English) | 2WikiMQA<br>(English) |
 | :------------------- | :---------: | :--: | :-----: | :-----: | :--------------------: | :-------------------: | :-------------------: | :-------------------: |
 | GPT-3.5-Turbo-16K   |      -      | 33.6 |  44.7   |  22.6   |          16.0          |         29.2          |         51.6          |         37.7          |
 | **AquilaChat2-34B-16K** |  PI + SFT   | 31.7 |  40.2   |  23.3   |          16.5          |         30.0          |         41.9          |         38.5          |
@@ -311,7 +311,7 @@ bash finetune/7B/finetune_qlora.sh
 # 微调34B模型
 bash finetune/34B/finetune_qlora.sh
 ```
-```
+
 
 
 ### 优化效果
@@ -348,7 +348,6 @@ bash finetune/34B/finetune_qlora.sh
 
 ## 长文本处理
 AquilaChat2-34B-16K以Aquila2-34B为基座，经过位置编码内插法处理，并在20W条优质长文本对话数据集上做了SFT，将模型的有效上下文窗口长度扩展至16K。我们在[LongBench](https://github.com/THUDM/LongBench)上测试了四项中英文长文本问答、总结任务。评测效果显示，AquilaChat2-34B-16K处于开源长文本模型的领先水平，接近 GPT-3.5-16k。
-### 用法
 
 
 ## Tokenizer
