@@ -245,6 +245,15 @@ for text in test_data:
 
 ```
 
+AquilaChat2-34B 4Bit 版本拥有99.3% bf16版本的性能。
+
+4Bit 版本AquilaChat2-34B拥有远超7B的性能与7B模型接近的显存占用。
+
+<img src="./assets/table.png"   align=center />
+
+
+
+
 <br><br>
 
 ## 微调
