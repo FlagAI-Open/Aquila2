@@ -231,6 +231,13 @@ for text in test_data:
 
 ```
 
+AquilaChat2-34B 4Bit version has 99.3% of the performance of the bf16 version.
+
+The 4Bit version of AquilaChat2-34B offers significantly better performance than the 7B model and has similar memory usage.
+
+<img src="./assets/table.png"   align=center />
+
+
 ## Pretraining
 
 From Aquila2, we upgrade the underlying pretraining framework, which is now open-sourced as [FlagScale](https://github.com/FlagOpen/FlagScale). It is based on the Megatron-LM project and aims at utilizing the computation resources efficiently for LLMs without sacrificing the numerical stability and model effectiveness. 
