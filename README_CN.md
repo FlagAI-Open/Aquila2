@@ -55,7 +55,7 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 ### 基础模型表现
 <br>
 <p align="center">
-    <img src="assets/base_metrics.jpeg" width="1024"/>
+    <img src="assets/base_metrics_CN.jpeg" width="1024"/>
 <p>
 <br>
 <p>

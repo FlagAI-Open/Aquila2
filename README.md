@@ -49,7 +49,7 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 
 <br>
 <p align="center">
-    <img src="assets/base_metrics_CN.jpeg" width="1024"/>
+    <img src="assets/base_metrics.jpeg" width="1024"/>
 <p>
 <br>
 
