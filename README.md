@@ -36,6 +36,8 @@ Please don't hesitate to bring up issues and feel free to submit pull requests (
 
 ## News and Updates
 
+* 2023.10.25 🔥 Version 1.2 of **Aquila2-34B** 和 **AquilaChat2-34B** has been released on ModelHub and Hugging Face. The base model achieved an objective evaluation improvement of 6.9%. Aquila2-34B v1.2 demonstrated evaluation results on various examination, comprehension, and reasoning datasets, such as MMLU, TruthfulQA, CSL, TNEWS, OCNLI, and BUSTM, with respective increments of 12%, 14%, 11%, 12%, 28%, and 18%. In the subjective evaluation of 8 secondary ability dimensions, the Chat model reached or surpassed the level of GPT3.5. Compared to the V1 version, AquilaChat2-34B-16K-V1.2 demonstrates a significant improvement in its ability to handle long texts, approaching the level of GPT-3.5-16K.
+
 * 2023.10.12 🔥 We release **Aquila2** series on BAAI ModelHub and Hugging Face.
 <br><br>
 
@@ -47,7 +49,7 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 
 <br>
 <p align="center">
-    <img src="assets/base_metrics.jpeg" width="1024"/>
+    <img src="assets/base_metrics_CN.jpeg" width="1024"/>
 <p>
 <br>
 
@@ -67,7 +69,7 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 | Model                |   Method    | Avg. | EN-Avg. | ZH-Avg. | VCSUM(zh)<br>(Chinese) | LSHT(zh)<br>(Chinese) | HotpotQA<br>(English) | 2WikiMQA<br>(English) |
 | :------------------- | :---------: | :--: | :-----: | :-----: | :--------------------: | :-------------------: | :-------------------: | :-------------------: |
 | GPT-3.5-Turbo-16K   |      -      | 33.6 |  44.7   |  22.6   |          16.0          |         29.2          |         51.6          |         37.7          |
-| **AquilaChat2-34B-16K** |  PI + SFT   | **31.7** | **40.2** | **23.3** |          **16.5**          |         **30.0**      |         **41.9**      |         **38.5**      |
+| **AquilaChat2-34B-16K** |  PI + SFT   | 32.8 |  44.1   |  21.5   |          16.5          |         26.5          |         47.4          |         40.8         |
 | ChatGLM2-6B-32K     |  PI + SFT   | 30.8 |  39.6   |  22.0   |          16.2          |         27.7          |         45.1          |         34.0          |
 | **AquilaChat2-7B-16K**  |  PI + SFT   | **29.5** | **31.7** | **27.2** |          **14.4**          |         **40.0**      |         **36.1**      |         **27.3**      |
 | InternLM-7B-8K      |      -      | 22.4 |  30.6   |  14.3   |          13.0          |         15.5          |         33.3          |         27.9          |
