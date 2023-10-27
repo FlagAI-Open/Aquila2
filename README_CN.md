@@ -173,7 +173,7 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
     # 如果是基础模型Aquila2-7B或者Aquila2-34B，需要设置 sft=False
     # print(model.predict(text, tokenizer=tokenizer, model_name=model_name, sft=False))
 ```
@@ -244,7 +244,7 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
 
 ```
 
