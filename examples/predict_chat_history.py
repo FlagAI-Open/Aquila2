@@ -16,4 +16,4 @@ test_data = [
 history = []
 for text in test_data:
     print(f"=============================================================================")
-    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, history=history))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, history=history, top_p=0.9, seed=123, topk=15, temperature=1.0))

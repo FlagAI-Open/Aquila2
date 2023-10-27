@@ -23,4 +23,4 @@ test_data = [
 ]
 
 for text in test_data:
-    print(model.predict(text, tokenizer=tokenizer, model_name=model_name))
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
