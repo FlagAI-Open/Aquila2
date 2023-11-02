@@ -125,7 +125,7 @@ If your device supports fp16 or bf16 precision, we also recommend installing fla
 
 For the installation of flash-attention, please follow the instructions in https://github.com/Dao-AILab/flash-attention/.
 
-### Using Docker TAR File
+### Using Docker Image
 For the environment that meets these [requirements](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-23-06.html), you can also set up the environment required for Aquila2 by directly downloading [the Docker TAR file](https://model.baai.ac.cn/model-detail/220118), then loading and running it.
 Because of all already installed dependencies, in the container you just pull all sources [FlagAI](https://github.com/FlagAI-Open/FlagAI.git) and [Aquila2](https://github.com/FlagAI-Open/Aquila2.git) and include both paths int environment variable, like export PYTHONPATH=$FLAGAI_HOME:$AQUILA2_HOME:$PYTHONPATH.
 
