@@ -135,7 +135,7 @@ pip install -r requirements.txt
 
 flash-attention安装：参考 https://github.com/Dao-AILab/flash-attention/
 
-### 使用镜像TAR文件
+### 使用镜像文件
 对于满足这个要求的环境[requirements](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-23-06.html)，您也可以通过直接[下载docker文件](https://model.baai.ac.cn/model-detail/220118)并安装来配置Aquila2所需的环境。
 
 现在可以开始使用 <img src="assets/baai.png" width="18"/> Modelhub 或 🤗Transformers 来运行我们的模型。
