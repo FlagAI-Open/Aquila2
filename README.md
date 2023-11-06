@@ -47,11 +47,7 @@ Aquila2 series outperform the models of similar model sizes on a series of bench
 
 ### Base Model Performance
 
-<br>
-<p align="center">
-    <img src="assets/base_metrics.jpeg" width="1024"/>
-<p>
-<br>
+
 
 <p>
     In evaluating generative chat models, our team prioritizes how models autonomously respond to questions—a reflection of real-world user interactions. Guided by Stanford University's HELM [1] approach, our assessment emphasizes context understanding and instruction adherence. In some cases, models may deliver answers not in line with the instruction of input, resulting in a "0" score. For instance, if the model should respond with "A" but outputs "B" or "The answer is A", it earns a "0."
