@@ -358,7 +358,7 @@ bash finetune/34B/finetune_qlora.sh
 在FlagScale中，我们率先提供了实际训练中使用的Aquila2-7B和Aquila2-34B的训练方案，包括并行策略、优化选择和超参数设置。通过使用FlagScale，模型FLOPs利用率在Aquila2-7B和Aquila2-34B上均可达到很高水平。目前，FlagScale仍处于早期阶段，我们将与社区共同努力，以在不同的硬件架构上支持各种LLMs。
 
 ## 应用
-一种利用langchain思想实现的基于本地知识库的问答应用，目标期望建立一套对中英双语场景与开源模型支持友好、可离线运行的知识库问答解决方案。本项目依托于BAAI支持的开源LLM与Embedding模型，可实现全部使用开源模型离线私有部署。
+一种利用langchain思想实现的基于本地知识库的问答应用，目标期望建立一套对中英双语场景与开源模型支持友好、可离线运行的知识库问答解决方案。本项目依托于BAAI支持的开源LLM与Embedding模型，可实现全部使用开源模型离线私有部署。项目可见于[Aquila_BGE_langchain](./examples/Aquila_BGE_langchain)。
 
 
 ## 长文本处理
