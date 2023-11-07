@@ -17,7 +17,7 @@
 
 ### 模型下载
 
-若实现在本地或离线环境下运行项目，需要首先将项目所需的模型下载至本地。本项目中默认使用的LLM模型[Aquilachat2-34B](https://model.baai.ac.cn/models)与Embedding模型[BGE](https://huggingface.co/BAAI/bge-large-en-v1.5)和(https://huggingface.co/BAAI/bge-reranker-large) 。
+若实现在本地或离线环境下运行项目，需要首先将项目所需的模型下载至本地。本项目中默认使用的LLM模型[Aquilachat2-34B](https://model.baai.ac.cn/models)与Embedding模型[BGE](https://huggingface.co/BAAI/bge-large-en-v1.5),[BGE-reranker](https://huggingface.co/BAAI/bge-reranker-large) 。
 
 ### 构建本地知识库
 
