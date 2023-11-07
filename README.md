@@ -342,6 +342,13 @@ Please click the link to visit the official [FlagOpen](https://flagopen.baai.ac.
 
 <br><br>
 
+
+## Application
+
+This is a idea that uses langchain to implement a question-answer application based on local knowledge base. The goal is to build a knowledge base question-answer solution that is friendly to Chinese-English bilingual scenarios, can support open source models, and can run offline. This project relies on the open source LLM and Embedding models supported by BAAI, which can realize offline private deployment of all open source models. The project can be found in https://github.com/FlagAI-Open/Aquila2/tree/main/examples . 
+
+<br><br>
+
 ## Long-Context Understanding
 
 AquilaChat2-34B-16K is built on Aquila2-34B, processed by positional coding interpolation and SFT on 200k high-quality long text conversations dataset to extend the effective context window. We tested the model four Chinese and English long text quiz and summarization tasks from [LongBench](https://github.com/THUDM/LongBench). The evaluation results show that AquilaChat2-34B-16K reaches the leading level of open source long text models, close to GPT-3.5-16k.

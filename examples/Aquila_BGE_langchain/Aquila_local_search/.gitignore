@@ -1,0 +1,3 @@
+flagged/
+*.pyc
+__pycache__

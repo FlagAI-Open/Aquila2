@@ -1,0 +1,3 @@
+[submodule "FlagAI"]
+	path = FlagAI
+	url = https://github.com/FlagAI-Open/FlagAI.git
