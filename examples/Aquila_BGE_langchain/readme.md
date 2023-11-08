@@ -29,7 +29,7 @@
 
 ### 5.LLM微调
 
-具体过程请参考https://github.com/FlagAI-Open/Aquila2/
+具体过程请参考https://github.com/FlagAI-Open/Aquila2/ 。
 
 ### 6.一键启动
 
