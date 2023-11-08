@@ -345,7 +345,7 @@ Please click the link to visit the official [FlagOpen](https://flagopen.baai.ac.
 
 ## Application
 
-This is a idea that uses langchain to implement a question-answer application based on local knowledge base. The goal is to build a knowledge base question-answer solution that is friendly to Chinese-English bilingual scenarios, can support open source models, and can run offline. This project relies on the open source LLM and Embedding models supported by BAAI, which can realize offline private deployment of all open source models. The project can be found in https://github.com/FlagAI-Open/Aquila2/tree/main/examples . 
+This is a idea that uses langchain to implement a question-answer application based on local knowledge base. The goal is to build a knowledge base question-answer solution that is friendly to Chinese-English bilingual scenarios, can support open source models, and can run offline. This project relies on the open source LLM and Embedding models supported by BAAI, which can realize offline private deployment of all open source models. The project can be found in [Aquila_BGE_langchain](./examples/Aquila_BGE_langchain) . 
 
 <br><br>
 
