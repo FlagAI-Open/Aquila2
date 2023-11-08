@@ -76,11 +76,11 @@ class SearchIndex:
         self.meta_index_reader = IndexReader(meta_bm25_index_path)
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else 'cpu')
-        self.tokenizer = AutoTokenizer.from_pretrained('/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/bge-large-en-v1.5')
-        self.model = AutoModel.from_pretrained('/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/bge-large-en-v1.5')
+        self.tokenizer = AutoTokenizer.from_pretrained('../BGE/bge-large-en-v1.5')
+        self.model = AutoModel.from_pretrained('../BGE/bge-large-en-v1.5')
         self.model = self.model.to(self.device)
-        self.rerank_tokenizer = AutoTokenizer.from_pretrained('/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/bge-reranker-large')
-        self.rerank_model = AutoModelForSequenceClassification.from_pretrained('/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/bge-reranker-large')
+        self.rerank_tokenizer = AutoTokenizer.from_pretrained('../BGE/bge-reranker-large')
+        self.rerank_model = AutoModelForSequenceClassification.from_pretrained('../BGE/bge-reranker-large')
         self.rerank_model = self.rerank_model.to(self.device)
         self.rerank_model.eval()
         with open(data_path, 'r') as f:
