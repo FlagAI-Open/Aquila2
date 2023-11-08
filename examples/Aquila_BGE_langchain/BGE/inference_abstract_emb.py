@@ -47,9 +47,9 @@ class EmbDataset(Dataset):
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() else 'cpu')
 
-    tokenizer = AutoTokenizer.from_pretrained('/mnt/share/baaisolution/zhaolulu/wenxianzhongxin_app/BGE/checkpoints')
+    tokenizer = AutoTokenizer.from_pretrained('../BGE/bge-large-en-v1.5')
 
-    model = AutoModel.from_pretrained('/mnt/share/baaisolution/zhaolulu/wenxianzhongxin_app/BGE/checkpoints').to(device)
+    model = AutoModel.from_pretrained('../BGE/bge-large-en-v1.5').to(device)
     model = torch.nn.parallel.DataParallel(model)
 
     dataset = EmbDataset(tokenizer, args.input_path)
