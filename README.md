@@ -33,17 +33,6 @@ In this repo, you can figure out:
 
 Please don't hesitate to bring up issues and feel free to submit pull requests (PRs) at any time (p.s. better in English for wider comprehension) – we're always enthusiastic about contributions!
 <br><br>
-## Announcement
-
-There is an issue in the Aquila pre-training task dataset, namely the data leakage<sup>[[1]](https://arxiv.org/abs/2310.19341)</sup> that occurred in the training data slice from August 25 to September 3. Upon analysis, the data leakage was traced to a mathematics dataset A (>2 million samples) recommended by an external team. It includes the unprocessed GSM8K test set (1319 samples). During communication with the members of the external team, they explicitly indicated that this Dataset A was used for fine-tuning experiments and achieved significant improvements in mathematical capabilities, with plans for imminent release. With trust in this open-source dataset, the Aquila team performed only basic deduplication and quality checks before incorporating it into the pre-training data slice.
-
-Aquila Team has taken the following measures:
-- GSM8K's assessment results have been removed from the evaluation results.
-- The team has conducted a comprehensive self-check on both MMLU and CMMLU, and no other issues were found.
-- In the future, the team will continue to carry out self-checks on other datasets in the leaderboard to ensure the integrity of the data, and will continually monitor this issue, updating the examination results in a timely manner.
-
-Emphasizing: The performance on Aquila2 GSM8K mainly comes from Flan<sup>[[2]](https://arxiv.org/pdf/2301.13688.pdf)</sup> and self-built datasets. The Aquila team always maintains a rigorous attitude towards data privacy and security, and actively addresses data leakage issues to ensure fairness and rigor in subsequent work.
-
 
 ## News and Updates
 
