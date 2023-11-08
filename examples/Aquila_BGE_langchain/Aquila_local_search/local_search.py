@@ -15,20 +15,20 @@ from langchain.chains.base import Chain
 from utils.model_config import *
 from aqulia_server_chain import AquliaModel
 
-sys.path.insert(0, "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE")
+sys.path.insert(0, "../BGE")
 
 import argparse
 from tool import SearchTool
 
 LLM_MODEL = "aquilachat2-34b"
 
-BGE_DATA_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/data/ai_filter.json"
-BGE_ABSTRACT_EMB_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/data/abstract.npy"
-BGE_ABSTRACT_INDEX_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/abstract.index"
-BGE_ABSTRACT_BM25_INDEX_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/abstract_bm25_index"
-BGE_META_EMB_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/data/meta.npy"
-BGE_META_INDEX_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/meta.index"
-BGE_META_BM25_INDEX_PATH = "/mnt/share/baaisolution/zhaolulu/Aquila_BGE_langchain/BGE/meta_bm25_index"
+BGE_DATA_PATH = "../BGE/data/ai_filter.json"
+BGE_ABSTRACT_EMB_PATH = "../BGE/data/abstract.npy"
+BGE_ABSTRACT_INDEX_PATH = "../BGE/abstract.index"
+BGE_ABSTRACT_BM25_INDEX_PATH = "../BGE/abstract_bm25_index"
+BGE_META_EMB_PATH = "../BGE/data/meta.npy"
+BGE_META_INDEX_PATH = "../BGE/meta.index"
+BGE_META_BM25_INDEX_PATH = "../BGE/meta_bm25_index"
 BGE_BATCH_SIZE = 128
 BGE_SEARCH_NUM = 3
 
@@ -36,7 +36,7 @@ llm_model_dict = {
     "aquilachat2-34b": {
         "name": "aquilachat2-34b",
         "pretrained_model_name": "aquilachat2-34b",
-        "local_model_path": "/mnt/share/baaisolution/zhaolulu/Aquila2/checkpoints",
+        "local_model_path": ../checkpoints",
         "provides": "Aquila"
     }
 }
@@ -167,7 +167,7 @@ def init_model():
         reply = """模型未成功加载"""
         if str(e) == "Unknown platform: darwin":
             logger.info("该报错可能因为您使用的是 macOS 操作系统，需先下载模型至本地后执行 Web UI，具体方法请参考项目 README 中本地部署方法及常见问题："
-                        " https://github.com/imClumsyPanda/langchain-ChatGLM")
+                        " https://github.com/chatchat-space/Langchain-Chatchat")
         else:
             logger.info(reply)
         return reply
@@ -193,7 +193,7 @@ block_css = """.importantButton {
 
 webui_title = """
 # 🎉 BAAI-LLM-SearchSystem !!! 🎉
-👍 [实现代码点击链接跳转](https://gitee.com/BaaiAC/llm_app_model_service_hub.git)
+👍 [实现代码点击链接跳转](https://github.com/zll1995-nlp/Aquila2/tree/main/examples/Aquila_BGE_langchain)
 """
 init_message = f""" 欢迎使用 BAAI-LLM-SearchSystem查询系统!!
 
@@ -234,8 +234,7 @@ with gr.Blocks(css=block_css, theme=gr.themes.Default(**default_theme_args)) as 
                     'find papers on machine translation',
                     'can you give me one paper about CNN, show the title and authors?',
                     'find papers about "self attention", use all the abstract to generate a summary',
-                    'give me some papers about Transformer and give one summary about these paper',
-                    '能帮我找一篇光合作用相关的文章吗?'
+                    'give me some papers about Transformer and give one summary about these paper'
                 ]
 
                 gr.Examples(examples, query, examples_per_page=20)
