@@ -53,11 +53,11 @@ Aquila2 series outperforms the models of similar model sizes on a series of benc
 <p>
 <br>
 <p>
-We have discovered a data leakage issue with the GSM8K test data in the pre-training task dataset. We have removed the assessment results for GSM8K from the evaluation results.
+Note： We have discovered a data leakage problem with the GSM8K test data in the pre-training task dataset. Therefore, the evaluation results of GSM8K have been removed from the evaluation results.
 
-After thorough investigation and analysis, the data leakage occurred in a mathematical dataset A (over 2 million samples) recommended by a team with multiple collaborations. It contains the unprocessed GSM8K test set (1319 samples). The team only conducted routine deduplication and quality checks, but did not filter or check for the presence of GSM8K test data, and included dataset A in the pre-training data slice, which is negligence in the work process.
+Upon thorough investigation and analysis, it was found that the data leakage occurred in the mathematical dataset A (over 2 million samples), recommended by a team we have collaborated with multiple times. This dataset includes the untreated GSM8K test set (1319 samples). The team only performed routine de-duplication and quality checks but did not conduct an extra filtering check for the presence of the GSM8K test data, resulting in this oversight.
 
-Our team has always strictly adhered to the working principle that training data should not contain test data. Learning from the mistakes caused by not thoroughly vetting the external data sources, we are currently checking the full set of 2 trillion tokens for various test datasets. So far, test data such as MMLU, CMMLU, etc. have not been found in the pre-training data.
+Our team has always strictly adhered to the principle that training data should not include test data. Taking this lesson from the error caused by not thoroughly checking the source of external data, we are currently investigating all 2 trillion tokens of data for various test datasets. So far, no test data such as MMLU and CMMLU have been found in the pre-training data.
 </p>
 <p>
     In evaluating generative chat models, our team prioritizes how models autonomously respond to questions—a reflection of real-world user interactions. Guided by Stanford University's HELM [1] approach, our assessment emphasizes context understanding and instruction adherence. In some cases, models may deliver answers not in line with the instruction of input, resulting in a "0" score. For instance, if the model should respond with "A" but outputs "B" or "The answer is A", it earns a "0."
