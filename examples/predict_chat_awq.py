@@ -4,6 +4,9 @@
 ## 1. download AquilaChat2-34B-AWQ files from https://model.baai.ac.cn/model-detail/100122
 ## 2. install AutoAWQ==v0.1.5 from https://github.com/casper-hansen/AutoAWQ
 
+# Benchmarks:
+# https://github.com/casper-hansen/AutoAWQ/tree/v0.1.5#aquila2-34b
+
 import torch
 
 from awq import AutoAWQForCausalLM
