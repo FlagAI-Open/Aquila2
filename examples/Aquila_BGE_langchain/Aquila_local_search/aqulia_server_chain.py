@@ -9,10 +9,6 @@ import traceback
 from typing import List
 
 
-
-#sys.path.insert(0, "/mnt/share/baaisolution/zhaolulu/wenxianzhongxin_app/third_party/langchain")
-#sys.path.insert(0, "/mnt/share/baaisolution/zhaolulu/wenxianzhongxin_app/third_party/FlagAI")
-
 import numpy as np
 import torch
 from flagai.auto_model.auto_loader import AutoLoader
@@ -46,7 +42,7 @@ class AquliaModel(object):
 
         loader = AutoLoader("aquila2",
                             model_dir=model_dir,
-                            qlora_dir='/mnt/share/baaisolution/zhaolulu/Aquila2/output/checkpoints_wenxian/aquilachat2-34b-sft-aquila_experiment/checkpoint-747',
+                            qlora_dir='../checkpoints/aquilachat2-34b-sft-aquila_experiment/checkpoint-747',
                             model_name=model_name,
                             use_cache=True,
                             fp16=True,
