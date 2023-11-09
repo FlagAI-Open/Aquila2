@@ -1,8 +1,3 @@
-<p align="left">
-    <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp
-</p>
-<br><br>
-
 ![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_1.png)
 
 
