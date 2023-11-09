@@ -1,6 +1,7 @@
+## 介绍
+这是一个基于BAAI研发的大语言模型Aquila2和向量化检索模型BGE的本地知识库问答的应用。本项目的实现原理如下图所示，包括读取文本 -> 文本向量化（BGE）构建向量库 -> 查询语句向量化 -> 在文本向量中匹配出与查询语句向量最相似的top M个 -> 将匹配的文本和查询语句组合构成prompt -> 提交给Aquila2生成回答。
+
 ![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_1.png)
-
-
 
 ## 安装环境
 * python 版本 >= 3.10
