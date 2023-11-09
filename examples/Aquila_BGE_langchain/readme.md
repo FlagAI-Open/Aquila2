@@ -1,5 +1,8 @@
-## 安装环境
+![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_1.png)
 
+
+
+## 安装环境
 * python 版本 >= 3.10
 * pytorch 版本 >= 2.0.1
 * transformers 版本 >= 4.32.1
