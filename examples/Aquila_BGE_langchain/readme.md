@@ -13,7 +13,7 @@
 
 ### 1.环境配置
 
-对于满足这个要求的环境，您可以通过直接下载[docker](https://model.baai.ac.cn/model-detail/220119)文件并安装来配置所需的环境。由于所有已安装的依赖项，在容器中您只需拉取源[FlagAI](https://github.com/FlagAI-Open/FlagAI.git)并包含路径int环境变量。
+对于满足这个要求的环境，您可以通过直接下载[docker](https://model.baai.ac.cn/model-detail/220119)文件并安装来配置所需的环境。由于所有已安装的依赖项，在容器中您只需拉取源[FlagAI](https://github.com/FlagAI-Open/FlagAI.git)，将路径添加到环境变量中export PYTHONPATH=$FLAGAI_HOME:$PYTHONPATH。
 
 ### 2.数据准备
 
