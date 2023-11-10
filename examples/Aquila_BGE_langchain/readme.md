@@ -43,5 +43,6 @@ cd Aquila_local_search
 CUDA_VISIBLE_DEVICES=0 python local_search.py
 ```
 ### 7.启动界面示例
-如果正常启动，您将看到以下界面
+本地端口设置为9172。如果正常启动，您将看到以下界面：
+
 ![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_3.png)
