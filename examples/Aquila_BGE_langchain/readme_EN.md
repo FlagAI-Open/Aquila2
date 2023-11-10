@@ -18,7 +18,7 @@ This is a local knowledge base question-answer application based on the large la
 
 ### 1.Environment Configuration
 
-For environments that meet this requirement, you can configure the required environment by directly downloading the [docker](https://model.baai.ac.cn/model-detail/220119) file and installing it.
+For environments that meet this requirement, you can configure the required environment by directly downloading the [docker](https://model.baai.ac.cn/model-detail/220119) file and installing it. Because of all already installed dependencies, in the container you just pull the source [FlagAI](https://github.com/FlagAI-Open/FlagAI.git) and include both paths int environment variable.
 
 ### 2.Data Preparation
 
