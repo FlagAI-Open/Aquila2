@@ -28,6 +28,7 @@
 数据预处理，包括：对data_demo.json进行过滤，生成abstract和meta的embedding，生成abstract和meta的BM25 index。执行以下命令：
 
 ```bash
+cd BGE
 ./preproces.sh
 ```
 
