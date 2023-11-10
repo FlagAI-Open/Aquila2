@@ -33,6 +33,7 @@ If you want to run the project in a local or offline environment, you need to fi
 Data preprocessing includes: filtering data_demo.json, generating abstract and meta embeddings, and generating abstract and meta BM25 indexes. Execute the following command:
 
 ```bash
+cd BGE
 ./preproces.sh
 ```
 
@@ -42,6 +43,7 @@ For the specific process, please refer to https://github.com/FlagAI-Open/Aquila2
 
 ### 5.Run
 
-```
+```python
+cd Aquila_local_search
 CUDA_VISIBLE_DEVICES=0 python local_search.py
 ```
