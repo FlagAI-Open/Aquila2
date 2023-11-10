@@ -39,6 +39,7 @@ cd BGE
 ### 6.一键启动
 
 ```
+cd Aquila_local_search
 CUDA_VISIBLE_DEVICES=0 python local_search.py
 ```
 
