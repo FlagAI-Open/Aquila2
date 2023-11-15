@@ -1,5 +1,5 @@
 ## 介绍
-这是一个基于BAAI研发的大语言模型Aquila2和向量化检索模型BGE的本地知识库问答的应用。本项目的实现原理如下图所示，包括读取文本 -> 文本向量化（BGE）和构建向量库 -> 查询语句向量化 -> 匹配出与查询语句向量最相似的top M个文档 -> 将匹配的文档和查询语句组合构成prompt -> 提交给Aquila2生成回答。
+这是一个基于BAAI研发的大语言模型Aquilachat2和向量化检索模型BGE的本地知识库问答的应用。本项目的实现原理如下图所示，包括读取文本 -> 文本向量化（BGE）和构建向量库 -> 查询语句向量化 -> 匹配出与查询语句向量最相似的top M个文档 -> 将匹配的文档和查询语句组合构成prompt -> 提交给Aquilachat2生成回答。
 
 ![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_1.png)
 
@@ -45,4 +45,4 @@ CUDA_VISIBLE_DEVICES=0 python local_search.py
 ### 7.启动界面示例
 本地端口设置为9172。如果正常启动，您将看到以下界面：
 
-![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_3.png)
+![Image text](https://github.com/zll1995-nlp/2/blob/main/examples/_BGE_langchain/images/pic_3.png)
