@@ -12,7 +12,7 @@ from transformers import AutoTokenizer, AutoModel, AutoModelForSequenceClassific
 import torch
 
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = "YOUR-KEY"
 class QueryExtractor:
     def __init__(self):
         prompt_template = """Generate an informative query from the following conversation.\nConversation: {text}\nQuery:"""
