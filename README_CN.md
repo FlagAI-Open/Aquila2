@@ -43,6 +43,8 @@ p
 
 ## 更新
 
+* 2023.11.10 基于BAAI支持的开源大型语言模型（Aquila2）和嵌入模型（BGE），利用langchain构建一个基于本地知识库的问答应用解决方案。
+
 * 2023.10.25 🔥 1.2版本的 **Aquila2-34B**, **AquilaChat2-34B-16K** 和 **AquilaChat2-34B** 模型已在ModelHub 和 Hugging Face 上更新。
 其中Aquila2-34B模型综合客观评测提升 6.9%，Aquila2-34B v1.2  在 MMLU、TruthfulQA、CSL、TNEWS、OCNLI、BUSTM 等考试、理解及推理评测数据集上的评测结果分别增加 12%、14%、11%、12%、28%、18%。Chat模型在主观评测的8个二级能力维度上，均接近或超过 GPT3.5 水平。 AquilaChat2-34B-16K-V1.2则相较于V1版本在长文本综合能力上有明显提升，接近GPT-3.5-16K。
 
