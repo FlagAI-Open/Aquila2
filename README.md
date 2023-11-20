@@ -15,14 +15,14 @@
 
 We announce that our **Aquila2** series is now open source, comprising Aquila2 (the base language models: **Aquila2-7B** and **Aquila2-34B**) and AquilaChat2 (the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**). You can find the links in the following table. Kindly click on them to access the model cards.
 
-| Model Name         | Download Sources  | 
-|-------------------|:---------:|
-| Aquila2-7B        |       [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)        |  
-| AquilaChat2-7B    |     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)      | 
-| AquilaChat2-7B-16k    |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)    |  
-| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) 🤖  🧠  | 
-| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  🤖 🧠  | 
-| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) 🤖 🧠 | 
+| Model Name         |                                                                                                               Download Sources                                                                                                                | 
+|-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Aquila2-7B        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)                                                      |  
+| AquilaChat2-7B    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)                                                    | 
+| AquilaChat2-7B-16k    |                                                 [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)                                                  |  
+| Aquila2-34B       |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
+| AquilaChat2-34B   |  [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
+| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI) | 
 
 
 In this repo, you can figure out:
