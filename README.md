@@ -249,8 +249,6 @@ The 4Bit version of AquilaChat2-34B offers significantly better performance than
 
 ### Usage of GPTQ quantization
 
-### GPTQ用法
-
 Download GPTQ int4-quantized model first，via [ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) and [WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
 
 Then follow the instructions in https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling.
@@ -283,6 +281,36 @@ for text in texts:
 print(out)
 print(f"Elapsed time model loading: {time.time()-start_time} seconds")
 ```
+
+### Usage of AWQ 
+Run ./examples/modelhub_download.py to download AquilaChat2-34B-AWQ.
+
+Install AutoAWQ==v0.1.5 from https://github.com/casper-hansen/AutoAWQ.
+
+Finally run the following code:
+```python
+import torch
+
+from awq import AutoAWQForCausalLM
+from transformers import AutoTokenizer
+
+awq_model_path = './checkpoints/aquilachat2-34b-awq'
+model = AutoAWQForCausalLM.from_quantized(awq_model_path,trust_remote_code=True,fuse_layers=True)
+tokenizer = AutoTokenizer.from_pretrained(awq_model_path,trust_remote_code=True)
+model.eval()
+
+device = torch.device("cuda:0")
+model.to(device)
+
+text = "请给出10个要到北京旅游的理由。"
+from flagai.model.aquila2.utils import covert_prompt_to_input_ids_with_history
+history = None
+text = covert_prompt_to_input_ids_with_history(text, history, tokenizer, 2048, convo_template="aquila-legacy")
+inputs = torch.tensor([text]).to(device)
+outputs = model.generate(inputs)[0]
+print(tokenizer.decode(outputs))
+```
+
 
 ## Pretraining
 

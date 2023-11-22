@@ -265,7 +265,7 @@ AquilaChat2-34B 4Bit 版本拥有99.3% bf16版本的性能。
 
 ### GPTQ用法
 
-首先需要手动下载GPTQ模型，现在支持[ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) 和[WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+首先需要手动下载GPTQ模型(当前只有34BChat模型)，现在支持[ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) 和[WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
 
 然后根据自己的环境，参考https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling 选择安装方式。
 
@@ -296,6 +296,35 @@ for text in texts:
                 model_name="AquilaChat2-34B")
 print(out)
 print(f"Elapsed time model loading: {time.time()-start_time} seconds")
+```
+
+### AWQ用法
+首先运行./examples/modelhub_download.py来下载AquilaChat2-34B-AWQ模型。
+
+然后从https://github.com/casper-hansen/AutoAWQ 安装AutoAWQ==v0.1.5。
+
+最后运行如下代码：
+```python
+import torch
+
+from awq import AutoAWQForCausalLM
+from transformers import AutoTokenizer
+
+awq_model_path = './checkpoints/aquilachat2-34b-awq'
+model = AutoAWQForCausalLM.from_quantized(awq_model_path,trust_remote_code=True,fuse_layers=True)
+tokenizer = AutoTokenizer.from_pretrained(awq_model_path,trust_remote_code=True)
+model.eval()
+
+device = torch.device("cuda:0")
+model.to(device)
+
+text = "请给出10个要到北京旅游的理由。"
+from flagai.model.aquila2.utils import covert_prompt_to_input_ids_with_history
+history = None
+text = covert_prompt_to_input_ids_with_history(text, history, tokenizer, 2048, convo_template="aquila-legacy")
+inputs = torch.tensor([text]).to(device)
+outputs = model.generate(inputs)[0]
+print(tokenizer.decode(outputs))
 ```
 
 <br><br>
