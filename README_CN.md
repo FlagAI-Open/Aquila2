@@ -23,6 +23,7 @@
 | Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) 🤖  🧠  | 
 | AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  🤖 🧠  | 
 | AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) 🤖 🧠 | 
+| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
 
 
 在这个仓库中，您可以：
@@ -215,7 +216,7 @@ print(out)
 
 ## 量化
 
-### 用法
+### BitsAndBytes用法
 
 使用量化之前，需要安装`BitsAndBytes`：
 
@@ -262,8 +263,40 @@ AquilaChat2-34B 4Bit 版本拥有99.3% bf16版本的性能。
 
 <img src="./assets/table.png"   align=center />
 
+### GPTQ用法
+
+首先需要手动下载GPTQ模型，现在支持[ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) 和[WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+
+然后根据自己的环境，参考https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling 选择安装方式。
+
+最后运行如下代码即可:
+
+```python
+from transformers import AutoTokenizer
+from auto_gptq import AutoGPTQForCausalLM
+
+# pretrained_model_dir = "/share/project/ldwang/checkpoints/Aquila-33b-knowledge6-341000-sft-v0.9.16/iter_0004000_hf"
+model_dir = "./checkpoints/Aquilachat34b-4bit" # 模型路径
+device="cuda:0"
+
+tokenizer = AutoTokenizer.from_pretrained(model_dir, use_fast=True,trust_remote_code=True)
+model = AutoGPTQForCausalLM.from_quantized(model_dir, inject_fused_attention=False, low_cpu_mem_usage=True, device=device)
 
 
+model.eval()
+import time 
+texts = ["请给出10个要到北京旅游的理由。",
+         "写一个林黛玉倒拔垂杨柳的故事",
+         "write a poet about moon"]
+from predict import predict
+start_time = time.time()
+for text in texts:
+    out = predict(model, text, tokenizer=tokenizer, max_gen_len=200, top_p=0.95,
+                seed=1234, topk=200, temperature=1.0, sft=True, device=device,
+                model_name="AquilaChat2-34B")
+print(out)
+print(f"Elapsed time model loading: {time.time()-start_time} seconds")
+```
 
 <br><br>
 
