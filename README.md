@@ -22,8 +22,7 @@ We announce that our **Aquila2** series is now open source, comprising Aquila2 (
 | AquilaChat2-7B-16k    |                                                 [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)                                                  |  
 | Aquila2-34B       |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
 | AquilaChat2-34B   |  [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
-| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI) | 
-
+| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
 
 In this repo, you can figure out:
 
@@ -212,7 +211,7 @@ pip install bitsandbytes
 
 After that, you're all set to use the quantized models for inference!
 
-### Usage
+### Usage of BitsAndBytes quantization
 
 ```python
 import torch 
@@ -248,6 +247,42 @@ The 4Bit version of AquilaChat2-34B offers significantly better performance than
 
 <img src="./assets/table.png"   align=center />
 
+### Usage of GPTQ quantization
+
+### GPTQ用法
+
+Download GPTQ int4-quantized model first，via [ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) and [WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+
+Then follow the instructions in https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling.
+
+Finally run the following code:
+
+```python
+from transformers import AutoTokenizer
+from auto_gptq import AutoGPTQForCausalLM
+
+# pretrained_model_dir = "/share/project/ldwang/checkpoints/Aquila-33b-knowledge6-341000-sft-v0.9.16/iter_0004000_hf"
+model_dir = "./checkpoints/Aquilachat34b-4bit" # 模型路径
+device="cuda:0"
+
+tokenizer = AutoTokenizer.from_pretrained(model_dir, use_fast=True,trust_remote_code=True)
+model = AutoGPTQForCausalLM.from_quantized(model_dir, inject_fused_attention=False, low_cpu_mem_usage=True, device=device)
+
+
+model.eval()
+import time 
+texts = ["请给出10个要到北京旅游的理由。",
+         "写一个林黛玉倒拔垂杨柳的故事",
+         "write a poet about moon"]
+from predict import predict
+start_time = time.time()
+for text in texts:
+    out = predict(model, text, tokenizer=tokenizer, max_gen_len=200, top_p=0.95,
+                seed=1234, topk=200, temperature=1.0, sft=True, device=device,
+                model_name="AquilaChat2-34B")
+print(out)
+print(f"Elapsed time model loading: {time.time()-start_time} seconds")
+```
 
 ## Pretraining
 
