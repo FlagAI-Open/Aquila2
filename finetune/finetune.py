@@ -57,6 +57,7 @@ class TrainingArguments(transformers.TrainingArguments):
     )
     flash_attn: bool = False
     use_lora: bool = False
+    use_single_node: bool = False
 
 @dataclass
 class DataArguments:
@@ -364,6 +365,9 @@ def train():
         ):
             logging.warning(
                 "FSDP and ZeRO3 are both currently incompatible with QLoRA.")
+
+    if training_args.use_single_node:
+        device_map = 'auto'
 
     compute_dtype = (torch.float16 if training_args.fp16 else
                      (torch.bfloat16 if training_args.bf16 else torch.float32))
