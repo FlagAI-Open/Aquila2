@@ -13,7 +13,7 @@
 </p>
 <br>
 
-We announce that our **Aquila2** series is now open source, comprising Aquila2 (the base language models: **Aquila2-7B** and **Aquila2-34B**) and AquilaChat2 (the chat models, namely **AquilaChat2-7B** and **AquilaChat2-34B**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**). You can find the links in the following table. Kindly click on them to access the model cards.
+We announce that our **Aquila2** series is now open source, comprising Aquila2 (the base language models: **Aquila2-7B**, **Aquila2-34B** and **Aquila2-70B-Expr**) and AquilaChat2 (the chat models, namely **AquilaChat2-7B**, **AquilaChat2-34B** and **AquilaChat2-70B-Expr**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**). You can find the links in the following table. Kindly click on them to access the model cards.
 
 | Model Name         |                                                                                                               Download Sources                                                                                                                | 
 |-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -23,6 +23,8 @@ We announce that our **Aquila2** series is now open source, comprising Aquila2 (
 | Aquila2-34B       |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
 | AquilaChat2-34B   |  [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
 | AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>]() [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |  
+| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>]() [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    | 
 
 In this repo, you can figure out:
 
@@ -35,6 +37,8 @@ Please don't hesitate to bring up issues and feel free to submit pull requests (
 <br><br>
 
 ## News and Updates
+
+* 2023.11.30 🔥 Experimental Version of 70B models, **Aquila2-70B-Expr** 和 **AquilaChat2-70B-Expr** have been released on ModelHub and Hugging Face.
 
 * 2023.11.10 🔥 Based on the open-source large language model (Aquila2) and embedding model (BGE) released by BAAI, [Aquila_BGE_langchain](./examples/Aquila_BGE_langchain) a solution for a question-answering application based on a local knowledge base has been developed using langchain.
   
@@ -200,6 +204,29 @@ out = predict(model, text, tokenizer=tokenizer, max_gen_len=200, top_p=0.95,
               model_name="AquilaChat2-7B")
 print(out)
 ```
+
+### AquilaChat2-70B-Expr
+You should use multiple gpus inference as follows:
+```python
+from flagai.auto_model.auto_loader import AutoLoader
+
+model_name = 'AquilaChat2-70B-Expr'
+
+autoloader = AutoLoader("aquila2", model_name=model_name, all_devices=True)
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+test_data = [
+    "北京的十大景点是什么?",
+    "写一首中秋主题的五言绝句",
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
+```
+The example also can be found in [AquilaChat2-70B-Expr](./examples/predict_chat_70b.py) . 
 
 ## Quantization
 

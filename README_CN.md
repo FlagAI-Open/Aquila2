@@ -13,7 +13,7 @@
 </p>
 <br><br>
 
-我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B** 和 **Aquila2-34B** ，对话模型 **AquilaChat2-7B** 和 **AquilaChat2-34B**，长文本对话模型**AquilaChat2-7B-16k** 和 **AquilaChat2-34B-16k**，您可以通过点击下方图标进入下载界面：
+我们开源了我们的 **Aquila2** 系列，现在包括基础语言模型 **Aquila2-7B**，**Aquila2-34B** 和 **Aquila2-70B-Expr** ，对话模型 **AquilaChat2-7B** ，**AquilaChat2-34B** 和 **AquilaChat2-70B-Expr**，长文本对话模型**AquilaChat2-7B-16k** 和 **AquilaChat2-34B-16k**，您可以通过点击下方图标进入下载界面：
 
 | 模型名称           |                                                                       下载方式                                                                        |
 |-------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -24,6 +24,8 @@
 | AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  🤖 🧠  | 
 | AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) 🤖 🧠 | 
 | AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>]() [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |  
+| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>]() [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    | 
 
 
 在这个仓库中，您可以：
@@ -41,6 +43,8 @@
 <br>
 
 ## 更新
+
+* 2023.11.30 🔥 我们在 ModelHub 和 Hugging Face 上发布了 70B 模型实验版本, **Aquila2-70B-Expr** 和 **AquilaChat2-70B-Expr**。
 
 * 2023.11.10 🔥 基于BAAI开源的大型语言模型（Aquila2）和嵌入模型（BGE），利用langchain构建一个基于本地知识库的问答应用解决方案[Aquila_BGE_langchain](./examples/Aquila_BGE_langchain)。
 
@@ -213,6 +217,30 @@ out = predict(model, text, tokenizer=tokenizer, max_gen_len=200, top_p=0.95,
               model_name="AquilaChat2-7B")
 print(out)
 ```
+
+### AquilaChat2-70B-Expr
+通常需要多卡进行推理如下：
+```python
+from flagai.auto_model.auto_loader import AutoLoader
+
+model_name = 'AquilaChat2-70B-Expr'
+
+autoloader = AutoLoader("aquila2", model_name=model_name, all_devices=True)
+
+model = autoloader.get_model()
+tokenizer = autoloader.get_tokenizer()
+
+test_data = [
+    "北京的十大景点是什么?",
+    "写一首中秋主题的五言绝句",
+    "Write a tongue twister that's extremely difficult to pronounce.",
+]
+
+for text in test_data:
+    print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
+```
+推理例子也可以参考 [AquilaChat2-70B-Expr](./examples/predict_chat_70b.py)。
+
 
 ## 量化
 
