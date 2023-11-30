@@ -1,7 +1,7 @@
 
 
 ## Introduction
-This is a local knowledge base question-answer application based on the large language model Aquila2 and the vectorized retrieval model BGE supported by BAAI. The implementation principle of this project is shown in the figure below, including reading text -> text vectorization (BGE) and building a vector library -> query vectorization -> matching the top M documents most similar to the query - > Combining the matching documents and query to form a prompt -> Submitting it to Aquila2 to generate an answer.
+This is a local knowledge base question-answer application based on the large language model Aquilachat2 and the vectorized retrieval model BGE supported by BAAI. The implementation principle of this project is shown in the figure below, including reading text -> text vectorization (BGE) and building a vector library -> query vectorization -> matching the top M documents most similar to the query - > Combining the matching documents and query to form a prompt -> Submitting it to Aquilachat2 to generate an answer.
 
 ![Image text](https://github.com/zll1995-nlp/Aquila2/blob/main/examples/Aquila_BGE_langchain/images/pic_2_EN.png)
 

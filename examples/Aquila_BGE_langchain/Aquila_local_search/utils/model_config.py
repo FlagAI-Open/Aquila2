@@ -10,16 +10,16 @@ logger.setLevel(logging.INFO)
 logging.basicConfig(format=LOG_FORMAT)
 
 llm_model_dict = {
-    "aquilachat-7b": {
-        "name": "aquilachat-7b",
-        "pretrained_model_name": "aquilachat-7b",
+    "aquilachat2-34b": {
+        "name": "aquilachat2-34b",
+        "pretrained_model_name": "aquilachat2-34b",
         "local_model_path": None,
         "provides": "Aquila"
     },
 }
 
 # LLM 名称
-LLM_MODEL = "chatglm-6b"
+LLM_MODEL = ""aquilachat2-34b""
 
 # LLM running device
 LLM_DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
