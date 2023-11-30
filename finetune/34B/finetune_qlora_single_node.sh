@@ -55,7 +55,7 @@ cd ${PWD} && \
       --lora_dropout 0.05 \
       --convo_template $CONVO_TEMPLATE \
       --fp16 \
-      --model_max_length 2048 \
+      --model_max_length 1024 \
       --output_dir $CKPT_OUTPUT/$MODEL_NAME_OUTPUT \
       --num_train_epochs $EPOCHS \
       --per_device_train_batch_size 1 \
