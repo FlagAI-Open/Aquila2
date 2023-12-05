@@ -476,7 +476,7 @@ AquilaChat2-34B-16K以Aquila2-34B为基座，经过位置编码内插法处理�
 
 ## 使用协议
 
-Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) 协议；Aquila2系列模型则是基于[智源Aquila系列模型许可协议](./assets/aquila_license.pdf)。
+Aquila2项目基于 [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) 协议；Aquila2系列模型则是基于[智源Aquila系列模型许可协议](./assets/aquila_license.pdf)；特别说明，Aquila2 70B系列模型则是基于[智源Aquila系列模型许可协议](./assets/aquila2_70b_license.pdf)。
 
 <br><br>
 
