@@ -72,6 +72,5 @@ cd ${PWD} && \
       --warmup_ratio 0.1 \
       --lr_scheduler_type 'linear' \
       --logging_steps 1 \
-      --deepspeed $DEEPSPEED_CONFIG \
       --gradient_checkpointing True \
       --lazy_preprocess True 1>>$LOGFILE 2>&1
