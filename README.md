@@ -38,11 +38,11 @@ Please don't hesitate to bring up issues and feel free to submit pull requests (
 
 ## News and Updates
 
-* 2023.11.30 🔥 Experimental Version of 70B models, **Aquila2-70B-Expr** 和 **AquilaChat2-70B-Expr** have been released on ModelHub and Hugging Face.
+* 2023.11.30 🔥 Experimental Version of 70B models, **Aquila2-70B-Expr** and **AquilaChat2-70B-Expr** have been released on ModelHub and Hugging Face.
 
 * 2023.11.10 🔥 Based on the open-source large language model (Aquila2) and embedding model (BGE) released by BAAI, [Aquila_BGE_langchain](./examples/Aquila_BGE_langchain) a solution for a question-answering application based on a local knowledge base has been developed using langchain.
   
-* 2023.10.25 🔥 Version 1.2 of **Aquila2-34B** 和 **AquilaChat2-34B** has been released on ModelHub and Hugging Face. The base model achieved an objective evaluation improvement of 6.9%. Aquila2-34B v1.2 demonstrated evaluation results on various examination, comprehension, and reasoning datasets, such as MMLU, TruthfulQA, CSL, TNEWS, OCNLI, and BUSTM, with respective increments of 12%, 14%, 11%, 12%, 28%, and 18%. In the subjective evaluation of 8 secondary ability dimensions, the Chat model reached or surpassed the level of GPT3.5. Compared to the V1 version, AquilaChat2-34B-16K-V1.2 demonstrates a significant improvement in its ability to handle long texts, approaching the level of GPT-3.5-16K.
+* 2023.10.25 🔥 Version 1.2 of **Aquila2-34B** and **AquilaChat2-34B** has been released on ModelHub and Hugging Face. The base model achieved an objective evaluation improvement of 6.9%. Aquila2-34B v1.2 demonstrated evaluation results on various examination, comprehension, and reasoning datasets, such as MMLU, TruthfulQA, CSL, TNEWS, OCNLI, and BUSTM, with respective increments of 12%, 14%, 11%, 12%, 28%, and 18%. In the subjective evaluation of 8 secondary ability dimensions, the Chat model reached or surpassed the level of GPT3.5. Compared to the V1 version, AquilaChat2-34B-16K-V1.2 demonstrates a significant improvement in its ability to handle long texts, approaching the level of GPT-3.5-16K.
 
 * 2023.10.12 🔥 We release **Aquila2** series on BAAI ModelHub and Hugging Face.
 <br><br>
