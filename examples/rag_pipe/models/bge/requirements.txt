@@ -1,0 +1,13 @@
+faiss_gpu==1.7.2
+Flask==2.3.2
+Flask_Limiter==3.3.1
+langchain==0.0.326
+# numpy==1.24.4
+pandas==2.0.2
+pyserini==0.21.0
+# torch==2.0.1
+torch_geometric==2.3.1
+tqdm==4.65.0
+# transformers==4.32.1
+openai==0.27.4
+pyserini==0.21.0
