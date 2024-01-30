@@ -1,0 +1,7 @@
+- 2024-01-30 15:49:58
+    - 优化代码结构，
+        - Aquila_BGE_langchain-->rag_pipe
+        - 整体代码结构优化
+    - 模型支持本地和api调用
+    - 支持rag-fusion：https://github.com/Raudaschl/rag-fusion
+    - 添加引文格式生成prompt模板：https://arxiv.org/pdf/2305.14627.pdf
