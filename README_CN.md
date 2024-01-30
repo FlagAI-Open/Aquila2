@@ -17,15 +17,15 @@
 
 | 模型名称           |                                                                       下载方式                                                                        |
 |-------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Aquila2-7B        |       [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)        |  
-| AquilaChat2-7B    |     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)      | 
-| AquilaChat2-7B-16k    |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)    |  
-| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) 🤖  🧠  | 
-| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  🤖 🧠  | 
-| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) 🤖 🧠 | 
-| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
-| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220120) [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |  
-| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220121) [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    | 
+| Aquila2-7B        |       [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)        |
+| AquilaChat2-7B    |     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)      |
+| AquilaChat2-7B-16k    |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)    |
+| Aquila2-34B       | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) 🤖  🧠  |
+| AquilaChat2-34B   | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  🤖 🧠  |
+| AquilaChat2-34B-16k    | [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100121) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B-16K) 🤖 🧠 |
+| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) |
+| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220120) [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |
+| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220121) [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    |
 
 
 在这个仓库中，您可以：
@@ -46,7 +46,7 @@
 
 * 2023.11.30 🔥 我们在 ModelHub 和 Hugging Face 上发布了 70B 模型实验版本, **Aquila2-70B-Expr** 和 **AquilaChat2-70B-Expr**。
 
-* 2023.11.10 🔥 基于BAAI开源的大型语言模型（Aquila2）和嵌入模型（BGE），利用langchain构建一个基于本地知识库的问答应用解决方案[Aquila_BGE_langchain](./examples/Aquila_BGE_langchain)。
+* 2023.11.10 🔥 基于BAAI开源的大型语言模型（Aquila2）和嵌入模型（BGE），利用langchain构建一个基于本地知识库的问答应用解决方案[rag_pipe](./examples/rag_pipe)。
 
 * 2023.10.25 🔥 1.2版本的 **Aquila2-34B**, **AquilaChat2-34B-16K** 和 **AquilaChat2-34B** 模型已在ModelHub 和 Hugging Face 上更新。
 其中Aquila2-34B模型综合客观评测提升 6.9%，Aquila2-34B v1.2  在 MMLU、TruthfulQA、CSL、TNEWS、OCNLI、BUSTM 等考试、理解及推理评测数据集上的评测结果分别增加 12%、14%、11%、12%、28%、18%。Chat模型在主观评测的8个二级能力维度上，均接近或超过 GPT3.5 水平。 AquilaChat2-34B-16K-V1.2则相较于V1版本在长文本综合能力上有明显提升，接近GPT-3.5-16K。
@@ -78,7 +78,7 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
     <br>
     [1] https://crfm.stanford.edu/helm/latest
 </p>
-	
+
 <br>
 
 
@@ -126,7 +126,7 @@ Aquila2-34B和Aquila2-7B相比同规模的基线模型在各项评测数据集�
 
 ## 安装环境
 
-* python 版本 >= 3.10 
+* python 版本 >= 3.10
 * pytorch 版本 >= 1.12, 建议2.0版本及以上
 * transformers 版本 >= 4.32
 * CUDA 版本 >= 11.4 (GPU用户、flash-attention用户等需考虑此选项)
@@ -255,14 +255,14 @@ pip install bitsandbytes
 接下来就可以使用量化模型进行推理啦！
 
 ```python
-import torch 
+import torch
 from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
 
 
 model_name = 'AquilaChat2-7B'
 
-autoloader = AutoLoader("aquila2", model_name=model_name, 
+autoloader = AutoLoader("aquila2", model_name=model_name,
     quantization_config=BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_use_double_quant=True,
@@ -272,7 +272,7 @@ autoloader = AutoLoader("aquila2", model_name=model_name,
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
-# 
+#
 
 test_data = [
     "北京的十大景点是什么?",
@@ -293,7 +293,7 @@ AquilaChat2-34B 4Bit 版本拥有99.3% bf16版本的性能。
 
 ### GPTQ用法
 
-首先需要手动下载GPTQ模型(当前只有34BChat模型)，现在支持[ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) 和[WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+首先需要手动下载GPTQ模型(当前只有34BChat模型)，现在支持[ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) 和[WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) |
 
 然后根据自己的环境，参考https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling 选择安装方式。
 
@@ -312,7 +312,7 @@ model = AutoGPTQForCausalLM.from_quantized(model_dir, inject_fused_attention=Fal
 
 
 model.eval()
-import time 
+import time
 texts = ["请给出10个要到北京旅游的理由。",
          "写一个林黛玉倒拔垂杨柳的故事",
          "write a poet about moon"]
@@ -379,12 +379,12 @@ print(tokenizer.decode(outputs))
 
 
 然后您可以使用我们提供不同的微调脚本实现不同功能：
-- 使用`finetune/7B/finetune.sh`实现7B模型全参数微调 
-- 使用`finetune/7B/finetune_lora.sh`实现7B模型LoRA微调 
-- 使用`finetune/7B/finetune_qlora.sh`实现7B模型Q-LoRA微调 
-- 使用`finetune/34B/finetune.sh`实现34B模型全参数微调 
-- 使用`finetune/34B/finetune_lora.sh`实现34B模型LoRA微调 
-- 使用`finetune/34B/finetune_qlora.sh`实现34B模型Q-LoRA微调 
+- 使用`finetune/7B/finetune.sh`实现7B模型全参数微调
+- 使用`finetune/7B/finetune_lora.sh`实现7B模型LoRA微调
+- 使用`finetune/7B/finetune_qlora.sh`实现7B模型Q-LoRA微调
+- 使用`finetune/34B/finetune.sh`实现34B模型全参数微调
+- 使用`finetune/34B/finetune_lora.sh`实现34B模型LoRA微调
+- 使用`finetune/34B/finetune_qlora.sh`实现34B模型Q-LoRA微调
 
 注意，您需要在脚本中指定训练数据的路径，并相应地配置hostfile。
 
@@ -456,7 +456,7 @@ bash finetune/34B/finetune_qlora.sh
 在FlagScale中，我们率先提供了实际训练中使用的Aquila2-7B和Aquila2-34B的训练方案，包括并行策略、优化选择和超参数设置。通过使用FlagScale，模型FLOPs利用率在Aquila2-7B和Aquila2-34B上均可达到很高水平。目前，FlagScale仍处于早期阶段，我们将与社区共同努力，以在不同的硬件架构上支持各种LLMs。
 
 ## 应用
-一种利用langchain思想实现的基于本地知识库的问答应用，目标期望建立一套对中英双语场景与开源模型支持友好、可离线运行的知识库问答解决方案。本项目依托于BAAI支持的开源LLM与Embedding模型，可实现全部使用开源模型离线私有部署。项目可见于[Aquila_BGE_langchain](./examples/Aquila_BGE_langchain)。
+一种利用langchain思想实现的基于本地知识库的问答应用，目标期望建立一套对中英双语场景与开源模型支持友好、可离线运行的知识库问答解决方案。本项目依托于BAAI支持的开源LLM与Embedding模型，可实现全部使用开源模型离线私有部署。项目可见于[rag_pipe](./examples/rag_pipe)。
 
 
 ## 长文本处理
