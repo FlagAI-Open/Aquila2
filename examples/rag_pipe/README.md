@@ -3,6 +3,8 @@
 
 ![Image text](./image/rag-pipe-structer.png)
 
+## 更新记录: [CHANGELOG](./CHANGELOG)
+
 ## 安装环境
 * python 版本 >= 3.10
 * pytorch 版本 >= 2.0.1

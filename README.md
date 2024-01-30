@@ -15,16 +15,16 @@
 
 We announce that our **Aquila2** series is now open source, comprising Aquila2 (the base language models: **Aquila2-7B**, **Aquila2-34B** and **Aquila2-70B-Expr**) and AquilaChat2 (the chat models, namely **AquilaChat2-7B**, **AquilaChat2-34B** and **AquilaChat2-70B-Expr**, as well as the long-text chat models, namely **AquilaChat2-7B-16k** and **AquilaChat2-34B-16k**). You can find the links in the following table. Kindly click on them to access the model cards.
 
-| Model Name         |                                                                                                               Download Sources                                                                                                                | 
+| Model Name         |                                                                                                               Download Sources                                                                                                                |
 |-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Aquila2-7B        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)                                                      |  
-| AquilaChat2-7B    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)                                                    | 
-| AquilaChat2-7B-16k    |                                                 [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)                                                  |  
-| Aquila2-34B       |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
-| AquilaChat2-34B   |  [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   | 
-| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
-| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220120) [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |  
-| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220121) [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    | 
+| Aquila2-7B        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100118) [🤗](https://huggingface.co/BAAI/Aquila2-7B)                                                      |
+| AquilaChat2-7B    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100117) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B)                                                    |
+| AquilaChat2-7B-16k    |                                                 [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100120) [🤗](https://huggingface.co/BAAI/AquilaChat2-7B-16K)                                                  |
+| Aquila2-34B       |   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100119) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B) [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   |
+| AquilaChat2-34B   |  [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/100116) [🤗](https://huggingface.co/BAAI/AquilaChat2-34B)  [🤖](https://modelscope.cn/organization/BAAI)  [🧠](https://www.wisemodel.cn/organization/BAAI)   |
+| AquilaChat2-34B-Int4-GPTQ    |  [🤖](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary)  [🧠](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) |
+| Aquila2-70B-Expr        |                                                     [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220120) [🤗](https://huggingface.co/BAAI/Aquila2-70B-Expr)                                                      |
+| AquilaChat2-70B-Expr    |                                                   [<img src="assets/baai.png" width="18"/>](https://model.baai.ac.cn/model-detail/220121) [🤗](https://huggingface.co/BAAI/AquilaChat2-70B-Expr)                                                    |
 
 In this repo, you can figure out:
 
@@ -40,8 +40,8 @@ Please don't hesitate to bring up issues and feel free to submit pull requests (
 
 * 2023.11.30 🔥 Experimental Version of 70B models, **Aquila2-70B-Expr** and **AquilaChat2-70B-Expr** have been released on ModelHub and Hugging Face.
 
-* 2023.11.10 🔥 Based on the open-source large language model (Aquila2) and embedding model (BGE) released by BAAI, [Aquila_BGE_langchain](./examples/Aquila_BGE_langchain) a solution for a question-answering application based on a local knowledge base has been developed using langchain.
-  
+* 2023.11.10 🔥 Based on the open-source large language model (Aquila2) and embedding model (BGE) released by BAAI, [rag_pipe](./examples/rag_pipe) a solution for a question-answering application based on a local knowledge base has been developed using langchain.
+
 * 2023.10.25 🔥 Version 1.2 of **Aquila2-34B** and **AquilaChat2-34B** has been released on ModelHub and Hugging Face. The base model achieved an objective evaluation improvement of 6.9%. Aquila2-34B v1.2 demonstrated evaluation results on various examination, comprehension, and reasoning datasets, such as MMLU, TruthfulQA, CSL, TNEWS, OCNLI, and BUSTM, with respective increments of 12%, 14%, 11%, 12%, 28%, and 18%. In the subjective evaluation of 8 secondary ability dimensions, the Chat model reached or surpassed the level of GPT3.5. Compared to the V1 version, AquilaChat2-34B-16K-V1.2 demonstrates a significant improvement in its ability to handle long texts, approaching the level of GPT-3.5-16K.
 
 * 2023.10.12 🔥 We release **Aquila2** series on BAAI ModelHub and Hugging Face.
@@ -49,7 +49,7 @@ Please don't hesitate to bring up issues and feel free to submit pull requests (
 
 ## Performance
 
-Aquila2 series outperforms the models of similar model sizes on a series of benchmark datasets. 
+Aquila2 series outperforms the models of similar model sizes on a series of benchmark datasets.
 
 ### Base Model Performance
 
@@ -71,7 +71,7 @@ Our team has always strictly adhered to the principle that training data should 
 <br>
 [1] https://crfm.stanford.edu/helm/latest/
 </p>
-	
+
 <br>
 
 ### Long Context Performance
@@ -226,7 +226,7 @@ test_data = [
 for text in test_data:
     print(model.predict(text, tokenizer=tokenizer, model_name=model_name, top_p=0.9, seed=123, topk=15, temperature=1.0))
 ```
-The example also can be found in [AquilaChat2-70B-Expr](./examples/predict_chat_70b.py) . 
+The example also can be found in [AquilaChat2-70B-Expr](./examples/predict_chat_70b.py) .
 
 ## Quantization
 
@@ -241,13 +241,13 @@ After that, you're all set to use the quantized models for inference!
 ### Usage of BitsAndBytes quantization
 
 ```python
-import torch 
+import torch
 from flagai.auto_model.auto_loader import AutoLoader
 from transformers import BitsAndBytesConfig
 
 model_name = 'AquilaChat2-7B'
 
-autoloader = AutoLoader("aquila2", model_name=model_name, 
+autoloader = AutoLoader("aquila2", model_name=model_name,
     quantization_config=BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_use_double_quant=True,
@@ -257,7 +257,7 @@ autoloader = AutoLoader("aquila2", model_name=model_name,
 
 model = autoloader.get_model()
 tokenizer = autoloader.get_tokenizer()
-# 
+#
 
 test_data = [
     "Write a tongue twister that's extremely difficult to pronounce.",
@@ -276,7 +276,7 @@ The 4Bit version of AquilaChat2-34B offers significantly better performance than
 
 ### Usage of GPTQ quantization
 
-Download GPTQ int4-quantized model first，via [ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) and [WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) | 
+Download GPTQ int4-quantized model first，via [ModelScope](https://modelscope.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/summary) and [WiseModel](https://www.wisemodel.cn/models/BAAI/AquilaChat2-34B-Int4-GPTQ/intro) |
 
 Then follow the instructions in https://github.com/PanQiWei/AutoGPTQ/tree/main/auto_gptq/modeling.
 
@@ -295,7 +295,7 @@ model = AutoGPTQForCausalLM.from_quantized(model_dir, inject_fused_attention=Fal
 
 
 model.eval()
-import time 
+import time
 texts = ["请给出10个要到北京旅游的理由。",
          "写一个林黛玉倒拔垂杨柳的故事",
          "write a poet about moon"]
@@ -309,7 +309,7 @@ print(out)
 print(f"Elapsed time model loading: {time.time()-start_time} seconds")
 ```
 
-### Usage of AWQ 
+### Usage of AWQ
 Run ./examples/modelhub_download.py to download AquilaChat2-34B-AWQ.
 
 Install AutoAWQ==v0.1.5 from https://github.com/casper-hansen/AutoAWQ.
@@ -341,7 +341,7 @@ print(tokenizer.decode(outputs))
 
 ## Pretraining
 
-From Aquila2, we upgrade the underlying pretraining framework, which is now open-sourced as [FlagScale](https://github.com/FlagOpen/FlagScale). It is based on the Megatron-LM project and aims at utilizing the computation resources efficiently for LLMs without sacrificing the numerical stability and model effectiveness. 
+From Aquila2, we upgrade the underlying pretraining framework, which is now open-sourced as [FlagScale](https://github.com/FlagOpen/FlagScale). It is based on the Megatron-LM project and aims at utilizing the computation resources efficiently for LLMs without sacrificing the numerical stability and model effectiveness.
 
 In FlagScale, we firstly provide our actually used training schemes for Aquila2-7B and Aquila2-34B, including the parallel strategies, optimizations and hyper-parameter settings. By using FlagScale, our model FLOPs utilization can achieve a very high level for both Aquila2-7B and Aquila2-34B. For now, FlagScale is still in its early stage and we will work with the community together to support different LLMs on various hardware architectures in the future.
 
@@ -444,7 +444,7 @@ Please click the link to visit the official [FlagOpen](https://flagopen.baai.ac.
 
 ## Application
 
-This is a idea that uses langchain to implement a question-answer application based on local knowledge base. The goal is to build a knowledge base question-answer solution that is friendly to Chinese-English bilingual scenarios, can support open source models, and can run offline. This project relies on the open source LLM and Embedding models supported by BAAI, which can realize offline private deployment of all open source models. The project can be found in [Aquila_BGE_langchain](./examples/Aquila_BGE_langchain) . 
+This is a idea that uses langchain to implement a question-answer application based on local knowledge base. The goal is to build a knowledge base question-answer solution that is friendly to Chinese-English bilingual scenarios, can support open source models, and can run offline. This project relies on the open source LLM and Embedding models supported by BAAI, which can realize offline private deployment of all open source models. The project can be found in [rag_pipe](./examples/rag_pipe) .
 
 <br><br>
 
