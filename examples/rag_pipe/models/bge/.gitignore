@@ -148,3 +148,4 @@ upload/*
 checkpoints/
 projects/
 
+knowledge_data/db_content
