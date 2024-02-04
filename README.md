@@ -1,3 +1,4 @@
+[<img src="assets/flagopen.jpeg">](https://flagopen.baai.ac.cn/)
 <p align="left">
     <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp
 </p>
